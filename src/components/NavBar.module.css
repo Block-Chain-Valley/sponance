@@ -1,0 +1,44 @@
+@font-face {
+  font-family: "Inter_black";
+  src: url("../assets/fonts/Inter-Black.ttf") format("truetype");
+}
+
+.mainContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: (100 - 2 * 2) vw;
+  height: 3rem;
+}
+
+.subContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 31rem;
+  font-family: "Inter_regular";
+  text-decoration: none;
+  color: inherit;
+}
+
+.LogoTxt {
+  font-family: "Inter_black";
+  font-size: 1.3rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.searchIcon {
+  height: 1.1rem;
+}
+
+.linkTxt {
+  text-decoration: none;
+  color: inherit;
+}
+
+.linkTxt:hover {
+  font-weight: bold;
+}

@@ -6,7 +6,7 @@ import About from "./pages/About";
 import Campaign from "./pages/Campaign";
 import FAQ from "./pages/FAQ";
 import FindAccount from "./pages/FindAccount";
-import Dataload from "./components/Dataload";
+// import Dataload from "./components/Dataload";
 import Main from "./pages/Main";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
@@ -16,7 +16,7 @@ const App = () => {
     <React.Fragment>
       <BrowserRouter>
         <NavBar />
-        <Dataload />
+        {/* <Dataload /> */}
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/about" element={<About />} />

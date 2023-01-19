@@ -10,9 +10,6 @@ interface Userdata {
 
 const Dataload = () => {
   const [userData, setUserData] = useState<Userdata[] | null>(null);
-  // const [username, setUsername] = useState(null);
-  // const [userPassword, setUserPassword]  = useState(null);
-  // const [userEmail, setUserEmail] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [inputs, setInputs] = useState({
@@ -20,10 +17,6 @@ const Dataload = () => {
     password: "",
     email: "",
   });
-
-  //   let name: string = inputs.username;
-  //   let password: string = inputs.password;
-  //   let email: string = inputs.email;
 
   const onChange = (e: any) => {
     const { value, name } = e.target;

@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import PersonCard from "../components/PersonCard";
 import styles from "./Main.module.css";
 

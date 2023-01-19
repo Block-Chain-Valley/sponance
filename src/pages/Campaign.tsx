@@ -1,4 +1,4 @@
-import styles from "./Campaign.module.css";
+// import styles from "./Campaign.module.css";
 
 const Campaign = () => {
   return <div>this is campaign page</div>;

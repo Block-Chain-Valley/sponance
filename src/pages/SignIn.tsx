@@ -1,27 +1,23 @@
 import styles from "./SignIn.module.css";
+import { Link } from "react-router-dom";
 
 const SignIn = () => {
-  const registerClickHandler = () => {
-    return null;
-  };
-
   return (
     <div className={styles.mainContainer}>
       <div className={styles.signInTxt}>Sign In</div>
       <input className={styles.input} />
       <div className={styles.infoTxt}>The email format is incorrect.</div>
       <input className={styles.input} />
-      <div className={styles.forgotTxt}>Forgot your account information?</div>
+      <Link className={styles.forgotTxt} to="/FindAccount">
+        Forgot your account information?
+      </Link>
       <div className={styles.signInBtn}>Sign In</div>
       <div className={styles.registerContainer}>
         <div className={styles.registerTxt}>
           Don't have a sponance account yet?{" "}
-          <span
-            className={styles.registerTxtLink}
-            onClick={registerClickHandler}
-          >
+          <Link className={styles.registerTxtLink} to="/signup">
             Click here to register
-          </span>
+          </Link>
         </div>
       </div>
     </div>

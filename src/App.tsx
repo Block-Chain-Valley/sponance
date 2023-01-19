@@ -5,7 +5,8 @@ import NavBar from "./components/NavBar";
 import About from "./pages/About";
 import Campaign from "./pages/Campaign";
 import FAQ from "./pages/FAQ";
-// import Dataload from "./components/Dataload";
+import FindAccount from "./pages/FindAccount";
+import Dataload from "./components/Dataload";
 import Main from "./pages/Main";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
@@ -15,14 +16,15 @@ const App = () => {
     <React.Fragment>
       <BrowserRouter>
         <NavBar />
-        {/* <Dataload /> */}
+        <Dataload />
         <Routes>
-          <Route exact path="/" element={<Main />} />
-          <Route exact path="/about" element={<About />} />
-          <Route exact path="/campaign" element={<Campaign />} />
-          <Route exact path="/faq" element={<FAQ />} />
-          <Route exact path="/signin" element={<SignIn />} />
-          <Route exact path="/signup" element={<SignUp />} />
+          <Route path="/" element={<Main />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/campaign" element={<Campaign />} />
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/findaccount" element={<FindAccount />} />
         </Routes>
       </BrowserRouter>
     </React.Fragment>

@@ -2,13 +2,19 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styles from "./Dataload.module.css";
 
+interface Userdata {
+  username: string;
+  password: string;
+  email: string;
+}
+
 const Dataload = () => {
-  const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState<Userdata[] | null>(null);
   // const [username, setUsername] = useState(null);
   // const [userPassword, setUserPassword]  = useState(null);
   // const [userEmail, setUserEmail] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
   const [inputs, setInputs] = useState({
     username: "",
     password: "",
@@ -19,7 +25,7 @@ const Dataload = () => {
   //   let password: string = inputs.password;
   //   let email: string = inputs.email;
 
-  const onChange = (e) => {
+  const onChange = (e: any) => {
     const { value, name } = e.target;
     setInputs({
       ...inputs,
@@ -39,9 +45,10 @@ const Dataload = () => {
   const send = () => {
     try {
       axios.post("http://127.0.0.1:5000/ele", inputs);
+      onReset();
       console.log(inputs);
-    } catch (e) {
-      console.log(e);
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -53,8 +60,8 @@ const Dataload = () => {
         setLoading(true);
         const response = await axios.get("http://127.0.0.1:5000/ele");
         setUserData(response.data);
-      } catch (e) {
-        setError(e);
+      } catch (error) {
+        setError(error as string);
       }
       setLoading(false);
     };

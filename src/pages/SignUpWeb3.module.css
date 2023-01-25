@@ -1,0 +1,17 @@
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-between; */
+}

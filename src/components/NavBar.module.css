@@ -17,7 +17,6 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 31rem;
   font-family: "Inter_regular";
   text-decoration: none;
   color: inherit;
@@ -35,6 +34,7 @@
 }
 
 .linkTxt {
+  margin: 0 0 0 1.2rem;
   text-decoration: none;
   color: inherit;
 }

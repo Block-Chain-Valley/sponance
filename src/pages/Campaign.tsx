@@ -1,7 +1,14 @@
+import React from "react";
+import NavBar from "../components/NavBar";
 // import styles from "./Campaign.module.css";
 
 const Campaign = () => {
-  return <div>this is campaign page</div>;
+  return (
+    <div>
+      <NavBar />
+      this is campaign page
+    </div>
+  );
 };
 
 export default Campaign;

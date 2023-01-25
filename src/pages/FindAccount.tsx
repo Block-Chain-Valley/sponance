@@ -1,3 +1,4 @@
+import React from "react";
 // import styles from "./FindAccount.module.css";
 
 const FindAccount = () => {

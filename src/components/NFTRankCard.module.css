@@ -8,7 +8,7 @@
 }
 
 .order {
-  font-family: "Pretendard";
+  font-family: "Inter_regular";
   font-style: normal;
   font-weight: 600;
   font-size: 25px;
@@ -22,7 +22,7 @@
 
 .cardTitle {
   width: 180px;
-  font-family: "Pretendard";
+  font-family: "Inter_regular";
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -33,7 +33,7 @@
   color: #000000;
 }
 .ItemAndPlayer {
-  font-family: "Inter";
+  font-family: "Inter_regular";
   font-style: normal;
   font-weight: 400;
   font-size: 10px;
@@ -51,7 +51,7 @@
 }
 
 .remainNFT {
-  font-family: "Inter";
+  font-family: "Inter_regular";
   font-style: normal;
   font-weight: 400;
   font-size: 10px;
@@ -60,7 +60,7 @@
   color: #434343;
 }
 .nftPirce {
-  font-family: "Pretendard";
+  font-family: "Inter_regular";
   font-style: normal;
   font-weight: 400;
   font-size: 18px;

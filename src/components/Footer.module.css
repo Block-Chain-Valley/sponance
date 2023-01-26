@@ -1,0 +1,68 @@
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  height: 216px;
+  margin-left: -2vw;
+  background: #000000;
+}
+
+.logo {
+  margin: 33px 0 70px 0;
+  width: 182px;
+  height: 21px;
+}
+
+.linkContainer {
+  display: flex;
+  min-width: 300px;
+  width: 30vw;
+  justify-content: space-between;
+  margin: 0 0 27px 0;
+}
+
+.linkTxt {
+  text-decoration: none;
+  font-family: "Inter_regular";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+
+  color: #ffffff;
+}
+
+.line {
+  margin: 0 0 10px 0;
+  width: 96vw;
+  height: 1px;
+
+  opacity: 0.2;
+  border: 2px solid #ffe995;
+}
+.subContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 96vw;
+}
+.copyRight {
+  font-family: "Inter-regular";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  font-feature-settings: "salt" on, "liga" off;
+
+  /* Text / Gray 300 */
+
+  color: #d9dbe1;
+}
+.socialLink {
+  display: flex;
+  flex-direction: row;
+}
+.socailLogo {
+  margin-left: 16px;
+  width: 24px;
+  height: 24px;
+}

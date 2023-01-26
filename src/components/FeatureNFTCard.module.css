@@ -1,0 +1,54 @@
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 0 30px 70px 0;
+}
+.featureImg {
+  width: 200px;
+  height: 135px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+.cardTitle {
+  width: 200px;
+  font-family: "Inter_semibold";
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  display: flex;
+  align-items: center;
+  color: #000000;
+  margin-bottom: 10px;
+}
+.itemAndPlayer {
+  font-family: "Inter_regular";
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  margin-bottom: 10px;
+  color: #434343;
+}
+.subContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.nftPrice {
+  font-family: "Inter_regular";
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 30px;
+  display: flex;
+  align-items: center;
+
+  color: #96cbdb;
+}
+.remainNFT {
+  font-family: "Inter_regular";
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  padding: 0 10px 5px 0;
+  color: #434343;
+}

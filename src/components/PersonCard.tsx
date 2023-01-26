@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./PersonCard.module.css";
+import s3 from "../assets/image/s3.png";
 
 const exData = {
   id: "0",
@@ -11,7 +12,6 @@ const exData = {
   activeState: "1",
 
   // 아래 정보는 다른 데이터 테이블에서 조인해서 가져왔다는 것을 가정하고 작성
-  title: "유럽 리그에 진출하고 싶어요 도와주십쇼",
 
   //sns
   instagram: "https://www.instagram.com/jlnsung.p/",
@@ -20,15 +20,63 @@ const exData = {
   facebook: "https://facebook.com/jinseongbe",
   telegram: "jinseongbe",
   kakaoOpen: "jinseongbe",
+
+  // contents
+  item: "핸드볼",
+  player: "롯데팀",
+  cardTitle: "핸드볼 선수의 해외 출전을 도와주세요",
+  cardDetail: "저희는 이러 저러한 사정으로 도움을 필요합니다. 이러쿵 저러쿵",
+  tempPercent: 68,
+  totalSell: 887000,
+  remainNFT: 243,
+  titleImgUrl: s3,
 };
 
-const PersonCard = () => {
+export interface propsType {
+  item: string;
+  player: string;
+  cardTitle: string;
+  cardDetail: string;
+  tempPercent: number;
+  totalSell: number;
+  remainNFT: number;
+  titleImgUrl: string;
+}
+
+const PersonCard = ({
+  titleImgUrl,
+  item,
+  player,
+  cardTitle,
+  cardDetail,
+  tempPercent,
+  totalSell,
+  remainNFT,
+}: propsType) => {
   return (
     <div className={styles.cardContainer}>
-      <div>{exData.id}</div>
-      <div>{exData.lastName}</div>
-      <div>{exData.fristName}</div>
-      <div>{exData.email}</div>
+      <img className={styles.profileImg} src={titleImgUrl} />
+      <div className={styles.itemAndPlayerTxt}>
+        {item}&nbsp;|&nbsp;{player}
+      </div>
+      <div className={styles.title}>{cardTitle}</div>
+      <div className={styles.detail}>{cardDetail}</div>
+      <div className={styles.subContainer}>
+        <div className={styles.subContainer2}>
+          <div className={styles.percent}>{tempPercent}%</div>
+          <div className={styles.totalsell}>
+            {totalSell.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원
+          </div>
+        </div>
+        <div className={styles.remainNFT}>
+          NFT {remainNFT.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}개
+          남음
+        </div>
+      </div>
+      <div className={styles.barContainer}>
+        <div className={styles.yellowBar}></div>
+        <div className={styles.blueBar}></div>
+      </div>
     </div>
   );
 };

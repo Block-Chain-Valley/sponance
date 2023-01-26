@@ -1,14 +1,205 @@
 .mainContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .banner {
-  width: 100%;
-  height: 400px;
-  border: solid 2pt black;
+  width: 100vw;
+  height: 450px;
   margin: 0 0 1rem 0;
 }
 
+.bannerImg {
+  width: 100vw;
+  height: 100%;
+  object-fit: cover;
+}
+
+.blur {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.048),
+    rgba(0, 0, 0, 0.747)
+  );
+  width: 100%;
+  height: 450px;
+}
+
+.bannerTxt {
+  position: absolute;
+  font-family: "Inter_black";
+  font-size: 3rem;
+  top: 360px;
+  left: 2vw;
+  color: white;
+}
+
+.colorBar {
+  color: #86cddd;
+  margin: 0 0.7rem 0 0;
+}
+
+/* ---------------- 선수들 후원하기!!! ---------------- */
+
+.secondContainer {
+  display: flex;
+  margin: 1rem 0 1rem 0;
+  flex-direction: row;
+  justify-content: left;
+  align-items: flex-start;
+}
+
 .cardContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cardTitle {
+  width: 100%;
+  margin: 0 0 0.7rem 0;
+  font-family: "Inter_black";
+  font-size: 1.8rem;
+}
+
+.cardSubContainer {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+}
+
+/* ---------------- 실시간 랭킹!!! ---------------- */
+.rankingContainer {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+}
+
+.rankingTitle {
+  margin: 0 0 0.7rem 0;
+  font-family: "Inter_black";
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+.rankingSubContainer {
   display: flex;
   flex-direction: row;
+  margin-bottom: 40px;
+  cursor: pointer;
+}
+
+.rankDonateBtn {
+  margin-right: 20px;
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  display: flex;
+  align-items: center;
+  color: lightgray;
+}
+
+.rankDonateBtnClicked {
+  composes: rankDonateBtn;
+  color: #000000;
+}
+
+.rankNFTBtn {
+  margin-right: 20px;
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  display: flex;
+  align-items: center;
+  color: lightgray;
+}
+
+.rankNFTBtnClicked {
+  composes: rankNFTBtn;
+  color: #000000;
+}
+
+/* ---------------- 품절 임박 NFT!!! ---------------- */
+
+.featureContainer {
+  margin: 2rem 0 0 0;
+}
+
+.featureNFTsContainer {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+
+.featureTitle {
+  margin: 0 0 0.7rem 0;
+  font-family: "Inter_black";
+  font-size: 1.8rem;
+}
+
+/* ---------------- 하단 배너!!! ---------------- */
+
+.bottomBannerContainer {
+  margin-bottom: 100px;
+}
+
+.bottomBannerImg {
+  width: 96vw;
+  height: 244px;
+  object-fit: cover;
+  z-index: -10;
+}
+
+.blur2 {
+  position: absolute;
+  width: 96vw;
+  height: 244px;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.bottomBannerTitle {
+  position: absolute;
+  width: 494px;
+  height: 48px;
+  margin: -210px 0 0 40px;
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 48px;
+
+  color: white;
+}
+
+.bottomBannerDetail {
+  position: absolute;
+  width: 297px;
+  height: 18px;
+  margin: -150px 0 0 40px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 18px;
+
+  color: #ffffff;
+}
+
+.donateBtn {
+  position: absolute;
+  width: 110px;
+  height: 40px;
+  margin: -70px 0 0 40px;
 }

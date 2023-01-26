@@ -6,7 +6,7 @@ const AuthContext = React.createContext({
   isLoggedIn: false,
   userAddress: DEFAULT_ADDRESS,
   onLogout: () => {},
-  onLogin: (address: any) => {},
+  onLogin: (nic: string, address: string) => {},
 });
 
 export const AuthContextProvider = (props: any) => {
@@ -29,17 +29,19 @@ export const AuthContextProvider = (props: any) => {
   const logoutHandler = () => {
     console.log("logout!");
     localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("userNicname");
     localStorage.removeItem("userAddress");
     setIsLoggedIn(false);
   };
 
-  const loginHandler = (address: string) => {
+  const loginHandler = (nick: string, address: string) => {
     if (address === DEFAULT_ADDRESS) {
       console.log("login fail");
       return false;
     }
     console.log("login address :", address);
     localStorage.setItem("isLoggedIn", "1");
+    localStorage.setItem("userNicname", nick);
     localStorage.setItem("userAddress", address);
     setIsLoggedIn(true);
     return true;

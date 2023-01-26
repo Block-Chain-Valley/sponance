@@ -1,24 +1,41 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./NavBar.module.css";
 import { Link } from "react-router-dom";
 import AuthContext from "../store/auth-context";
+import supabase from "../config/supabaseClient";
+import logo from "../assets/image/logo.png";
 
 const NavBar = () => {
-  const [checkSignIn, setcheckSignIn] = useState<boolean>(false);
-  // const [account, setAccount] = useState<string | unknown>("");
   const authCtx = useContext(AuthContext);
-
+  const [signInCheck, setSignInCheck] = useState<boolean>(false);
+  useEffect(() => {
+    localStorage.clear();
+  }, []);
   const getAccount = async () => {
     try {
       if (window.ethereum) {
         const accounts = await window.ethereum.request({
           method: "eth_requestAccounts",
         });
-        // setAccount(accounts);
+
         if (Array.isArray(accounts)) {
           console.log("address: ", accounts[0]);
-          authCtx.onLogin(accounts);
-          setcheckSignIn(true);
+          const { data, error } = await supabase
+            .from("account")
+            .select()
+            .eq("metaaddress", accounts[0]);
+
+          if (Array.isArray(data) && data.length !== 0) {
+            console.log(data[0].nickname, data[0].metaaddress);
+            authCtx.onLogin(data[0].nickname, data[0].metaaddress);
+            setSignInCheck(true);
+          } else {
+            console.log("가입 정보가 없습니다. 회원가입을 이용해주세요.");
+          }
+
+          if (error) {
+            console.log(error);
+          }
         }
       } else {
         alert("크롬으로 접속해주세요! 메타마스크 지갑이 필요합니다");
@@ -31,30 +48,37 @@ const NavBar = () => {
   return (
     <div className={styles.mainContainer}>
       <Link to="/" className={styles.LogoTxt}>
+        <img src={logo} alt="logo" className={styles.logo} />
         SPONANCE
       </Link>
       <div className={styles.subContainer}>
         <Link to="/about" className={styles.linkTxt}>
-          ABOUT
+          About SPONANCE
         </Link>
         <Link to="/campaign" className={styles.linkTxt}>
-          CAMPAIGN
+          후원하기
         </Link>
-        <Link to="/faq" className={styles.linkTxt}>
+        {/* <Link to="/faq" className={styles.linkTxt}>
           FAQ
-        </Link>
-        {/* <img className={styles.searchIcon} src={searchIcon} alt="search icon" /> */}
-        {!checkSignIn && (
+        </Link> */}
+
+        {!authCtx.isLoggedIn && (
           <div className={styles.linkTxt} onClick={getAccount}>
-            SIGN IN
+            로그인
           </div>
         )}
-        {!checkSignIn && (
+        {!authCtx.isLoggedIn && (
           <Link to="/signup" className={styles.linkTxt}>
-            SIGN UP
+            회원가입
           </Link>
         )}
-        {checkSignIn && <div className={styles.linkTxt}>MY PAGE</div>}
+        {authCtx.isLoggedIn && (
+          <div>
+            <Link to="/mypage" className={styles.linkTxt}>
+              마이페이지
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );

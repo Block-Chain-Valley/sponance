@@ -1,15 +1,16 @@
-@font-face {
-  font-family: "Inter_black";
-  src: url("../assets/fonts/Inter-Black.ttf") format("truetype");
-}
-
 .mainContainer {
+  position: fixed;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: (100 - 2 * 2) vw;
-  height: 3rem;
+  width: 100vw;
+  height: 3.7rem;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: rgba(10, 10, 10, 0.716);
+  backdrop-filter: blur(10px);
 }
 
 .subContainer {
@@ -20,13 +21,19 @@
   font-family: "Inter_regular";
   text-decoration: none;
   color: inherit;
+  margin-right: 2vw;
 }
 
 .LogoTxt {
-  font-family: "Inter_black";
-  font-size: 1.3rem;
+  margin-left: 2vw;
+  font-family: "Inter_semibold";
+  font-size: 1.7rem;
   text-decoration: none;
   color: inherit;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: white;
 }
 
 .searchIcon {
@@ -34,11 +41,58 @@
 }
 
 .linkTxt {
-  margin: 0 0 0 1.2rem;
+  margin: 0 0 0 1.5rem;
   text-decoration: none;
-  color: inherit;
+  font-family: "Inter_medium";
+  color: lightgray;
+  cursor: pointer;
 }
 
 .linkTxt:hover {
-  font-weight: bold;
+  font-weight: bolder;
+  color: white;
+}
+
+.logo {
+  height: 1.7rem;
+  margin-right: 0.5rem;
+}
+
+.b1 {
+  position: absolute;
+  z-index: -1;
+  width: 50vw;
+  left: 50vw;
+  top: 70vh;
+}
+
+.b2 {
+  position: absolute;
+  z-index: -1;
+  width: 50vw;
+  top: 200vh;
+}
+
+.b3 {
+  position: absolute;
+  z-index: -1;
+  width: 50vw;
+  left: 7vw;
+  top: -20vh;
+}
+
+.b4 {
+  position: absolute;
+  z-index: -1;
+  width: 50vw;
+  left: 70vw;
+  top: -20vh;
+}
+
+.b5 {
+  position: absolute;
+  z-index: -1;
+  width: 50vw;
+  top: 100vh;
+  rotate: 150deg;
 }

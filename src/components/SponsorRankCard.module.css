@@ -16,8 +16,7 @@
 .order {
   width: 30px;
   margin-right: 10px;
-  font-family: "Pretendard";
-  font-style: normal;
+  font-family: "Inter_regular";
   font-weight: 600;
   font-size: 25px;
   line-height: 30px;
@@ -31,7 +30,7 @@
 
 .nic {
   width: 110px;
-  font-family: "Pretendard";
+  font-family: "Inter_regular";
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -42,7 +41,7 @@
   color: #000000;
 }
 .donateNum {
-  font-family: "Inter";
+  font-family: "Inter_regular";
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
@@ -54,7 +53,7 @@
 .totalDonate {
   height: 21px;
 
-  font-family: "Pretendard";
+  font-family: "Inter_regular";
   font-style: normal;
   font-weight: 400;
   font-size: 18px;

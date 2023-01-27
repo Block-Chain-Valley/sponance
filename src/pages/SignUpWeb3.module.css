@@ -22,12 +22,12 @@
 }
 
 .connectWalletContainer {
-  width: 418px;
-  height: 7chrome0px;
+  width: 430px;
+  height: 70px;
 }
 
 .connectWallet {
-  width: 418px;
+  width: 430px;
   height: 48px;
 
   background: #ffefb4;
@@ -76,7 +76,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 418px;
+  width: 430px;
 }
 .addressTxt {
   font-family: "Inter_black";
@@ -113,13 +113,13 @@
 
 .idContainer {
   display: flex;
-  width: 418px;
+  width: 430px;
   flex-direction: row;
   justify-content: space-between;
 }
 
 .input {
-  width: 418px;
+  width: 430px;
   height: 48px;
   font-size: 20px;
   background: #ffffff;
@@ -154,7 +154,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 418px;
+  width: 430px;
 }
 
 .inputLastName {
@@ -173,7 +173,7 @@
 
 .registerBtn {
   margin-top: 80px;
-  width: 418px;
+  width: 430px;
   height: 49px;
   background: #1fa5c2;
   border-radius: 3px;

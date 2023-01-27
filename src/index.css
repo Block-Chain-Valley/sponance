@@ -37,3 +37,7 @@ code {
 button {
   all: unset;
 }
+
+input {
+  all: unset;
+}

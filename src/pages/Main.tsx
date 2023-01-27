@@ -341,12 +341,12 @@ const Main = () => {
       </div>
       <div className={styles.bottomBannerContainer}>
         <div className={styles.blur2}> </div>
+        <img src={donateBtn} className={styles.donateBtn} alt="btn" />
         <img src={s1} alt="bottomBanner" className={styles.bottomBannerImg} />
         <div className={styles.bottomBannerTitle}>SPONANCE 후원 신청하기</div>
         <div className={styles.bottomBannerDetail}>
-          자신을 이야기를 소개하고, 후원자를 만나보세요.
+          자신의 이야기를 소개하고, 후원자를 만나보세요.
         </div>
-        <img src={donateBtn} className={styles.donateBtn} alt="btn" />
       </div>
       <Footer />
     </div>

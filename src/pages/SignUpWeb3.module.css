@@ -1,7 +1,102 @@
 .mainContainer {
   display: flex;
   flex-direction: column;
-  width: 300px;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: #e8f6f9;
+  margin-left: -2vw;
+  padding-top: 4rem;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo {
+  margin: 60px 0 55px 0;
+  width: 284px;
+  height: 36px;
+}
+
+.connectWalletContainer {
+  width: 418px;
+  height: 7chrome0px;
+}
+
+.connectWallet {
+  width: 418px;
+  height: 48px;
+
+  background: #ffefb4;
+  border-radius: 3px;
+}
+
+.connectWalletTxt {
+  font-family: "Inter_semibold";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  /* identical to box height */
+  color: #1d1d1b;
+  text-align: center;
+}
+
+.connectWalletClicked {
+  composes: connectWallet;
+  background: #85cddd;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkIcon {
+  width: 28px;
+  height: 28px;
+}
+
+.labelTxt {
+  width: 81px;
+  height: 17px;
+  margin-bottom: 12px;
+
+  font-family: "Inter_black";
+  font-style: normal;
+  font-size: 15px;
+  line-height: 18px;
+
+  color: #000000;
+}
+
+.subContainer {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 418px;
+}
+.addressTxt {
+  font-family: "Inter_black";
+  font-style: normal;
+  font-size: 11px;
+  line-height: 12px;
+
+  color: #888888;
+}
+.reconnectWallet {
+  width: 98px;
+  height: 14px;
+
+  font-family: "Inter_black";
+  font-weight: 700;
+  font-size: 11px;
+  line-height: 12px;
+  text-align: right;
+
+  color: #888888;
 }
 
 .formContainer {
@@ -12,6 +107,81 @@
 
 .inputContainer {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   /* justify-content: space-between; */
+}
+
+.idContainer {
+  display: flex;
+  width: 418px;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.input {
+  width: 418px;
+  height: 48px;
+  font-size: 20px;
+  background: #ffffff;
+  border-radius: 3px;
+  padding-left: 5px;
+  box-sizing: border-box;
+  padding-left: 1rem;
+}
+
+.inputId {
+  composes: input;
+  width: 323px;
+  height: 48px;
+}
+
+.checkOverlapBtn {
+  width: 81px;
+  height: 48px;
+
+  background: #ffefb4;
+  border-radius: 3px;
+
+  font-family: "Inter_semibold";
+  text-align: center;
+  font-size: 13px;
+  line-height: 14px;
+
+  color: #000000;
+}
+
+.nameContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 418px;
+}
+
+.inputLastName {
+  composes: input;
+  width: 132px;
+  height: 49px;
+}
+.inputFirstName {
+  composes: input;
+  width: 270px;
+  height: 49px;
+}
+.inputContainer {
+  margin-top: 30px;
+}
+
+.registerBtn {
+  margin-top: 80px;
+  width: 418px;
+  height: 49px;
+  background: #1fa5c2;
+  border-radius: 3px;
+
+  font-family: "Inter_black";
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  color: #ffffff;
 }

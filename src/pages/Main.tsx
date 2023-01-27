@@ -341,7 +341,10 @@ const Main = () => {
       </div>
       <div className={styles.bottomBannerContainer}>
         <div className={styles.blur2}> </div>
-        <img src={donateBtn} className={styles.donateBtn} alt="btn" />
+        <a href="https://forms.gle/aQeP6PaUQsT8j6As5" target="_blank">
+          <img src={donateBtn} className={styles.donateBtn} alt="btn" />
+        </a>
+
         <img src={s1} alt="bottomBanner" className={styles.bottomBannerImg} />
         <div className={styles.bottomBannerTitle}>SPONANCE 후원 신청하기</div>
         <div className={styles.bottomBannerDetail}>

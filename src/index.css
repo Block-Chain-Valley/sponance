@@ -41,3 +41,7 @@ button {
 input {
   all: unset;
 }
+
+a {
+  all: unset;
+}

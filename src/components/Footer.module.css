@@ -28,7 +28,7 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
-
+  cursor: pointer;
   color: #ffffff;
 }
 
@@ -60,6 +60,7 @@
 .socialLink {
   display: flex;
   flex-direction: row;
+  /* cursor: pointer; */
 }
 .socailLogo {
   margin-left: 16px;

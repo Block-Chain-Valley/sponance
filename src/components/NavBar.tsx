@@ -63,9 +63,9 @@ const NavBar = () => {
         </Link> */}
 
         {!authCtx.isLoggedIn && (
-          <div className={styles.linkTxt} onClick={getAccount}>
+          <Link to="/" className={styles.linkTxt} onClick={getAccount}>
             로그인
-          </div>
+          </Link>
         )}
         {!authCtx.isLoggedIn && (
           <Link to="/signup" className={styles.linkTxt}>

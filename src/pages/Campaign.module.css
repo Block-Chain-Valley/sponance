@@ -1,0 +1,127 @@
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.banner {
+  width: 100vw;
+  height: 450px;
+  margin: 0 0 1rem 0;
+}
+
+.bannerImg {
+  width: 100vw;
+  height: 100%;
+  object-fit: cover;
+}
+
+.blur {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.048),
+    rgba(0, 0, 0, 0.747)
+  );
+  width: 100%;
+  height: 450px;
+}
+
+.bannerTxt {
+  position: absolute;
+  font-family: "Inter_black";
+  font-size: 3rem;
+  top: 360px;
+  left: 2vw;
+  color: white;
+}
+
+.colorBar {
+  color: #86cddd;
+  margin: 0 0.7rem 0 0;
+}
+
+/* ---------------------- filter -------------------- */
+.fillterContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+
+.subContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.title {
+  font-family: "Inter_semibold";
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: #000000;
+}
+
+.sportFillterContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.sportFillterTxt {
+  width: 69px;
+  height: 22px;
+  /* background: #96cbdb; */
+  background: #cdcdcd;
+  border-radius: 20px;
+  font-family: "Inter_regular";
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  margin-left: 30px;
+  cursor: pointer;
+}
+
+.basicFillterContainer {
+  display: flex;
+  flex-direction: row;
+}
+.basicFillterTxt {
+  font-family: "Inter_regular";
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18px;
+  margin-left: 30px;
+  color: #000000;
+  cursor: pointer;
+}
+
+/* -------------------- card ---------------------------- */
+.cardBox {
+  width: 264px;
+  height: 330px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
+  box-shadow: 0px 4px 21px 10px rgba(0, 0, 0, 0.04);
+  border-radius: 15px;
+  margin: 0 30px 30px 0;
+}
+
+.card {
+  margin: 0;
+}
+
+.cardContainer {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: row;
+  flex-flow: wrap;
+  margin-bottom: 100px;
+}

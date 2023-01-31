@@ -147,6 +147,8 @@ const SignUpWeb3: FC = () => {
     return;
   };
 
+  const formBtnHandler = () => {};
+
   return (
     <div>
       <NavBar />

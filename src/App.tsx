@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.module.css";
 import About from "./pages/About";
 import Campaign from "./pages/Campaign";
+import CampaignDetail from "./pages/CampaignDetail";
 // import FAQ from "./pages/FAQ";
 import FindAccount from "./pages/FindAccount";
 import Main from "./pages/Main";
@@ -21,6 +22,7 @@ const App = () => {
           <Route path="/signup" element={<SignUpWeb3 />} />
           <Route path="/mypage" element={<MyPage />} />
           <Route path="/findaccount" element={<FindAccount />} />
+          <Route path="/campaign/:id" element={<CampaignDetail />} />
         </Routes>
       </BrowserRouter>
     </React.Fragment>

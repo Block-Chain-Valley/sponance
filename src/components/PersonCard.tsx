@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./PersonCard.module.css";
 import s3 from "../assets/image/s3.png";
+import { Link } from "react-router-dom";
 
 const exData = {
   id: "0",
@@ -41,6 +42,7 @@ export interface propsType {
   totalSell: number;
   remainNFT: number;
   titleImgUrl: string;
+  className: string;
 }
 
 const PersonCard = ({
@@ -52,9 +54,34 @@ const PersonCard = ({
   tempPercent,
   totalSell,
   remainNFT,
+  className,
 }: propsType) => {
+  const [url, setUrl] = useState<string>(`/${exData.id}`);
+
+  useEffect(() => {
+    console.log(window.location.href);
+    if (window.location.href == "http://localhost:3000/") {
+      setUrl(`campaign/${exData.id}`);
+    }
+    if (window.location.href == "http://localhost:3000/campaign") {
+      setUrl(`./${exData.id}`);
+    }
+    if (window.location.href == "http://localhost:3000/mypage") {
+      setUrl(`../campaign/${exData.id}`);
+    }
+
+    if (window.location.href == "http://sponance.com/") {
+      setUrl(`campaign/${exData.id}`);
+    }
+    if (window.location.href == "http://sponance.com/campaign") {
+      setUrl(`./${exData.id}`);
+    }
+    if (window.location.href == "http://sponance.com/mypage") {
+      setUrl(`../campaign/${exData.id}`);
+    }
+  }, []);
   return (
-    <div className={styles.cardContainer}>
+    <Link to={url} className={styles.cardContainer}>
       <img className={styles.profileImg} src={titleImgUrl} />
       <div className={styles.itemAndPlayerTxt}>
         {item}&nbsp;|&nbsp;{player}
@@ -77,7 +104,7 @@ const PersonCard = ({
         <div className={styles.yellowBar}></div>
         <div className={styles.blueBar}></div>
       </div>
-    </div>
+    </Link>
   );
 };
 

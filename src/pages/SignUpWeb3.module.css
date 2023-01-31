@@ -29,7 +29,7 @@
 .connectWallet {
   width: 430px;
   height: 48px;
-
+  cursor: pointer;
   background: #ffefb4;
   border-radius: 3px;
 }
@@ -138,7 +138,7 @@
 .checkOverlapBtn {
   width: 81px;
   height: 48px;
-
+  cursor: pointer;
   background: #ffefb4;
   border-radius: 3px;
 
@@ -177,6 +177,7 @@
   height: 49px;
   background: #1fa5c2;
   border-radius: 3px;
+  cursor: pointer;
 
   font-family: "Inter_black";
   font-weight: 700;

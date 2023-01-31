@@ -1,0 +1,211 @@
+.mainContainer {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mainSubContainer {
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  margin-bottom: 100px;
+}
+
+.title {
+  margin-top: 80px;
+  font-family: "Inter_regular";
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 31px;
+  margin-bottom: 20px;
+  color: #000000;
+}
+.infoCard {
+  padding: 17px 28px 0 28px;
+  width: 500px;
+  height: 200px;
+
+  background: #ffffff;
+  box-shadow: 0px 4px 21px 10px rgba(0, 0, 0, 0.04);
+  border-radius: 15px;
+}
+.nickname {
+  font-family: "Inter_regular";
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  color: #96cbdb;
+  margin-bottom: 25px;
+}
+
+.registerDate {
+  margin-left: 15px;
+  font-family: "Inter_regular";
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+
+  color: #000000;
+}
+
+.email {
+  margin-bottom: 8px;
+  font-family: "Inter_regular";
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 12px;
+
+  color: #000000;
+}
+.address {
+  composes: email;
+}
+.mydataContainer {
+  margin-top: 28px;
+  width: 480px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.subContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.subTitle {
+  font-family: "Inter_regular";
+
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+
+  color: #000000;
+}
+.subContents {
+  margin-top: 15px;
+  font-family: "Inter_regular";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 18px;
+
+  color: #96cbdb;
+}
+
+.subContentsTxt {
+  composes: subContents;
+  font-size: 15px;
+}
+
+/* ----------------------- project card ----------------------- */
+
+.projectContainer {
+  display: flex;
+  flex-direction: row;
+  flex-flow: wrap;
+}
+
+.card {
+  width: 264px;
+  height: 330px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
+  box-shadow: 0px 4px 21px 10px rgba(0, 0, 0, 0.04);
+  border-radius: 15px;
+  margin: 0 20px 20px 0;
+}
+
+/* ----------------------- nft card ----------------------- */
+
+.nftCard {
+  padding: 0 15px 0 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 500px;
+  height: 155px;
+  margin-bottom: 15px;
+
+  background: #ffffff;
+  box-shadow: 0px 4px 21px 10px rgba(0, 0, 0, 0.04);
+  border-radius: 15px;
+}
+.cardImg {
+  width: 187px;
+  height: 127px;
+  overflow: cover;
+  border-radius: 10px;
+}
+.txtContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  height: 127px;
+}
+.nftCardTitle {
+  margin-bottom: 5px;
+  font-family: "Inter_regular";
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  /* identical to box height */
+
+  display: flex;
+  align-items: center;
+
+  color: #000000;
+}
+.nftNum {
+  margin-bottom: 8px;
+  font-family: "Inter_regular";
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 10px;
+  /* identical to box height */
+  color: #929292;
+}
+.nftPrice {
+  margin-bottom: 24px;
+  font-family: "Inter_regular";
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 30px;
+  display: flex;
+  align-items: center;
+  color: #96cbdb;
+}
+.txtSubContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+.remainNum {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 10px;
+  /* identical to box height */
+  margin-right: 20px;
+  color: #929292;
+}
+.buyBtn {
+  width: 104px;
+  height: 25px;
+  background: #1fa5c2;
+  box-shadow: 0px 4px 22px 5px rgba(0, 0, 0, 0.02);
+  border-radius: 3px;
+
+  font-family: "Inter_regular";
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 15px;
+  text-align: center;
+
+  color: #ffffff;
+}

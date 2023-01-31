@@ -75,6 +75,10 @@
   align-items: center;
 }
 
+.card {
+  margin: 0 30px 30px 0;
+}
+
 /* ---------------- 실시간 랭킹!!! ---------------- */
 .rankingContainer {
   width: 350px;
@@ -133,13 +137,15 @@
 /* ---------------- 품절 임박 NFT!!! ---------------- */
 
 .featureContainer {
-  margin: 2rem 0 0 0;
+  margin: 2rem 0 2rem 0;
 }
 
 .featureNFTsContainer {
   display: flex;
   flex-direction: row;
   overflow: hidden;
+  flex-wrap: nowrap;
+  overflow-x: auto;
 }
 
 .featureTitle {

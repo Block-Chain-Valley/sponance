@@ -25,6 +25,7 @@
 }
 
 .LogoTxt {
+  cursor: pointer;
   margin-left: 2vw;
   font-family: "Inter_semibold";
   font-size: 1.7rem;

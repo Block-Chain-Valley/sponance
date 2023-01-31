@@ -70,13 +70,13 @@ const PersonCard = ({
       setUrl(`../campaign/${exData.id}`);
     }
 
-    if (window.location.href == "http://www.sponance.com/") {
+    if (window.location.href == "https://www.sponance.com/") {
       setUrl(`campaign/${exData.id}`);
     }
-    if (window.location.href == "http://www.sponance.com/campaign") {
+    if (window.location.href == "https://www.sponance.com/campaign") {
       setUrl(`./${exData.id}`);
     }
-    if (window.location.href == "http://www.sponance.com/mypage") {
+    if (window.location.href == "https://www.sponance.com/mypage") {
       setUrl(`../campaign/${exData.id}`);
     }
   }, []);

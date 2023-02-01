@@ -3,7 +3,7 @@ import styles from "./CampaignDetail.module.css";
 
 import s4 from "../assets/image/s4.png";
 import s3 from "../assets/image/s3.png";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 
@@ -132,7 +132,9 @@ const CampaignDetail = () => {
                   <div className={styles.nftPrice}>100,000원</div>
                   <div className={styles.txtSubContainer}>
                     <div className={styles.remainNum}>2개 남음</div>
-                    <button className={styles.buyBtn}>구매하기</button>
+                    <Link to={`payment/${10}`} className={styles.buyBtn}>
+                      구매하기
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -146,7 +148,9 @@ const CampaignDetail = () => {
                   <div className={styles.nftPrice}>100,000원</div>
                   <div className={styles.txtSubContainer}>
                     <div className={styles.remainNum}>2개 남음</div>
-                    <button className={styles.buyBtn}>구매하기</button>
+                    <Link to={`payment/${10}`} className={styles.buyBtn}>
+                      구매하기
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -160,7 +164,9 @@ const CampaignDetail = () => {
                   <div className={styles.nftPrice}>100,000원</div>
                   <div className={styles.txtSubContainer}>
                     <div className={styles.remainNum}>2개 남음</div>
-                    <button className={styles.buyBtn}>구매하기</button>
+                    <Link to={`payment/${10}`} className={styles.buyBtn}>
+                      구매하기
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -174,7 +180,9 @@ const CampaignDetail = () => {
                   <div className={styles.nftPrice}>100,000원</div>
                   <div className={styles.txtSubContainer}>
                     <div className={styles.remainNum}>2개 남음</div>
-                    <button className={styles.buyBtn}>구매하기</button>
+                    <Link to={`payment/${10}`} className={styles.buyBtn}>
+                      구매하기
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -188,7 +196,9 @@ const CampaignDetail = () => {
                   <div className={styles.nftPrice}>100,000원</div>
                   <div className={styles.txtSubContainer}>
                     <div className={styles.remainNum}>2개 남음</div>
-                    <button className={styles.buyBtn}>구매하기</button>
+                    <Link to={`payment/${10}`} className={styles.buyBtn}>
+                      구매하기
+                    </Link>
                   </div>
                 </div>
               </div>

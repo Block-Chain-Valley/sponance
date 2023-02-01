@@ -1,0 +1,138 @@
+.mainContainer {
+  margin-left: -2vw;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background: #393939;
+}
+
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.subLoginContainer {
+  width: 340px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 60px;
+}
+.logo {
+  width: 260px;
+  height: 30px;
+}
+.adminTxt {
+  font-family: "Inter_regular";
+
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+
+  color: #ffffff;
+}
+.loginBtn {
+  width: 113px;
+  height: 41px;
+
+  background: #1fa5c2;
+  border-radius: 11px;
+  font-family: "Inter_regular";
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  cursor: pointer;
+  color: #ffffff;
+}
+
+/* -------------------- is login ----------------------- */
+.mainContainer2 {
+  margin-left: -2vw;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #393939;
+}
+.adminContainer {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  padding: 0 4vw 0 4vw;
+}
+
+.title {
+  margin-top: 5rem;
+  margin-bottom: 3rem;
+  font-family: "Inter_regular";
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+
+  color: #ffffff;
+}
+.box {
+  margin-bottom: 2rem;
+  width: 100%;
+  height: 59px;
+  background: #ffffff;
+  box-shadow: 0px 4px 21px 10px rgba(0, 0, 0, 0.04);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px 0 20px;
+}
+.nftName {
+  width: 224px;
+
+  font-family: "Inter_regular";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+
+  color: #000000;
+}
+.date {
+  width: 152px;
+
+  font-family: "Inter_regular";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18px;
+
+  color: #000000;
+}
+.id {
+  composes: date;
+}
+.price {
+  composes: date;
+}
+.customer {
+  composes: date;
+}
+.confirmBtn {
+  width: 113px;
+  height: 41px;
+  background: #1fa5c2;
+  border-radius: 11px;
+
+  font-family: "Inter_regular";
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  cursor: pointer;
+  color: #ffffff;
+}

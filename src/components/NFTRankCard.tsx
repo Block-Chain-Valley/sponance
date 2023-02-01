@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styles from "./NFTRankCard.module.css";
 
 export interface NFTRankCard_Data {
@@ -21,7 +22,7 @@ export const NFTRankCard = ({
   remainNFT,
 }: NFTRankCard_Data) => {
   return (
-    <div className={styles.mainContainer}>
+    <Link to={`/campaign/${0}`} className={styles.mainContainer}>
       <div className={styles.order}>{order + 1}</div>
       <div>
         <div className={styles.cardTitle}>{cardTitle}</div>
@@ -39,6 +40,6 @@ export const NFTRankCard = ({
         </div>
       </div>
       <img className={styles.img} src={imgURL} alt="nftimg"></img>
-    </div>
+    </Link>
   );
 };

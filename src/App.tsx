@@ -2,12 +2,14 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.module.css";
 import About from "./pages/About";
+import Admin from "./pages/Admin";
 import Campaign from "./pages/Campaign";
 import CampaignDetail from "./pages/CampaignDetail";
 // import FAQ from "./pages/FAQ";
 import FindAccount from "./pages/FindAccount";
 import Main from "./pages/Main";
 import MyPage from "./pages/MyPage";
+import Payment from "./pages/Payment";
 import SignUpWeb3 from "./pages/SignUpWeb3";
 
 const App = () => {
@@ -23,6 +25,8 @@ const App = () => {
           <Route path="/mypage" element={<MyPage />} />
           <Route path="/findaccount" element={<FindAccount />} />
           <Route path="/campaign/:id" element={<CampaignDetail />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/campaign/:id/payment/:id" element={<Payment />} />
         </Routes>
       </BrowserRouter>
     </React.Fragment>

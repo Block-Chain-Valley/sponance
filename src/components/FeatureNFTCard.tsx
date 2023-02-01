@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styles from "./FeatureNFTCard.module.css";
 
 export interface propsType {
@@ -19,7 +20,7 @@ const FeatureNFTCard = ({
   remainNFT,
 }: propsType) => {
   return (
-    <div className={styles.mainContainer}>
+    <Link to={`/campaign/${0}`} className={styles.mainContainer}>
       <img src={imgURL} className={styles.featureImg} />
       <div className={styles.cardTitle}>{cardTitle}</div>
       <div className={styles.itemAndPlayer}>
@@ -33,7 +34,7 @@ const FeatureNFTCard = ({
           {remainNFT.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}개 남음
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

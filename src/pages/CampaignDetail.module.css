@@ -23,6 +23,7 @@
   display: flex;
   flex-direction: column;
 }
+
 .blueBar {
   position: relative;
   width: 409px;
@@ -88,16 +89,13 @@
   line-height: 24px;
   margin-right: 40px;
   cursor: pointer;
-  color: #000000;
+  color: #8d9396;
 }
 
-.sponsorBtn {
-  font-family: "Inter_regular";
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 24px;
-  cursor: pointer;
-  color: #8d9396;
+.storyBtnClicked {
+  composes: storyBtn;
+
+  color: #000000;
 }
 
 .contentsContainer {
@@ -351,4 +349,140 @@
   text-align: center;
   cursor: pointer;
   color: #ffffff;
+}
+
+/* --------- Mobile ----------- */
+
+.mainSubContainerMobile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 100px;
+}
+
+.imgMobile {
+  width: 85vw;
+  object-fit: cover;
+}
+
+.yellowBarM {
+  composes: yellowBar;
+  width: 85vw;
+}
+
+.blueBarM {
+  composes: blueBar;
+  width: 57vw;
+}
+
+.txtContainer1M {
+  composes: txtContainer1;
+  padding: 0;
+  width: 85vw;
+}
+
+.contentsHead1M {
+  composes: contentsHead1;
+  width: 85vw;
+}
+
+.contentsTxtM {
+  composes: contentsTxt;
+  width: 85vw;
+}
+
+.nftContainerM {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.nftCardM {
+  padding: 15px 15px 15px 15px;
+  composes: nftCard;
+  flex-direction: column;
+  width: 270px;
+  height: 300px;
+  margin-right: 20px;
+}
+
+.cardImgM {
+  composes: cardImg;
+  width: 260px;
+  height: 230px;
+  margin-bottom: 10px;
+}
+
+.txtContainerM {
+  composes: txtContainer;
+  width: 260px;
+}
+
+.rightContainerM {
+  composes: rightContainer;
+  width: 85vw;
+  margin-left: 0;
+}
+
+.topContainerM {
+  margin-top: 30px;
+}
+
+.introTxtM {
+  composes: introTxt;
+  width: 85vw;
+}
+
+.MSubContainer {
+  width: 85vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.leftContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.barContainerM {
+  width: 85vw;
+  composes: barContainer;
+  align-items: left;
+}
+
+.section {
+  width: 100vw;
+  overflow-x: hidden;
+  height: 10px;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  background: #d9d9d991;
+}
+
+.section2 {
+  width: 100vw;
+  overflow-x: hidden;
+  height: 10px;
+  margin-left: -8vw;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  background: #d9d9d991;
+}
+
+.bottomContainerM {
+  width: 85vw;
+}
+
+.sponsorContainerM {
+  composes: sponsorContainer;
+  width: 100vw;
+  align-items: center;
+}
+.sponsorCardM {
+  composes: sponsorCard;
+  width: 85vw;
 }

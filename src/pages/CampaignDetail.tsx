@@ -7,6 +7,7 @@ import { Link, useParams } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import supabase from "../config/supabaseClient";
+import { useMediaQuery } from "react-responsive";
 
 interface Nft_Data {
   campaign_id: number;
@@ -68,42 +69,97 @@ const CampaignDetail = () => {
     getNftData();
   }, []);
 
+  const isMobile = useMediaQuery({ maxWidth: 1200 });
+
   return (
     <div className={styles.mainContainer}>
       <NavBar />
       {campaignData ? (
-        <div className={styles.mainSubContainer}>
-          <div className={styles.leftContainer}>
+        <div
+          className={
+            isMobile ? styles.mainSubContainerMobile : styles.mainSubContainer
+          }
+        >
+          <div className={isMobile ? styles.leftContainer : ""}>
             <img
-              className={styles.img}
+              className={isMobile ? styles.imgMobile : styles.img}
               src={campaignData[0].title_img}
               alt="player_image"
             />
-            <div className={styles.barContainer}>
-              <div className={styles.txtContainer1}>
+            <div
+              className={isMobile ? styles.barContainerM : styles.barContainer}
+            >
+              <div
+                className={
+                  isMobile ? styles.txtContainer1M : styles.txtContainer1
+                }
+              >
                 <div className={styles.barTxt1}>₩887,000</div>
                 <div className={styles.barTxt2}>₩1,200,000</div>
               </div>
-              <div className={styles.yellowBar}></div>
-              <div className={styles.blueBar}>68%</div>
+
+              <div
+                className={isMobile ? styles.yellowBarM : styles.yellowBar}
+              ></div>
+              <div className={isMobile ? styles.blueBarM : styles.blueBar}>
+                68%
+              </div>
             </div>
+
+            {isMobile && (
+              <div className={styles.topContainerM}>
+                <div className={styles.title}>{campaignData[0].card_title}</div>
+                <div className={styles.teams}>
+                  {campaignData[0].item} | {campaignData[0].player}
+                </div>
+                <div className={isMobile ? styles.introTxtM : styles.introTxt}>
+                  {campaignData[0].card_detail}
+                </div>
+                <div className={styles.MSubContainer}>
+                  <div className={styles.achieveTxt}>
+                    68<span className={styles.achieveTxt2}>% 달성</span>
+                  </div>
+                  <div className={styles.totalPrice}>
+                    887,000
+                    <span className={styles.totalPrice2}>원 62명 참여</span>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {isMobile && <div className={styles.section}></div>}
+
             <div className={styles.selectContainer}>
-              <div className={styles.storyBtn} onClick={showStoryBtnActivate}>
+              <div
+                className={showStory ? styles.storyBtnClicked : styles.storyBtn}
+                onClick={showStoryBtnActivate}
+              >
                 스토리
               </div>
-              <div className={styles.sponsorBtn} onClick={showNftsBtnActivate}>
+              <div
+                className={showStory ? styles.storyBtn : styles.storyBtnClicked}
+                onClick={showNftsBtnActivate}
+              >
                 후원자
               </div>
             </div>
 
             {showStory && (
               <div className={styles.contentsContainer}>
-                <div className={styles.contentsHead1}>
+                <div
+                  className={
+                    isMobile ? styles.contentsHead1M : styles.contentsHead1
+                  }
+                >
                   안녕하세요 저희는 누구누구 입니다.! 안녕하세요 저희는 누구누구
                   입니다.! 안녕하세요 안녕하세요 저희는 누구누구 입니다.!
                   안녕하세요 저희는 누구누구 입니다.! 안녕하세요
                 </div>
-                <div className={styles.contentsTxt}>
+                <div
+                  className={
+                    isMobile ? styles.contentsTxtM : styles.contentsTxt
+                  }
+                >
                   이런 이런 사연으로 저희는 이런 이런 이런 사연으로 저희는 이런
                   이런 이런 사연으로 저희는 이런 이런 이런 사연으로 저희는 이런
                   이런 이런 사연으로 저희는 이런 이런 이런 사연으로 저희는 이런
@@ -121,29 +177,49 @@ const CampaignDetail = () => {
               </div>
             )}
             {!showStory && (
-              <div className={styles.sponsorContainer}>
-                <div className={styles.sponsorCard}>
+              <div
+                className={
+                  isMobile ? styles.sponsorContainerM : styles.sponsorContainer
+                }
+              >
+                <div
+                  className={
+                    isMobile ? styles.sponsorCardM : styles.sponsorCard
+                  }
+                >
                   <div className={styles.nickname}>jinseongbe</div>
                   <div className={styles.sponsorCardSubContainer}>
                     <div className={styles.nftsBuy}>NFT 8개 구매</div>
                     <div className={styles.sponPrice}>800,000원</div>
                   </div>
                 </div>
-                <div className={styles.sponsorCard}>
+                <div
+                  className={
+                    isMobile ? styles.sponsorCardM : styles.sponsorCard
+                  }
+                >
                   <div className={styles.nickname}>jinseongbe</div>
                   <div className={styles.sponsorCardSubContainer}>
                     <div className={styles.nftsBuy}>NFT 8개 구매</div>
                     <div className={styles.sponPrice}>800,000원</div>
                   </div>
                 </div>
-                <div className={styles.sponsorCard}>
+                <div
+                  className={
+                    isMobile ? styles.sponsorCardM : styles.sponsorCard
+                  }
+                >
                   <div className={styles.nickname}>jinseongbe</div>
                   <div className={styles.sponsorCardSubContainer}>
                     <div className={styles.nftsBuy}>NFT 8개 구매</div>
                     <div className={styles.sponPrice}>800,000원</div>
                   </div>
                 </div>
-                <div className={styles.sponsorCard}>
+                <div
+                  className={
+                    isMobile ? styles.sponsorCardM : styles.sponsorCard
+                  }
+                >
                   <div className={styles.nickname}>jinseongbe</div>
                   <div className={styles.sponsorCardSubContainer}>
                     <div className={styles.nftsBuy}>NFT 8개 구매</div>
@@ -154,25 +230,43 @@ const CampaignDetail = () => {
             )}
           </div>
 
-          <div className={styles.rightContainer}>
-            <div className={styles.topContainer}>
-              <div className={styles.title}>{campaignData[0].card_title}</div>
-              <div className={styles.teams}>
-                {campaignData[0].item} | {campaignData[0].player}
+          <div
+            className={
+              isMobile ? styles.rightContainerM : styles.rightContainer
+            }
+          >
+            {!isMobile && (
+              <div className={styles.topContainer}>
+                <div className={styles.title}>{campaignData[0].card_title}</div>
+                <div className={styles.teams}>
+                  {campaignData[0].item} | {campaignData[0].player}
+                </div>
+                <div className={styles.introTxt}>
+                  {campaignData[0].card_detail}
+                </div>
+                <div className={styles.achieveTxt}>
+                  68<span className={styles.achieveTxt2}>% 달성</span>
+                </div>
+                <div className={styles.totalPrice}>
+                  887,000
+                  <span className={styles.totalPrice2}>원 62명 참여</span>
+                </div>
               </div>
-              <div className={styles.introTxt}>
-                {campaignData[0].card_detail}
-              </div>
-              <div className={styles.achieveTxt}>
-                68<span className={styles.achieveTxt2}>% 달성</span>
-              </div>
-              <div className={styles.totalPrice}>
-                887,000<span className={styles.totalPrice2}>원 62명 참여</span>
-              </div>
-            </div>
-            <div className={styles.bottomContainer}>
+            )}
+
+            {isMobile && <div className={styles.section2}></div>}
+
+            <div
+              className={
+                isMobile ? styles.bottomContainerM : styles.bottomContainer
+              }
+            >
               <div className={styles.bottomTitle}>후원 가능한 NFTS</div>
-              <div className={styles.nftContainer}>
+              <div
+                className={
+                  isMobile ? styles.nftContainerM : styles.nftContainer
+                }
+              >
                 {nftData &&
                   nftData.map(
                     ({
@@ -183,13 +277,23 @@ const CampaignDetail = () => {
                       title,
                       total_num,
                     }: Nft_Data) => (
-                      <div className={styles.nftCard}>
+                      <div
+                        className={isMobile ? styles.nftCardM : styles.nftCard}
+                      >
                         <img
                           src={img}
-                          className={styles.cardImg}
+                          className={
+                            isMobile ? styles.cardImgM : styles.cardImg
+                          }
                           alt="nftImg"
                         />
-                        <div className={styles.txtContainer}>
+                        <div
+                          className={
+                            isMobile
+                              ? styles.txtContainerM
+                              : styles.txtContainer
+                          }
+                        >
                           <div className={styles.nftCardTitle}>{title}</div>
                           <div className={styles.nftNum}>
                             {total_num}개 발행
@@ -215,55 +319,6 @@ const CampaignDetail = () => {
                       </div>
                     )
                   )}
-
-                <div className={styles.nftCard}>
-                  <img src={s3} className={styles.cardImg} alt="nftImg" />
-                  <div className={styles.txtContainer}>
-                    <div className={styles.nftCardTitle}>
-                      핸드볼 팀과 연습 경기
-                    </div>
-                    <div className={styles.nftNum}>100개 발행</div>
-                    <div className={styles.nftPrice}>100,000원</div>
-                    <div className={styles.txtSubContainer}>
-                      <div className={styles.remainNum}>2개 남음</div>
-                      <Link to={`payment/${10}`} className={styles.buyBtn}>
-                        구매하기
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-                <div className={styles.nftCard}>
-                  <img src={s3} className={styles.cardImg} alt="nftImg" />
-                  <div className={styles.txtContainer}>
-                    <div className={styles.nftCardTitle}>
-                      핸드볼 팀과 연습 경기
-                    </div>
-                    <div className={styles.nftNum}>100개 발행</div>
-                    <div className={styles.nftPrice}>100,000원</div>
-                    <div className={styles.txtSubContainer}>
-                      <div className={styles.remainNum}>2개 남음</div>
-                      <Link to={`payment/${10}`} className={styles.buyBtn}>
-                        구매하기
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-                <div className={styles.nftCard}>
-                  <img src={s3} className={styles.cardImg} alt="nftImg" />
-                  <div className={styles.txtContainer}>
-                    <div className={styles.nftCardTitle}>
-                      핸드볼 팀과 연습 경기
-                    </div>
-                    <div className={styles.nftNum}>100개 발행</div>
-                    <div className={styles.nftPrice}>100,000원</div>
-                    <div className={styles.txtSubContainer}>
-                      <div className={styles.remainNum}>2개 남음</div>
-                      <Link to={`payment/${10}`} className={styles.buyBtn}>
-                        구매하기
-                      </Link>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>

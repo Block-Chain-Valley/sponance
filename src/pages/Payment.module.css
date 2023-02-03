@@ -44,6 +44,7 @@
   line-height: 19px;
   color: #000000;
 }
+
 .nftBox {
   width: 540px;
   height: 155px;
@@ -315,3 +316,22 @@
   color: #ffffff;
   cursor: pointer;
 }
+
+/* Mobile */
+
+.stepContainerM {
+  width: 85vw;
+}
+
+.stepImgM {
+  width: 85vw;
+  margin-bottom: 25px;
+}
+
+.txtContainerM {
+  composes: txtContainer;
+  width: 85vw;
+}
+
+/* .nftBox {
+} */

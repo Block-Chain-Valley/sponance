@@ -7,8 +7,10 @@ import step3img from "../assets/image/Group55.png";
 import step2img from "../assets/image/Group56.png";
 import step1img from "../assets/image/Group57.png";
 import supabase from "../config/supabaseClient";
+import { useMediaQuery } from "react-responsive";
 
 const Payment = () => {
+  const isMobile = useMediaQuery({ maxWidth: 767 });
   const params = useParams();
   console.log(params);
   const [step, setStep] = useState<number>(0); // default 0
@@ -138,11 +140,17 @@ const Payment = () => {
       <NavBar />
       {/*-------------step 0-----------------*/}
       {step == 0 && (
-        <div className={styles.stepContainer}>
+        <div className={isMobile ? styles.stepContainer : styles.stepContainer}>
           <div className={styles.title}>후원 및 결제</div>
           <div className={styles.imgContianer}>
-            <img className={styles.stepImg} src={step1img} alt="steps" />
-            <div className={styles.txtContainer}>
+            <img
+              className={isMobile ? styles.stepImgM : styles.stepImg}
+              src={step1img}
+              alt="steps"
+            />
+            <div
+              className={isMobile ? styles.txtContainerM : styles.txtContainer}
+            >
               <div>NFT 선택</div>
               <div>결제 정보 확인</div>
               <div>결제 완료</div>
@@ -201,7 +209,7 @@ const Payment = () => {
       )}
       {/*-------------step 1-----------------*/}
       {step == 1 && (
-        <div className={styles.stepContainer}>
+        <div className={isMobile ? styles.stepContainer : styles.stepContainer}>
           <div className={styles.title}>후원 및 결제</div>
           <div className={styles.imgContianer}>
             <img className={styles.stepImg} src={step2img} alt="steps" />
@@ -282,7 +290,7 @@ const Payment = () => {
       )}
       {/*-------------step 2-----------------*/}
       {step == 2 && (
-        <div className={styles.stepContainer}>
+        <div className={isMobile ? styles.stepContainer : styles.stepContainer}>
           <div className={styles.title}>후원 및 결제</div>
           <div className={styles.imgContianer}>
             <img className={styles.stepImg} src={step3img} alt="steps" />

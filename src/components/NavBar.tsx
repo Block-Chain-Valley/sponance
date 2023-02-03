@@ -45,7 +45,11 @@ const NavBar = () => {
           }
         }
       } else {
-        alert("크롬으로 접속해주세요! 메타마스크 지갑이 필요합니다");
+        if (isMobile) {
+          alert("메타마스크 어플로 접속해주세요! 지갑 로그인이 필요합니다!");
+        } else {
+          alert("크롬으로 접속해주세요! 메타마스크 지갑이 필요합니다");
+        }
       }
     } catch (error) {
       console.error(error);

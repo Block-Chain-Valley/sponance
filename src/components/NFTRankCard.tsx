@@ -1,4 +1,5 @@
 import React from "react";
+import { useMediaQuery } from "react-responsive";
 import { Link } from "react-router-dom";
 import styles from "./NFTRankCard.module.css";
 
@@ -21,8 +22,12 @@ export const NFTRankCard = ({
   nftPrice,
   remainNFT,
 }: NFTRankCard_Data) => {
+  const isMobile = useMediaQuery({ maxWidth: 767 });
   return (
-    <Link to={`/campaign/${0}`} className={styles.mainContainer}>
+    <Link
+      to={`/campaign/${0}`}
+      className={isMobile ? styles.mainContainerMobile : styles.mainContainer}
+    >
       <div className={styles.order}>{order + 1}</div>
       <div>
         <div className={styles.cardTitle}>{cardTitle}</div>

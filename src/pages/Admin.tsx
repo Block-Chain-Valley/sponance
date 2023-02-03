@@ -1,10 +1,33 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styles from "./Admin.module.css";
 
 import logo from "../assets/image/logoWithTextWhite2.png";
+import AuthContext from "../store/auth-context";
 
 const Admin = () => {
-  const [isAdmin, setIsAdmin] = useState<boolean>(true); // default false
+  const [isAdmin, setIsAdmin] = useState<boolean>(false); // default false
+  const [address, setAddress] = useState<any>("");
+  const authCtx = useContext(AuthContext);
+
+  const getAccount = async () => {
+    try {
+      if (window.ethereum) {
+        const accounts: any = await window.ethereum.request({
+          method: "eth_requestAccounts",
+        });
+
+        if (
+          accounts[0].toUpperCase() ==
+          "0x20297d38CD17d3c28be7a6BFF7F5B7cBAf002214".toUpperCase()
+        ) {
+          setIsAdmin(true);
+          console.log("admin");
+        }
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div className={isAdmin ? styles.mainContainer2 : styles.mainContainer}>
@@ -14,7 +37,14 @@ const Admin = () => {
             <img src={logo} alt="logo" className={styles.logo} />
             <div className={styles.adminTxt}>Admin</div>
           </div>
-          <button className={styles.loginBtn}>로그인</button>
+          <button
+            className={styles.loginBtn}
+            onClick={() => {
+              getAccount();
+            }}
+          >
+            로그인
+          </button>
         </div>
       )}
       {isAdmin && (

@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import NavBar from "../components/NavBar";
 import PersonCard from "../components/PersonCard";
 import styles from "./Main.module.css";
 import FeatureNFTCard from "../components/FeatureNFTCard";
 import Footer from "../components/Footer";
+import { useMediaQuery } from "react-responsive";
 
 import donateBtn from "../assets/image/bottomBannerBtn.png";
 import {
@@ -16,6 +17,7 @@ import { NFTRankCard, NFTRankCard_Data } from "../components/NFTRankCard";
 import s1 from "../assets/image/s1.png";
 import s2 from "../assets/image/s2.png";
 import s3 from "../assets/image/s3.png";
+import supabase from "../config/supabaseClient";
 
 const exData = {
   id: "0",
@@ -116,8 +118,21 @@ const exData3 = {
   remainNFT: 243,
 };
 
+interface Campaign_Data {
+  card_detail: string;
+  card_title: string;
+  created_at: string;
+  id: number;
+  item: string;
+  player: string;
+  title_img: string;
+  project_owner: number;
+}
+
 const Main = () => {
   const [showNFTRanking, setShowNFTRanking] = useState<boolean>(false);
+  const [campaignData, setCampaignData] = useState<any | []>();
+  const isMobile = useMediaQuery({ maxWidth: 767 });
 
   const rankDateBtnActive = () => {
     setShowNFTRanking(false);
@@ -127,10 +142,25 @@ const Main = () => {
     setShowNFTRanking(true);
   };
 
+  const getData = async () => {
+    const { data, error } = await supabase.from("campaign").select();
+    console.log(data);
+    if (data) {
+      setCampaignData(data);
+    }
+  };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    getData();
+  }, []);
+
   return (
-    <div className={styles.mainContainer}>
+    <div
+      className={isMobile ? styles.mainContainerMobile : styles.mainContainer}
+    >
       <NavBar />
-      <div className={styles.banner}>
+      <div className={isMobile ? styles.bannerMobile : styles.banner}>
         <img src={s2} alt="banner" className={styles.bannerImg} />
         <div className={styles.blur} />
 
@@ -138,13 +168,52 @@ const Main = () => {
           <span className={styles.colorBar}>|</span>대충 후원을 독려하는 문구,,,
         </div>
       </div>
-
-      <div className={styles.secondContainer}>
+      <div
+        className={
+          isMobile ? styles.secondContainerMibile : styles.secondContainer
+        }
+      >
         <div className={styles.cardContainer}>
-          <div className={styles.cardTitle}>선수들 후원하기</div>
-          <div className={styles.cardSubContainer}>
-            <div className={styles.card}>
+          <div className={isMobile ? styles.cardTitleMobie : styles.cardTitle}>
+            선수들 후원하기
+          </div>
+          <div
+            className={
+              isMobile ? styles.cardSubContainerMobile : styles.cardSubContainer
+            }
+          >
+            {campaignData &&
+              campaignData.map(
+                ({
+                  card_detail,
+                  card_title,
+                  id,
+                  item,
+                  player,
+                  title_img,
+                }: Campaign_Data) => (
+                  <div
+                    className={isMobile ? styles.cardMobile : styles.card}
+                    key={id}
+                  >
+                    <PersonCard
+                      id={id}
+                      className={styles.card}
+                      titleImgUrl={title_img}
+                      item={item}
+                      player={player}
+                      cardTitle={card_title}
+                      cardDetail={card_detail}
+                      tempPercent={exData.tempPercent}
+                      totalSell={exData.totalSell}
+                      remainNFT={exData.remainNFT}
+                    />
+                  </div>
+                )
+              )}
+            <div className={isMobile ? styles.cardMobile : styles.card}>
               <PersonCard
+                id={0}
                 className={styles.card}
                 titleImgUrl={exData.titleImgUrl}
                 item={exData.item}
@@ -156,8 +225,9 @@ const Main = () => {
                 remainNFT={exData.remainNFT}
               />
             </div>
-            <div className={styles.card}>
+            <div className={isMobile ? styles.cardMobile : styles.card}>
               <PersonCard
+                id={0}
                 className={styles.card}
                 titleImgUrl={exData.titleImgUrl}
                 item={exData.item}
@@ -169,8 +239,9 @@ const Main = () => {
                 remainNFT={exData.remainNFT}
               />
             </div>
-            <div className={styles.card}>
+            <div className={isMobile ? styles.cardMobile : styles.card}>
               <PersonCard
+                id={0}
                 className={styles.card}
                 titleImgUrl={exData.titleImgUrl}
                 item={exData.item}
@@ -182,8 +253,9 @@ const Main = () => {
                 remainNFT={exData.remainNFT}
               />
             </div>
-            <div className={styles.card}>
+            <div className={isMobile ? styles.cardMobile : styles.card}>
               <PersonCard
+                id={0}
                 className={styles.card}
                 titleImgUrl={exData.titleImgUrl}
                 item={exData.item}
@@ -195,21 +267,9 @@ const Main = () => {
                 remainNFT={exData.remainNFT}
               />
             </div>
-            <div className={styles.card}>
+            <div className={isMobile ? styles.cardMobile : styles.card}>
               <PersonCard
-                className={styles.card}
-                titleImgUrl={exData.titleImgUrl}
-                item={exData.item}
-                player={exData.player}
-                cardTitle={exData.cardTitle}
-                cardDetail={exData.cardDetail}
-                tempPercent={exData.tempPercent}
-                totalSell={exData.totalSell}
-                remainNFT={exData.remainNFT}
-              />
-            </div>
-            <div className={styles.card}>
-              <PersonCard
+                id={0}
                 className={styles.card}
                 titleImgUrl={exData.titleImgUrl}
                 item={exData.item}
@@ -224,8 +284,20 @@ const Main = () => {
           </div>
         </div>
 
-        <div className={styles.rankingContainer}>
-          <div className={styles.rankingTitle}>실시간 랭킹</div>
+        {isMobile && <div className={styles.section}></div>}
+
+        <div
+          className={
+            isMobile ? styles.rankingContainerMobile : styles.rankingContainer
+          }
+        >
+          <div
+            className={
+              isMobile ? styles.rankingTitleMobile : styles.rankingTitle
+            }
+          >
+            실시간 랭킹
+          </div>
           <div className={styles.rankings}>
             <div className={styles.rankingSubContainer}>
               <button
@@ -294,70 +366,85 @@ const Main = () => {
           </div>
         </div>
       </div>
-      <div className={styles.featureContainer}>
-        <div className={styles.featureTitle}>
+
+      {isMobile && <div className={styles.section}></div>}
+
+      <div
+        className={
+          isMobile ? styles.featureContainerMobile : styles.featureContainer
+        }
+      >
+        <div
+          className={isMobile ? styles.featureTitleMobile : styles.featureTitle}
+        >
           얼마 안남았어요! 품절 임박 NFT
         </div>
-        <div className={styles.featureNFTsContainer}>
-          <FeatureNFTCard
-            imgURL={exData3.imgURL}
-            item={exData3.item}
-            cardTitle={exData3.cardTitle}
-            player={exData3.player}
-            nftPrice={exData3.nftPrice}
-            remainNFT={exData3.remainNFT}
-          />
-          <FeatureNFTCard
-            imgURL={exData3.imgURL}
-            item={exData3.item}
-            cardTitle={exData3.cardTitle}
-            player={exData3.player}
-            nftPrice={exData3.nftPrice}
-            remainNFT={exData3.remainNFT}
-          />
-          <FeatureNFTCard
-            imgURL={exData3.imgURL}
-            item={exData3.item}
-            cardTitle={exData3.cardTitle}
-            player={exData3.player}
-            nftPrice={exData3.nftPrice}
-            remainNFT={exData3.remainNFT}
-          />
-          <FeatureNFTCard
-            imgURL={exData3.imgURL}
-            item={exData3.item}
-            cardTitle={exData3.cardTitle}
-            player={exData3.player}
-            nftPrice={exData3.nftPrice}
-            remainNFT={exData3.remainNFT}
-          />
-          <FeatureNFTCard
-            imgURL={exData3.imgURL}
-            item={exData3.item}
-            cardTitle={exData3.cardTitle}
-            player={exData3.player}
-            nftPrice={exData3.nftPrice}
-            remainNFT={exData3.remainNFT}
-          />
-          <FeatureNFTCard
-            imgURL={exData3.imgURL}
-            item={exData3.item}
-            cardTitle={exData3.cardTitle}
-            player={exData3.player}
-            nftPrice={exData3.nftPrice}
-            remainNFT={exData3.remainNFT}
-          />
-          <FeatureNFTCard
-            imgURL={exData3.imgURL}
-            item={exData3.item}
-            cardTitle={exData3.cardTitle}
-            player={exData3.player}
-            nftPrice={exData3.nftPrice}
-            remainNFT={exData3.remainNFT}
-          />
+        <div
+          className={
+            isMobile
+              ? styles.featureNFTsContainerMobile
+              : styles.featureNFTsContainer
+          }
+        >
+          <div className={isMobile ? styles.cardMobileNFT : ""}>
+            <FeatureNFTCard
+              imgURL={exData3.imgURL}
+              item={exData3.item}
+              cardTitle={exData3.cardTitle}
+              player={exData3.player}
+              nftPrice={exData3.nftPrice}
+              remainNFT={exData3.remainNFT}
+            />
+          </div>
+          <div className={isMobile ? styles.cardMobileNFT : ""}>
+            <FeatureNFTCard
+              imgURL={exData3.imgURL}
+              item={exData3.item}
+              cardTitle={exData3.cardTitle}
+              player={exData3.player}
+              nftPrice={exData3.nftPrice}
+              remainNFT={exData3.remainNFT}
+            />
+          </div>{" "}
+          <div className={isMobile ? styles.cardMobileNFT : ""}>
+            <FeatureNFTCard
+              imgURL={exData3.imgURL}
+              item={exData3.item}
+              cardTitle={exData3.cardTitle}
+              player={exData3.player}
+              nftPrice={exData3.nftPrice}
+              remainNFT={exData3.remainNFT}
+            />
+          </div>{" "}
+          <div className={isMobile ? styles.cardMobileNFT : ""}>
+            <FeatureNFTCard
+              imgURL={exData3.imgURL}
+              item={exData3.item}
+              cardTitle={exData3.cardTitle}
+              player={exData3.player}
+              nftPrice={exData3.nftPrice}
+              remainNFT={exData3.remainNFT}
+            />
+          </div>{" "}
+          <div className={isMobile ? styles.cardMobileNFT : ""}>
+            <FeatureNFTCard
+              imgURL={exData3.imgURL}
+              item={exData3.item}
+              cardTitle={exData3.cardTitle}
+              player={exData3.player}
+              nftPrice={exData3.nftPrice}
+              remainNFT={exData3.remainNFT}
+            />
+          </div>
         </div>
       </div>
-      <div className={styles.bottomBannerContainer}>
+      <div
+        className={
+          isMobile
+            ? styles.bottomBannerContainerMobile
+            : styles.bottomBannerContainer
+        }
+      >
         <div className={styles.blur2}> </div>
         <a href="https://forms.gle/aQeP6PaUQsT8j6As5" target="_blank">
           <img src={donateBtn} className={styles.donateBtn} alt="btn" />
@@ -369,6 +456,7 @@ const Main = () => {
           자신의 이야기를 소개하고, 후원자를 만나보세요.
         </div>
       </div>
+
       <Footer />
     </div>
   );

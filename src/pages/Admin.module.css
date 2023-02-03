@@ -26,6 +26,7 @@
 .logo {
   width: 260px;
   height: 30px;
+  margin-right: 20px;
 }
 .adminTxt {
   font-family: "Inter_regular";

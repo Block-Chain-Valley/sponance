@@ -4,6 +4,7 @@
   flex-direction: column;
   align-items: center;
 }
+
 .title {
   font-family: "Inter_regular";
   font-weight: 600;
@@ -63,6 +64,7 @@
   width: 187px;
   height: 127px;
   border-radius: 10px;
+  object-fit: cover;
 }
 .nftBoxTxtContainer {
   height: 127px;
@@ -225,8 +227,7 @@
   width: 243px;
   height: 49px;
 
-  background: #96cbdb;
-  /* background: #CDCDCD; */
+  background: #cdcdcd;
   border-radius: 3px;
   font-family: "Inter_regular";
   font-weight: 700;
@@ -239,6 +240,11 @@
   cursor: pointer;
   margin-bottom: 40px;
 }
+.paymentTypebtnClicked {
+  composes: paymentTypebtn;
+  background: #96cbdb;
+}
+
 .guideTxt {
   font-family: "Inter_regular";
   font-weight: 400;
@@ -307,4 +313,5 @@
   align-items: center;
   margin-bottom: 6rem;
   color: #ffffff;
+  cursor: pointer;
 }

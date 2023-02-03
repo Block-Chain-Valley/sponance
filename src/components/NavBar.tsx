@@ -4,13 +4,20 @@ import { Link } from "react-router-dom";
 import AuthContext from "../store/auth-context";
 import supabase from "../config/supabaseClient";
 import logo from "../assets/image/logo.png";
+import menubar from "../assets/image/menuBarBlack.svg";
+import x from "../assets/image/x.svg";
+import { useMediaQuery } from "react-responsive";
 
 const NavBar = () => {
+  const isMobile = useMediaQuery({ maxWidth: 767 });
   const authCtx = useContext(AuthContext);
   const [signInCheck, setSignInCheck] = useState<boolean>(false);
   useEffect(() => {
     localStorage.clear();
   }, []);
+
+  const [showMenu, setShowMenu] = useState<boolean>(false);
+
   const getAccount = async () => {
     try {
       if (window.ethereum) {
@@ -45,41 +52,108 @@ const NavBar = () => {
     }
   };
 
+  const mobileMenuClickHandler = () => {
+    setShowMenu((prev) => !prev);
+  };
+
   return (
-    <div className={styles.mainContainer}>
-      <Link to="/" className={styles.LogoTxt}>
-        <img src={logo} alt="logo" className={styles.logo} />
-        SPONANCE
-      </Link>
-      <div className={styles.subContainer}>
-        <Link to="/about" className={styles.linkTxt}>
-          About SPONANCE
-        </Link>
-        <Link to="/campaign" className={styles.linkTxt}>
-          후원하기
-        </Link>
-        {/* <Link to="/faq" className={styles.linkTxt}>
+    <div
+      className={isMobile ? styles.mainContainerMobile : styles.mainContainer}
+    >
+      {isMobile ? (
+        <>
+          <Link to="/" className={styles.LogoTxtMobile}>
+            <img src={logo} alt="logo" className={styles.logoMobile} />
+            SPONANCE
+          </Link>
+          <img
+            src={menubar}
+            alt="menu"
+            className={styles.menubar}
+            onClick={mobileMenuClickHandler}
+          />
+
+          <div className={`${styles.menuModal} ${showMenu ? styles.open : ""}`}>
+            <div className={styles.topContainer}>
+              <Link to="/" className={styles.LogoTxtMobile}>
+                <img src={logo} alt="logo" className={styles.logoMobile} />
+                SPONANCE
+              </Link>
+              <img
+                src={x}
+                alt="x"
+                className={styles.menubar}
+                onClick={mobileMenuClickHandler}
+              />
+            </div>
+            <>
+              <div className={styles.subContainerMobile}>
+                <Link to="/about" className={styles.linkTxtMobile}>
+                  About SPONANCE
+                </Link>
+                <Link to="/campaign" className={styles.linkTxtMobile}>
+                  후원하기
+                </Link>
+                {!authCtx.isLoggedIn && (
+                  <Link
+                    to="/"
+                    className={styles.linkTxtMobile}
+                    onClick={getAccount}
+                  >
+                    로그인
+                  </Link>
+                )}
+                {!authCtx.isLoggedIn && (
+                  <Link to="/signup" className={styles.linkTxtMobile}>
+                    회원가입
+                  </Link>
+                )}
+                {authCtx.isLoggedIn && (
+                  <Link to="/mypage" className={styles.linkTxtMobile}>
+                    마이페이지
+                  </Link>
+                )}
+              </div>
+            </>
+          </div>
+        </>
+      ) : (
+        <>
+          <Link to="/" className={styles.LogoTxt}>
+            <img src={logo} alt="logo" className={styles.logo} />
+            SPONANCE
+          </Link>
+          <div className={styles.subContainer}>
+            <Link to="/about" className={styles.linkTxt}>
+              About SPONANCE
+            </Link>
+            <Link to="/campaign" className={styles.linkTxt}>
+              후원하기
+            </Link>
+            {/* <Link to="/faq" className={styles.linkTxt}>
           FAQ
         </Link> */}
 
-        {!authCtx.isLoggedIn && (
-          <Link to="/" className={styles.linkTxt} onClick={getAccount}>
-            로그인
-          </Link>
-        )}
-        {!authCtx.isLoggedIn && (
-          <Link to="/signup" className={styles.linkTxt}>
-            회원가입
-          </Link>
-        )}
-        {authCtx.isLoggedIn && (
-          <div>
-            <Link to="/mypage" className={styles.linkTxt}>
-              마이페이지
-            </Link>
+            {!authCtx.isLoggedIn && (
+              <Link to="/" className={styles.linkTxt} onClick={getAccount}>
+                로그인
+              </Link>
+            )}
+            {!authCtx.isLoggedIn && (
+              <Link to="/signup" className={styles.linkTxt}>
+                회원가입
+              </Link>
+            )}
+            {authCtx.isLoggedIn && (
+              <div>
+                <Link to="/mypage" className={styles.linkTxt}>
+                  마이페이지
+                </Link>
+              </div>
+            )}
           </div>
-        )}
-      </div>
+        </>
+      )}
     </div>
   );
 };

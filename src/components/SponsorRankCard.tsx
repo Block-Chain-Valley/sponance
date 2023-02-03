@@ -1,4 +1,5 @@
 import React from "react";
+import { useMediaQuery } from "react-responsive";
 import styles from "./SponsorRankCard.module.css";
 
 export interface SponsorRankCard_Data {
@@ -14,8 +15,11 @@ export const SponsorRankCard = ({
   donateNum,
   totalDonate,
 }: SponsorRankCard_Data) => {
+  const isMobile = useMediaQuery({ maxWidth: 767 });
   return (
-    <div className={styles.mainContainer}>
+    <div
+      className={isMobile ? styles.mainContainerMobile : styles.mainContainer}
+    >
       <div className={styles.subContainer}>
         <div className={styles.order}>{order + 1}</div>
         <div className={styles.nic}>{nickname}</div>

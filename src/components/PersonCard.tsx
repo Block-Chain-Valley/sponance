@@ -34,6 +34,7 @@ const exData = {
 };
 
 export interface propsType {
+  id: number;
   item: string;
   player: string;
   cardTitle: string;
@@ -46,6 +47,7 @@ export interface propsType {
 }
 
 const PersonCard = ({
+  id,
   titleImgUrl,
   item,
   player,
@@ -56,28 +58,28 @@ const PersonCard = ({
   remainNFT,
   className,
 }: propsType) => {
-  const [url, setUrl] = useState<string>(`/${exData.id}`);
+  const [url, setUrl] = useState<string>(`/${id}`);
 
   useEffect(() => {
     console.log(window.location.href);
     if (window.location.href == "http://localhost:3000/") {
-      setUrl(`campaign/${exData.id}`);
+      setUrl(`campaign/${id}`);
     }
     if (window.location.href == "http://localhost:3000/campaign") {
-      setUrl(`./${exData.id}`);
+      setUrl(`./${id}`);
     }
     if (window.location.href == "http://localhost:3000/mypage") {
-      setUrl(`../campaign/${exData.id}`);
+      setUrl(`../campaign/${id}`);
     }
 
     if (window.location.href == "https://www.sponance.com/") {
-      setUrl(`campaign/${exData.id}`);
+      setUrl(`campaign/${id}`);
     }
     if (window.location.href == "https://www.sponance.com/campaign") {
-      setUrl(`./${exData.id}`);
+      setUrl(`./${id}`);
     }
     if (window.location.href == "https://www.sponance.com/mypage") {
-      setUrl(`../campaign/${exData.id}`);
+      setUrl(`../campaign/${id}`);
     }
   }, []);
   return (

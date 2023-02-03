@@ -97,3 +97,78 @@
   top: 100vh;
   rotate: 150deg;
 }
+
+/*-------------------------- mobile --------------------------*/
+.mainContainerMobile {
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vw;
+  height: 2.7rem;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: white;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 16px 16px -1px rgb(10 22 70 / 10%), 0 0 5px 0 rgb(10 22 70 / 6%);
+}
+
+.menubar {
+  margin-right: 2vw;
+  fill: black;
+}
+.LogoTxtMobile {
+  composes: LogoTxt;
+  font-size: 1rem;
+  color: black;
+}
+.logoMobile {
+  composes: logo;
+  height: 1rem;
+}
+.menuModal {
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+
+  height: 100vh;
+  width: 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: rgb(255, 255, 255);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.menuModal.open {
+  width: 100vw;
+}
+
+.topContainer {
+  height: 2.7rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.subContainerMobile {
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 30vh;
+}
+
+.linkTxtMobile {
+  width: 90vw;
+  text-decoration: none;
+  font-family: "Inter_semiBold";
+  color: black;
+  cursor: pointer;
+  font-size: 24px;
+}

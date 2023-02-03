@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import NavBar from "../components/NavBar";
 import styles from "./Campaign.module.css";
 
@@ -6,6 +6,7 @@ import s2 from "../assets/image/s2.png";
 import s3 from "../assets/image/s3.png";
 import PersonCard from "../components/PersonCard";
 import Footer from "../components/Footer";
+import supabase from "../config/supabaseClient";
 
 const exData = {
   id: "0",
@@ -37,7 +38,32 @@ const exData = {
   titleImgUrl: s3,
 };
 
+interface Campaign_Data {
+  card_detail: string;
+  card_title: string;
+  created_at: string;
+  id: number;
+  item: string;
+  player: string;
+  title_img: string;
+  project_owner: number;
+}
+
 const Campaign = () => {
+  const [campaignData, setCampaignData] = useState<any | []>();
+
+  const getData = async () => {
+    const { data, error } = await supabase.from("campaign").select();
+    console.log(data);
+    if (data) {
+      setCampaignData(data);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
     <div className={styles.mainContainer}>
       <NavBar />
@@ -69,8 +95,35 @@ const Campaign = () => {
       </div>
 
       <div className={styles.cardContainer}>
+        {campaignData &&
+          campaignData.map(
+            ({
+              card_detail,
+              card_title,
+              id,
+              item,
+              player,
+              title_img,
+            }: Campaign_Data) => (
+              <div className={styles.cardBox} key={id}>
+                <PersonCard
+                  id={id}
+                  className={styles.card}
+                  titleImgUrl={title_img}
+                  item={item}
+                  player={player}
+                  cardTitle={card_title}
+                  cardDetail={card_detail}
+                  tempPercent={exData.tempPercent}
+                  totalSell={exData.totalSell}
+                  remainNFT={exData.remainNFT}
+                />
+              </div>
+            )
+          )}
         <div className={styles.cardBox}>
           <PersonCard
+            id={0}
             className={styles.card}
             titleImgUrl={exData.titleImgUrl}
             item={exData.item}
@@ -84,6 +137,7 @@ const Campaign = () => {
         </div>
         <div className={styles.cardBox}>
           <PersonCard
+            id={0}
             className={styles.card}
             titleImgUrl={exData.titleImgUrl}
             item={exData.item}
@@ -97,6 +151,7 @@ const Campaign = () => {
         </div>
         <div className={styles.cardBox}>
           <PersonCard
+            id={0}
             className={styles.card}
             titleImgUrl={exData.titleImgUrl}
             item={exData.item}
@@ -110,6 +165,7 @@ const Campaign = () => {
         </div>
         <div className={styles.cardBox}>
           <PersonCard
+            id={0}
             className={styles.card}
             titleImgUrl={exData.titleImgUrl}
             item={exData.item}
@@ -123,6 +179,7 @@ const Campaign = () => {
         </div>
         <div className={styles.cardBox}>
           <PersonCard
+            id={0}
             className={styles.card}
             titleImgUrl={exData.titleImgUrl}
             item={exData.item}
@@ -136,6 +193,7 @@ const Campaign = () => {
         </div>
         <div className={styles.cardBox}>
           <PersonCard
+            id={0}
             className={styles.card}
             titleImgUrl={exData.titleImgUrl}
             item={exData.item}

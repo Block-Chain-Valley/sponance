@@ -76,6 +76,7 @@ const MyPage = () => {
         <div className={styles.projectContainer}>
           <div className={styles.card}>
             <PersonCard
+              id={0}
               className={styles.card}
               titleImgUrl={exData.titleImgUrl}
               item={exData.item}
@@ -89,6 +90,7 @@ const MyPage = () => {
           </div>
           <div className={styles.card}>
             <PersonCard
+              id={0}
               className={styles.card}
               titleImgUrl={exData.titleImgUrl}
               item={exData.item}
@@ -102,6 +104,7 @@ const MyPage = () => {
           </div>
           <div className={styles.card}>
             <PersonCard
+              id={0}
               className={styles.card}
               titleImgUrl={exData.titleImgUrl}
               item={exData.item}

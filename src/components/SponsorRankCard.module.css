@@ -63,3 +63,13 @@
 
   color: #96cbdb;
 }
+
+/* --------------------- Mobile ---------------------- */
+.mainContainerMobile {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  width: 330px;
+}

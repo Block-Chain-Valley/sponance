@@ -1,4 +1,5 @@
 import React from "react";
+import { useMediaQuery } from "react-responsive";
 import { Link } from "react-router-dom";
 import styles from "./FeatureNFTCard.module.css";
 
@@ -19,8 +20,12 @@ const FeatureNFTCard = ({
   nftPrice,
   remainNFT,
 }: propsType) => {
+  const isMobile = useMediaQuery({ maxWidth: 767 });
   return (
-    <Link to={`/campaign/${0}`} className={styles.mainContainer}>
+    <Link
+      to={`/campaign/${0}`}
+      className={isMobile ? styles.mainContainerMobile : styles.mainContainer}
+    >
       <img src={imgURL} className={styles.featureImg} />
       <div className={styles.cardTitle}>{cardTitle}</div>
       <div className={styles.itemAndPlayer}>

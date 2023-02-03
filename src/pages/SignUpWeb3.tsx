@@ -126,6 +126,9 @@ const SignUpWeb3: FC = () => {
       if (column === "nickname") {
         setOverlapNickname(true);
         alert("아이디가 중복 되었습니다! 다른 아이디를 사용해 주세요.");
+      } else {
+        setOverlapNickname(false);
+        alert("아이디를 사용 가능합니다.");
       }
 
       if (column === "metaaddress") {

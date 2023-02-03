@@ -55,7 +55,7 @@
   font-family: "Inter_regular";
   font-weight: 500;
   font-size: 12px;
-  line-height: 12px;
+  line-height: 18px;
 
   color: #000000;
 }
@@ -208,4 +208,80 @@
   text-align: center;
 
   color: #ffffff;
+}
+
+/* mobile */
+
+.mainSubContainerM {
+  composes: mainSubContainer;
+  margin-top: 4rem;
+  width: 100vw;
+  align-items: center;
+}
+
+.subTitleM {
+  composes: subTitle;
+  font-size: 16px;
+}
+
+.infoCardM {
+  composes: infoCard;
+  width: 80vw;
+  padding: 15px;
+}
+
+.mydataContainerM {
+  composes: mydataContainer;
+  width: 80vw;
+}
+
+.section {
+  width: 100vw;
+  height: 10px;
+  margin-left: -2vw;
+  margin-top: 70px;
+  margin-bottom: 30px;
+  background: #d9d9d991;
+}
+
+.titleM {
+  composes: title;
+  width: 85vw;
+  text-align: left;
+  margin-top: 0;
+  margin-bottom: 40px;
+}
+
+.projectContainerM {
+  display: flex;
+  width: 100vw;
+  flex-direction: row;
+  flex-flow: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.projectContainerM {
+  composes: projectContainer;
+  align-items: center;
+}
+
+.cardImgM {
+  composes: cardImg;
+  width: 260px;
+  height: 180px;
+  margin-bottom: 20px;
+}
+
+.nftCardM {
+  composes: nftCard;
+  width: 290px;
+  height: 100%;
+  padding: 15px 0 15px 0;
+  flex-direction: column;
+}
+
+.txtContainerM {
+  composes: txtContainer;
+  width: 260px;
 }

@@ -25,7 +25,7 @@
   margin-bottom: 75px;
 }
 
-/* --------------- step 1 ----------------- */
+/* --------------- step 0 ----------------- */
 .stepImg {
   width: 538px;
   height: 102px;
@@ -172,7 +172,7 @@
   color: #000000;
 }
 
-/* --------------- step 2 ----------------- */
+/* --------------- step 1 ----------------- */
 .line {
   width: 510px;
   height: 0px;
@@ -250,7 +250,7 @@
   font-family: "Inter_regular";
   font-weight: 400;
   font-size: 14px;
-  line-height: 17px;
+  line-height: 21px;
   margin-bottom: 20px;
   color: #000000;
 }
@@ -274,7 +274,7 @@
   color: #5b5b5b;
 }
 
-/* --------------- step 3 ----------------- */
+/* --------------- step 2 ----------------- */
 
 .resultTxt {
   width: 550px;
@@ -293,7 +293,7 @@
   font-family: "Inter_regular";
   font-weight: 400;
   font-size: 14px;
-  line-height: 17px;
+  line-height: 21px;
   margin-bottom: 30px;
   color: #000000;
 }
@@ -321,6 +321,14 @@
 
 .stepContainerM {
   width: 85vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.titleM {
+  composes: title;
+  margin-bottom: 3rem;
 }
 
 .stepImgM {
@@ -333,5 +341,68 @@
   width: 85vw;
 }
 
-/* .nftBox {
-} */
+/* Mobile step 0 */
+
+.nftBoxM {
+  composes: nftBox;
+  width: 300px;
+  height: 100%;
+  flex-direction: column;
+  padding: 15px 0 15px 0;
+}
+
+.imgM {
+  composes: img;
+  width: 270px;
+  height: 180px;
+}
+.nextBtnM {
+  composes: nextBtn;
+  width: 85vw;
+}
+
+.inputM {
+  composes: input;
+  width: 150px;
+  height: 2.5rem;
+  padding-right: 10px;
+}
+
+.nftBoxTxtContainerM {
+  composes: nftBoxTxtContainer;
+  width: 270px;
+  margin-top: 25px;
+}
+
+/* Mobile step 1 */
+.lineM {
+  composes: line;
+  width: 90vw;
+}
+
+.paymentInfoSubContainerM {
+  composes: paymentInfoSubContainer;
+  width: 90vw;
+}
+
+.paymentBtnContainerM {
+  composes: paymentBtnContainer;
+  width: 85vw;
+  justify-content: space-around;
+  margin-bottom: 18px;
+}
+
+.paymentTypebtnM {
+  composes: paymentTypebtn;
+  width: 120px;
+}
+
+.paymentTypebtnClickedM {
+  composes: paymentTypebtnClicked;
+  width: 120px;
+}
+
+.subresultTxtM {
+  composes: subresultTxt;
+  width: 85vw;
+}

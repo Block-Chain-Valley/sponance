@@ -26,8 +26,8 @@ const Payment = () => {
 
   const OnclickHandler = () => {
     setBtnText("결제하기");
-
     setStep((prev): number => prev + 1);
+    window.scrollTo(0, 0);
   };
 
   const OnclickHandlerToken = () => {
@@ -35,6 +35,7 @@ const Payment = () => {
       setBtnText("홈으로");
     }
     setStep((prev): number => prev + 1);
+    window.scrollTo(0, 0);
   };
 
   const OnclickHandlerBank = async () => {
@@ -51,6 +52,7 @@ const Payment = () => {
     console.log(buynum);
     console.log(addSponPrice);
     console.log(userId);
+    window.scrollTo(0, 0);
   };
 
   const transaction = async () => {
@@ -133,6 +135,7 @@ const Payment = () => {
 
   useEffect(() => {
     getNftData();
+    window.scrollTo(0, 0);
   }, []);
 
   return (
@@ -140,8 +143,12 @@ const Payment = () => {
       <NavBar />
       {/*-------------step 0-----------------*/}
       {step == 0 && (
-        <div className={isMobile ? styles.stepContainer : styles.stepContainer}>
-          <div className={styles.title}>후원 및 결제</div>
+        <div
+          className={isMobile ? styles.stepContainerM : styles.stepContainer}
+        >
+          <div className={isMobile ? styles.titleM : styles.title}>
+            후원 및 결제
+          </div>
           <div className={styles.imgContianer}>
             <img
               className={isMobile ? styles.stepImgM : styles.stepImg}
@@ -157,9 +164,19 @@ const Payment = () => {
             </div>
           </div>
           {nftData && (
-            <div className={styles.nftBox}>
-              <img className={styles.img} src={nftData[0].img} alt="img" />
-              <div className={styles.nftBoxTxtContainer}>
+            <div className={isMobile ? styles.nftBoxM : styles.nftBox}>
+              <img
+                className={isMobile ? styles.imgM : styles.img}
+                src={nftData[0].img}
+                alt="img"
+              />
+              <div
+                className={
+                  isMobile
+                    ? styles.nftBoxTxtContainerM
+                    : styles.nftBoxTxtContainer
+                }
+              >
                 <div className={styles.nftBoxTitle}>{nftData[0].title} </div>
                 <div className={styles.nftBoxPrice}>
                   {nftData[0].price
@@ -195,7 +212,7 @@ const Payment = () => {
           <div className={styles.inputContainer}>
             <input
               type="number"
-              className={styles.input}
+              className={isMobile ? styles.inputM : styles.input}
               value={addSponPrice}
               placeholder="0"
               onChange={(e) => {
@@ -209,22 +226,38 @@ const Payment = () => {
       )}
       {/*-------------step 1-----------------*/}
       {step == 1 && (
-        <div className={isMobile ? styles.stepContainer : styles.stepContainer}>
-          <div className={styles.title}>후원 및 결제</div>
+        <div
+          className={isMobile ? styles.stepContainerM : styles.stepContainer}
+        >
+          <div className={isMobile ? styles.titleM : styles.title}>
+            후원 및 결제
+          </div>
           <div className={styles.imgContianer}>
-            <img className={styles.stepImg} src={step2img} alt="steps" />
-            <div className={styles.txtContainer}>
+            <img
+              className={isMobile ? styles.stepImgM : styles.stepImg}
+              src={step2img}
+              alt="steps"
+            />
+            <div
+              className={isMobile ? styles.txtContainerM : styles.txtContainer}
+            >
               <div>NFT 선택</div>
               <div>결제 정보 확인</div>
               <div>결제 완료</div>
             </div>
           </div>
 
-          <div className={styles.line}></div>
-          <div className={styles.paymentInfoSubContainer}>
+          <div className={isMobile ? styles.lineM : styles.line}></div>
+          <div
+            className={
+              isMobile
+                ? styles.paymentInfoSubContainerM
+                : styles.paymentInfoSubContainer
+            }
+          >
             <div className={styles.PItitle}>핸들볼 팀과 연습 경기 NFT</div>
             <div className={styles.PItxtContainer}>
-              <div className={styles.PItxt1}>수량 {buynum}개</div>
+              <div className={styles.PItxt1}>{buynum}개</div>
               <div className={styles.PItxt1}>
                 {(nftData[0].price * buynum)
                   .toString()
@@ -233,14 +266,26 @@ const Payment = () => {
               </div>
             </div>
           </div>
-          <div className={styles.paymentInfoSubContainer}>
+          <div
+            className={
+              isMobile
+                ? styles.paymentInfoSubContainerM
+                : styles.paymentInfoSubContainer
+            }
+          >
             <div>추가 후원금</div>
             <div>
               {addSponPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원
             </div>
           </div>
-          <div className={styles.line}></div>
-          <div className={styles.paymentInfoSubContainer}>
+          <div className={isMobile ? styles.lineM : styles.line}></div>
+          <div
+            className={
+              isMobile
+                ? styles.paymentInfoSubContainerM
+                : styles.paymentInfoSubContainer
+            }
+          >
             <div className={styles.PItitle}>최종 결제 금액</div>
             <div>
               {(nftData[0].price * buynum + addSponPrice)
@@ -249,14 +294,24 @@ const Payment = () => {
               원
             </div>
           </div>
-          <div className={styles.line}></div>
+          <div className={isMobile ? styles.lineM : styles.line}></div>
 
           <div className={styles.title2}>결제 방법</div>
-          <div className={styles.paymentBtnContainer}>
+          <div
+            className={
+              isMobile
+                ? styles.paymentBtnContainerM
+                : styles.paymentBtnContainer
+            }
+          >
             <div
               className={
                 isTokenPay
-                  ? styles.paymentTypebtnClicked
+                  ? isMobile
+                    ? styles.paymentTypebtnClickedM
+                    : styles.paymentTypebtnClicked
+                  : isMobile
+                  ? styles.paymentTypebtnM
                   : styles.paymentTypebtn
               }
               onClick={tokenPayClickHandler}
@@ -265,9 +320,13 @@ const Payment = () => {
             </div>
             <div
               className={
-                isTokenPay
-                  ? styles.paymentTypebtn
-                  : styles.paymentTypebtnClicked
+                !isTokenPay
+                  ? isMobile
+                    ? styles.paymentTypebtnClickedM
+                    : styles.paymentTypebtnClicked
+                  : isMobile
+                  ? styles.paymentTypebtnM
+                  : styles.paymentTypebtn
               }
               onClick={bankPayClickHandler}
             >
@@ -290,11 +349,21 @@ const Payment = () => {
       )}
       {/*-------------step 2-----------------*/}
       {step == 2 && (
-        <div className={isMobile ? styles.stepContainer : styles.stepContainer}>
-          <div className={styles.title}>후원 및 결제</div>
+        <div
+          className={isMobile ? styles.stepContainerM : styles.stepContainer}
+        >
+          <div className={isMobile ? styles.titleM : styles.title}>
+            후원 및 결제
+          </div>
           <div className={styles.imgContianer}>
-            <img className={styles.stepImg} src={step3img} alt="steps" />
-            <div className={styles.txtContainer}>
+            <img
+              className={isMobile ? styles.stepImgM : styles.stepImg}
+              src={step3img}
+              alt="steps"
+            />
+            <div
+              className={isMobile ? styles.txtContainerM : styles.txtContainer}
+            >
               <div>NFT 선택</div>
               <div>결제 정보 확인</div>
               <div>결제 완료</div>
@@ -302,7 +371,9 @@ const Payment = () => {
           </div>
 
           <div className={styles.resultTxt}>결제가 완료되었습니다.</div>
-          <div className={styles.subresultTxt}>
+          <div
+            className={isMobile ? styles.subresultTxtM : styles.subresultTxt}
+          >
             계좌이체의 경우 아래 계좌를 확인해주시고, NFT는 임금 후 2영업일
             이내에 처리 됩니다.
           </div>
@@ -314,23 +385,35 @@ const Payment = () => {
         </div>
       )}
       {step == 0 && (
-        <button className={styles.nextBtn} onClick={OnclickHandler}>
+        <button
+          className={isMobile ? styles.nextBtnM : styles.nextBtn}
+          onClick={OnclickHandler}
+        >
           {btnTxt}
         </button>
       )}
 
       {step == 1 &&
         (isTokenPay ? (
-          <button className={styles.nextBtn} onClick={OnclickHandlerToken}>
+          <button
+            className={isMobile ? styles.nextBtnM : styles.nextBtn}
+            onClick={OnclickHandlerToken}
+          >
             {btnTxt}
           </button>
         ) : (
-          <button className={styles.nextBtn} onClick={OnclickHandlerBank}>
+          <button
+            className={isMobile ? styles.nextBtnM : styles.nextBtn}
+            onClick={OnclickHandlerBank}
+          >
             {btnTxt}
           </button>
         ))}
       {step == 2 && (
-        <Link to="../../" className={styles.nextBtn}>
+        <Link
+          to="../../"
+          className={isMobile ? styles.nextBtnM : styles.nextBtn}
+        >
           {btnTxt}
         </Link>
       )}

@@ -5,8 +5,12 @@ import supabase from "../config/supabaseClient";
 import styles from "./SignUpWeb3.module.css";
 import logo from "../assets/image/logoWithTextBlack.png";
 import checkIcon from "../assets/image/check-circle.png";
+import checkCircle from "../assets/image/checkCircle.png";
+import { useMediaQuery } from "react-responsive";
+import { Link } from "react-router-dom";
 
 const SignUpWeb3: FC = () => {
+  const isMobile = useMediaQuery({ maxWidth: 767 });
   const [metaaddress, setMetaAddress] = useState<any>("");
   const [nickname, setNickname] = useState<string>("");
   const [lastname, setLastname] = useState<string>("");
@@ -20,6 +24,7 @@ const SignUpWeb3: FC = () => {
   const activestate: boolean = true;
 
   const [formError, setFormError] = useState<string | null>("");
+  const [showSuccess, setShowSuccess] = useState<boolean>(false);
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -70,6 +75,8 @@ const SignUpWeb3: FC = () => {
     if (error) {
       console.log(error);
       setFormError("Please fill in all the fields correcttly");
+    } else {
+      setShowSuccess(true);
     }
 
     if (data) {
@@ -92,9 +99,15 @@ const SignUpWeb3: FC = () => {
           return;
         }
       } else {
-        alert(
-          "회원가입을 위해 메타마스크 지갑이 필요합니다. 크롬으로 접속해주세요!"
-        );
+        if (isMobile) {
+          alert(
+            "회원가입을 위해 메타마스크 지갑이 필요합니다. 메타마스크 어플 웹으로 접속해주세요!"
+          );
+        } else {
+          alert(
+            "회원가입을 위해 메타마스크 지갑이 필요합니다. 크롬으로 접속해주세요!"
+          );
+        }
       }
     } catch (error) {
       console.log(error);
@@ -112,14 +125,17 @@ const SignUpWeb3: FC = () => {
 
       if (column === "nickname") {
         setOverlapNickname(true);
+        alert("아이디가 중복 되었습니다! 다른 아이디를 사용해 주세요.");
       }
 
       if (column === "metaaddress") {
         setOverlapMetaAddress(true);
+        alert("이미 등록된 지갑 주소입니다. 다른 주소를 사용해 주세요!");
       }
 
       if (column === "email") {
         setOverlapEmail(true);
+        alert("이미 등록된 이메일 주소입니다. 다른 이메일을 사용해 주세요!");
       }
       return;
     }
@@ -152,7 +168,21 @@ const SignUpWeb3: FC = () => {
   return (
     <div>
       <NavBar />
-      <div className={styles.mainContainer}>
+      {showSuccess && (
+        <div className={styles.modalContainer}>
+          <div className={styles.successModal}>
+            <img className={styles.checkCircle} src={checkCircle} alt="check" />
+            <div className={styles.sucessTxt}>회원가입이 완료되었습니다</div>
+            <div className={styles.sucessTxt}>
+              홈에서 로그인 후 이용해주세요
+            </div>
+            <Link to="../" className={styles.homeBtn}>
+              홈으로
+            </Link>
+          </div>
+        </div>
+      )}
+      <div className={isMobile ? styles.mainContainerM : styles.mainContainer}>
         <img src={logo} alt="logo" className={styles.logo} />
         <div className={styles.connectWalletContainer}>
           {metaaddress === "" ? (
@@ -166,23 +196,30 @@ const SignUpWeb3: FC = () => {
               <div className={styles.connectWalletClicked}>
                 <img src={checkIcon} alt="check" className={styles.checkIcon} />
               </div>
-              <div className={styles.subContainer}>
+              <div
+                className={
+                  isMobile ? styles.subContainerM : styles.subContainer
+                }
+              >
                 <div className={styles.addressTxt}>
                   주소&nbsp;:&nbsp;
                   {metaaddress !== undefined ? (
                     <span>{metaaddress}</span>
                   ) : null}
                 </div>
-                <button
-                  className={styles.reconnectWallet}
-                  onClick={getMetamask}
-                >
-                  다시 불러오기
-                </button>
+                {!isMobile && (
+                  <button
+                    className={styles.reconnectWallet}
+                    onClick={getMetamask}
+                  >
+                    다시 불러오기
+                  </button>
+                )}
               </div>
             </div>
           )}
         </div>
+
         <form className={styles.formContainer} onSubmit={handleSubmit}>
           <div className={styles.inputContainer}>
             <label htmlFor="nickname" className={styles.labelTxt}>
@@ -285,7 +322,6 @@ const SignUpWeb3: FC = () => {
           </div>
 
           <button className={styles.registerBtn}>가입하기</button>
-          {formError && <p className={styles.error}>{formError}</p>}
         </form>
       </div>
     </div>

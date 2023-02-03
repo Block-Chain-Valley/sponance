@@ -7,6 +7,7 @@ import s3 from "../assets/image/s3.png";
 import PersonCard from "../components/PersonCard";
 import Footer from "../components/Footer";
 import supabase from "../config/supabaseClient";
+import { useMediaQuery } from "react-responsive";
 
 const exData = {
   id: "0",
@@ -51,7 +52,7 @@ interface Campaign_Data {
 
 const Campaign = () => {
   const [campaignData, setCampaignData] = useState<any | []>();
-
+  const isMobile = useMediaQuery({ maxWidth: 1000 });
   const getData = async () => {
     const { data, error } = await supabase.from("campaign").select();
     console.log(data);
@@ -65,18 +66,24 @@ const Campaign = () => {
   }, []);
 
   return (
-    <div className={styles.mainContainer}>
+    <div className={isMobile ? styles.mainContainerM : styles.mainContainer}>
       <NavBar />
-      <div className={styles.banner}>
-        <img src={s2} alt="banner" className={styles.bannerImg} />
-        <div className={styles.blur} />
-        <div className={styles.bannerTxt}>
-          <span className={styles.colorBar}>|</span>대충 후원을 독려하는 문구,,,
+      {!isMobile && (
+        <div className={styles.banner}>
+          <img src={s2} alt="banner" className={styles.bannerImg} />
+          <div className={styles.blur} />
+          <div className={styles.bannerTxt}>
+            <span className={styles.colorBar}>|</span>대충 후원을 독려하는
+            문구,,,
+          </div>
         </div>
-      </div>
-
-      <div className={styles.fillterContainer}>
-        <div className={styles.subContainer}>
+      )}
+      <div
+        className={
+          isMobile ? styles.fillterContainerM : styles.fillterContainer
+        }
+      >
+        <div className={isMobile ? styles.subContainerM : styles.subContainer}>
           <div className={styles.title}>전체</div>
           <div className={styles.sportFillterContainer}>
             <div className={styles.sportFillterTxt}>핸드볼</div>
@@ -86,15 +93,45 @@ const Campaign = () => {
           </div>
         </div>
 
-        <div className={styles.basicFillterContainer}>
-          <div className={styles.basicFillterTxt}>인기순</div>
-          <div className={styles.basicFillterTxt}>최신순</div>
-          <div className={styles.basicFillterTxt}>후원금순</div>
-          <div className={styles.basicFillterTxt}>후원 참여자순</div>
+        <div
+          className={
+            isMobile
+              ? styles.basicFillterContainerM
+              : styles.basicFillterContainer
+          }
+        >
+          <div
+            className={
+              isMobile ? styles.basicFillterTxtM : styles.basicFillterTxt
+            }
+          >
+            인기순
+          </div>
+          <div
+            className={
+              isMobile ? styles.basicFillterTxtM : styles.basicFillterTxt
+            }
+          >
+            최신순
+          </div>
+          <div
+            className={
+              isMobile ? styles.basicFillterTxtM : styles.basicFillterTxt
+            }
+          >
+            후원금순
+          </div>
+          <div
+            className={
+              isMobile ? styles.basicFillterTxtM : styles.basicFillterTxt
+            }
+          >
+            후원 참여자순
+          </div>
         </div>
       </div>
 
-      <div className={styles.cardContainer}>
+      <div className={isMobile ? styles.cardContainerM : styles.cardContainer}>
         {campaignData &&
           campaignData.map(
             ({

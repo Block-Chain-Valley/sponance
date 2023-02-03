@@ -63,11 +63,14 @@
   font-size: 20px;
   line-height: 24px;
   color: #000000;
+  margin-right: 30px;
+  margin-bottom: 15px;
 }
 
 .sportFillterContainer {
   display: flex;
   flex-direction: row;
+  flex-flow: wrap;
 }
 
 .sportFillterTxt {
@@ -84,8 +87,9 @@
   justify-content: center;
   align-items: center;
   color: #ffffff;
-  margin-left: 30px;
   cursor: pointer;
+  margin-bottom: 10px;
+  margin-right: 20px;
 }
 
 .basicFillterContainer {
@@ -126,4 +130,43 @@
   flex-flow: wrap;
   align-items: center;
   margin-bottom: 100px;
+}
+
+/* mobile */
+.mainContainerM {
+  composes: mainContainer;
+  width: 100vw;
+  align-items: center;
+}
+
+.fillterContainerM {
+  composes: fillterContainer;
+  flex-direction: column;
+}
+
+.subContainerM {
+  composes: subContainer;
+  align-items: left;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.basicFillterTxtM {
+  composes: basicFillterTxt;
+  margin-left: 0;
+  margin-right: 20px;
+}
+
+.cardContainerM {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.basicFillterContainerM {
+  composes: basicFillterContainer;
+  width: 90vw;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
 }

@@ -102,6 +102,7 @@
   margin-top: px;
 }
 .contentsHead1 {
+  word-break: keep-all;
   width: 644px;
   margin-top: 25px;
   font-family: "Inter_regular";
@@ -114,6 +115,7 @@
 }
 
 .contentsTxt {
+  word-break: keep-all;
   width: 638px;
   margin-top: 23px;
   font-family: "Inter_regular";

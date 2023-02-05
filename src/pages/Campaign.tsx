@@ -50,20 +50,61 @@ interface Campaign_Data {
   project_owner: number;
 }
 
+interface FilterProps {
+  name: string;
+  id: string;
+}
+
 const Campaign = () => {
   const [campaignData, setCampaignData] = useState<any | []>();
   const isMobile = useMediaQuery({ maxWidth: 1000 });
+
+  const [selectedFilter, setSelectedFilter] = useState<string | null>(null);
+  const [itemFilter, setItemFilter] = useState<string>("");
+
+  const filters: FilterProps[] = [
+    { name: "축구", id: "1" },
+    { name: "농구", id: "2" },
+    { name: "배구", id: "3" },
+    { name: "핸드볼", id: "4" },
+  ];
+
+  const handleClick = (filterName: string, filterId: string) => {
+    setSelectedFilter(selectedFilter === filterId ? null : filterId);
+
+    if (selectedFilter === filterId) {
+      // 이미 선택 되어 있는 필터를 눌렀을때
+      setItemFilter("");
+    } else {
+      // 새로 눌렀을때
+      setItemFilter(filterName);
+    }
+  };
+
   const getData = async () => {
-    const { data, error } = await supabase.from("campaign").select();
-    console.log(data);
-    if (data) {
-      setCampaignData(data);
+    if (itemFilter == "") {
+      const { data, error } = await supabase.from("campaign").select();
+
+      console.log(data);
+      if (data) {
+        setCampaignData(data);
+      }
+    } else {
+      const { data, error } = await supabase
+        .from("campaign")
+        .select()
+        .eq("item", itemFilter);
+
+      console.log(data);
+      if (data) {
+        setCampaignData(data);
+      }
     }
   };
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [itemFilter]);
 
   return (
     <div className={isMobile ? styles.mainContainerM : styles.mainContainer}>
@@ -86,10 +127,17 @@ const Campaign = () => {
         <div className={isMobile ? styles.subContainerM : styles.subContainer}>
           <div className={styles.title}>전체</div>
           <div className={styles.sportFillterContainer}>
-            <div className={styles.sportFillterTxt}>핸드볼</div>
-            <div className={styles.sportFillterTxt}>농구</div>
-            <div className={styles.sportFillterTxt}>축구</div>
-            <div className={styles.sportFillterTxt}>야구</div>
+            {filters.map((filter) => (
+              <button
+                key={filter.id}
+                className={`${styles.sportFillterTxt} ${
+                  selectedFilter === filter.id ? styles.active : ""
+                }`}
+                onClick={() => handleClick(filter.name, filter.id)}
+              >
+                {filter.name}
+              </button>
+            ))}
           </div>
         </div>
 
@@ -158,90 +206,6 @@ const Campaign = () => {
               </div>
             )
           )}
-        <div className={styles.cardBox}>
-          <PersonCard
-            id={0}
-            className={styles.card}
-            titleImgUrl={exData.titleImgUrl}
-            item={exData.item}
-            player={exData.player}
-            cardTitle={exData.cardTitle}
-            cardDetail={exData.cardDetail}
-            tempPercent={exData.tempPercent}
-            totalSell={exData.totalSell}
-            remainNFT={exData.remainNFT}
-          />
-        </div>
-        <div className={styles.cardBox}>
-          <PersonCard
-            id={0}
-            className={styles.card}
-            titleImgUrl={exData.titleImgUrl}
-            item={exData.item}
-            player={exData.player}
-            cardTitle={exData.cardTitle}
-            cardDetail={exData.cardDetail}
-            tempPercent={exData.tempPercent}
-            totalSell={exData.totalSell}
-            remainNFT={exData.remainNFT}
-          />
-        </div>
-        <div className={styles.cardBox}>
-          <PersonCard
-            id={0}
-            className={styles.card}
-            titleImgUrl={exData.titleImgUrl}
-            item={exData.item}
-            player={exData.player}
-            cardTitle={exData.cardTitle}
-            cardDetail={exData.cardDetail}
-            tempPercent={exData.tempPercent}
-            totalSell={exData.totalSell}
-            remainNFT={exData.remainNFT}
-          />
-        </div>
-        <div className={styles.cardBox}>
-          <PersonCard
-            id={0}
-            className={styles.card}
-            titleImgUrl={exData.titleImgUrl}
-            item={exData.item}
-            player={exData.player}
-            cardTitle={exData.cardTitle}
-            cardDetail={exData.cardDetail}
-            tempPercent={exData.tempPercent}
-            totalSell={exData.totalSell}
-            remainNFT={exData.remainNFT}
-          />
-        </div>
-        <div className={styles.cardBox}>
-          <PersonCard
-            id={0}
-            className={styles.card}
-            titleImgUrl={exData.titleImgUrl}
-            item={exData.item}
-            player={exData.player}
-            cardTitle={exData.cardTitle}
-            cardDetail={exData.cardDetail}
-            tempPercent={exData.tempPercent}
-            totalSell={exData.totalSell}
-            remainNFT={exData.remainNFT}
-          />
-        </div>
-        <div className={styles.cardBox}>
-          <PersonCard
-            id={0}
-            className={styles.card}
-            titleImgUrl={exData.titleImgUrl}
-            item={exData.item}
-            player={exData.player}
-            cardTitle={exData.cardTitle}
-            cardDetail={exData.cardDetail}
-            tempPercent={exData.tempPercent}
-            totalSell={exData.totalSell}
-            remainNFT={exData.remainNFT}
-          />
-        </div>
       </div>
       <Footer />
     </div>

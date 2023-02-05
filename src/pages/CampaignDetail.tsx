@@ -63,6 +63,10 @@ const CampaignDetail = () => {
     }
   };
 
+  const currentSponPrice = 887000;
+  const maxSponPrice = 1200000;
+  const percent = Math.ceil((currentSponPrice / maxSponPrice) * 100);
+
   useEffect(() => {
     window.scrollTo(0, 0);
     getData();
@@ -94,15 +98,30 @@ const CampaignDetail = () => {
                   isMobile ? styles.txtContainer1M : styles.txtContainer1
                 }
               >
-                <div className={styles.barTxt1}>₩887,000</div>
-                <div className={styles.barTxt2}>₩1,200,000</div>
+                <div className={styles.barTxt1}>
+                  ₩
+                  {currentSponPrice
+                    .toString()
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                </div>
+                <div className={styles.barTxt2}>
+                  ₩
+                  {maxSponPrice
+                    .toString()
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                </div>
               </div>
 
               <div
                 className={isMobile ? styles.yellowBarM : styles.yellowBar}
               ></div>
-              <div className={isMobile ? styles.blueBarM : styles.blueBar}>
-                68%
+              <div
+                style={{
+                  width: `${(percent / 100) * 649}px`,
+                }}
+                className={isMobile ? styles.blueBarM : styles.blueBar}
+              >
+                {percent}%
               </div>
             </div>
 
@@ -120,7 +139,9 @@ const CampaignDetail = () => {
                     68<span className={styles.achieveTxt2}>% 달성</span>
                   </div>
                   <div className={styles.totalPrice}>
-                    887,000
+                    {currentSponPrice
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                     <span className={styles.totalPrice2}>원 62명 참여</span>
                   </div>
                 </div>
@@ -151,29 +172,80 @@ const CampaignDetail = () => {
                     isMobile ? styles.contentsHead1M : styles.contentsHead1
                   }
                 >
-                  안녕하세요 저희는 누구누구 입니다.! 안녕하세요 저희는 누구누구
-                  입니다.! 안녕하세요 안녕하세요 저희는 누구누구 입니다.!
-                  안녕하세요 저희는 누구누구 입니다.! 안녕하세요
+                  안녕하세요 저희는 고려대학교 체육교육과 농구동아리 ZOO입니다.
                 </div>
                 <div
                   className={
                     isMobile ? styles.contentsTxtM : styles.contentsTxt
                   }
                 >
-                  이런 이런 사연으로 저희는 이런 이런 이런 사연으로 저희는 이런
-                  이런 이런 사연으로 저희는 이런 이런 이런 사연으로 저희는 이런
-                  이런 이런 사연으로 저희는 이런 이런 이런 사연으로 저희는 이런
-                  이런 이런 사연으로 저희는 이런 이런 이런 사연으로 저희는 이런
-                  이런 이런 사연으로 저희는 이런 이런 이런 사연으로 저희는 이런
-                  이런 이런 사연으로 저희는 이런 이런 이런 사연으로 저희는 이런
-                  이런 이런 사연으로 저희는 이런 이런 이런 사연으로 저희는 이런
-                  이런 이런 사연으로 저희는 이런 이런 이런 사연으로 저희는 이런
-                  이런 이런 사연으로 저희는 이런 이런 이런 사연으로 저희는 이런
-                  이런 이런 사연으로 저희는 이런 이런 이런 사연으로 저희는 이런
-                  이런 이런 사연으로 저희는 이런 이런 이런 사연으로 저희는 이런
-                  이런 이런 사연으로 저희는 이런 이런 이런 사연으로 저희는 이런
-                  이런 이런 사연으로 저희는 이런{" "}
+                  저희는 완전히 학생이 운영하는 자기 자금으로 운영되는 팀입니다.
+                  팀원들은 매주 12시간 이상을 팀 운동 및 개인 운동을 하고 있으며
+                  단대흑곰배, 과기대배, 단대범정배, 시립대배, 항공대배,
+                  국민대배, 연세대배, KUSF, 아마추어 고연전 등 다양한 농구대회에
+                  참가하여 우수한 성적을 거두기 위해 노력하고 있습니다. 최근
+                  코로나로 인해 팀 운동이 어려운 상황이었으며 팀원간, 선후배간의
+                  교류가 불가능한 상황이 이어지며 끈끈하고 가장 강력한 팀이었던
+                  ZOO의 아이덴티티의 위기를 겪었습니다. 저희의 목표는 각
+                  대회에서 좋은 성적을 거두고 가장 중요한 여정인 고연전에서
+                  연세대 볼케이노를 꺾으며 잠시 맞겨두었던 전국 1위의 영애를
+                  되찾아오는 것 입니다. 저희가 농구에 전념하고 소중한 경험을 할
+                  수 있도록 지원을 요청드립니다!
                 </div>
+                <div
+                  className={
+                    isMobile ? styles.contentsHead1M : styles.contentsHead1
+                  }
+                >
+                  모금된 금액은 훈련비, 대회 참가비, 회식비, 보험비로 사용될
+                  예정입니다.
+                </div>
+                <div
+                  className={
+                    isMobile ? styles.contentsTxtM : styles.contentsTxt
+                  }
+                >
+                  많은 관심과 지원에 대한 보답으로 대회 입상에서 얻어지는 상금
+                  및 상품을 활용해 팀의 후원에 대한 보상을 드리려고 합니다.
+                  저희가 수령하는 대회 입상 상금은 모든 NFT 토큰 홀더에 대한
+                  보상으로 사용될 예정입니다. 우리가 기억할 만한 순간을 함께
+                  기념하고 간직할 수 있는 유니폼과 트레이닝 복 등의 형태로
+                  제작하여 전달해드리도록 하겠습니다. 저희가 제공하는 기념품은
+                  고려대학교 행사에 참여할 때 뽐낼 수 있는 유니크하고 예쁜
+                  디자인으로 기획할 것을 약속드립니다. 저희를 응원하고 활용도
+                  높은 유틸리티를 얻어가세요!
+                </div>
+                <div
+                  className={
+                    isMobile ? styles.contentsHead1M : styles.contentsHead1
+                  }
+                >
+                  보상
+                </div>
+                <div
+                  className={
+                    isMobile ? styles.contentsTxtM : styles.contentsTxt
+                  }
+                >
+                  50,000원 ~300,000원
+                </div>
+                <div
+                  className={
+                    isMobile ? styles.contentsTxtM : styles.contentsTxt
+                  }
+                >
+                  SNS 계정에서 당신의 공헌에 대해 크게 감사드립니다! 후원 인증
+                  NFT 발급 및 팀의 입상 결과에 따른 장비, 팀 셔츠 등 다양한 보상
+                </div>
+                <div
+                  className={
+                    isMobile ? styles.contentsTxtM : styles.contentsTxt
+                  }
+                >
+                  500,000원
+                </div>
+                당신이 만약 회사나 조직이라면 팀 유니폼과 훈련복, 장비 등에
+                스폰서로 모시고 브랜드 로고를 마킹합니다.
               </div>
             )}
             {!showStory && (
@@ -245,7 +317,8 @@ const CampaignDetail = () => {
                   {campaignData[0].card_detail}
                 </div>
                 <div className={styles.achieveTxt}>
-                  68<span className={styles.achieveTxt2}>% 달성</span>
+                  {percent}
+                  <span className={styles.achieveTxt2}>% 달성</span>
                 </div>
                 <div className={styles.totalPrice}>
                   887,000

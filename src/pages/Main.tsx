@@ -18,6 +18,7 @@ import s1 from "../assets/image/s1.png";
 import s2 from "../assets/image/s2.png";
 import s3 from "../assets/image/s3.png";
 import supabase from "../config/supabaseClient";
+import ex2 from "../assets/image/ex2.jpeg";
 
 const exData = {
   id: "0",
@@ -161,11 +162,12 @@ const Main = () => {
     >
       <NavBar />
       <div className={isMobile ? styles.bannerMobile : styles.banner}>
-        <img src={s2} alt="banner" className={styles.bannerImg} />
+        <img src={ex2} alt="banner" className={styles.bannerImg} />
         <div className={styles.blur} />
 
         <div className={styles.bannerTxt}>
-          <span className={styles.colorBar}>|</span>대충 후원을 독려하는 문구,,,
+          <span className={styles.colorBar}>|</span>고려대학교 농구부 ZOO에게
+          힘을 실어주세요
         </div>
       </div>
       <div
@@ -211,76 +213,6 @@ const Main = () => {
                   </div>
                 )
               )}
-            <div className={isMobile ? styles.cardMobile : styles.card}>
-              <PersonCard
-                id={0}
-                className={styles.card}
-                titleImgUrl={exData.titleImgUrl}
-                item={exData.item}
-                player={exData.player}
-                cardTitle={exData.cardTitle}
-                cardDetail={exData.cardDetail}
-                tempPercent={exData.tempPercent}
-                totalSell={exData.totalSell}
-                remainNFT={exData.remainNFT}
-              />
-            </div>
-            <div className={isMobile ? styles.cardMobile : styles.card}>
-              <PersonCard
-                id={0}
-                className={styles.card}
-                titleImgUrl={exData.titleImgUrl}
-                item={exData.item}
-                player={exData.player}
-                cardTitle={exData.cardTitle}
-                cardDetail={exData.cardDetail}
-                tempPercent={exData.tempPercent}
-                totalSell={exData.totalSell}
-                remainNFT={exData.remainNFT}
-              />
-            </div>
-            <div className={isMobile ? styles.cardMobile : styles.card}>
-              <PersonCard
-                id={0}
-                className={styles.card}
-                titleImgUrl={exData.titleImgUrl}
-                item={exData.item}
-                player={exData.player}
-                cardTitle={exData.cardTitle}
-                cardDetail={exData.cardDetail}
-                tempPercent={exData.tempPercent}
-                totalSell={exData.totalSell}
-                remainNFT={exData.remainNFT}
-              />
-            </div>
-            <div className={isMobile ? styles.cardMobile : styles.card}>
-              <PersonCard
-                id={0}
-                className={styles.card}
-                titleImgUrl={exData.titleImgUrl}
-                item={exData.item}
-                player={exData.player}
-                cardTitle={exData.cardTitle}
-                cardDetail={exData.cardDetail}
-                tempPercent={exData.tempPercent}
-                totalSell={exData.totalSell}
-                remainNFT={exData.remainNFT}
-              />
-            </div>
-            <div className={isMobile ? styles.cardMobile : styles.card}>
-              <PersonCard
-                id={0}
-                className={styles.card}
-                titleImgUrl={exData.titleImgUrl}
-                item={exData.item}
-                player={exData.player}
-                cardTitle={exData.cardTitle}
-                cardDetail={exData.cardDetail}
-                tempPercent={exData.tempPercent}
-                totalSell={exData.totalSell}
-                remainNFT={exData.remainNFT}
-              />
-            </div>
           </div>
         </div>
 

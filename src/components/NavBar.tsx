@@ -96,7 +96,7 @@ const NavBar = () => {
                   About SPONANCE
                 </Link>
                 <Link to="/campaign" className={styles.linkTxtMobile}>
-                  후원하기
+                  펀딩하기
                 </Link>
                 {!authCtx.isLoggedIn && (
                   <Link
@@ -132,7 +132,7 @@ const NavBar = () => {
               About SPONANCE
             </Link>
             <Link to="/campaign" className={styles.linkTxt}>
-              후원하기
+              펀딩하기
             </Link>
             {/* <Link to="/faq" className={styles.linkTxt}>
           FAQ

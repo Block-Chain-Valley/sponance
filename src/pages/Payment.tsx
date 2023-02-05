@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import styles from "./Payment.module.css";
 import NavBar from "../components/NavBar";
+import NFT from "./contracts/NFT.json";
 
 import step3img from "../assets/image/Group55.png";
 import step2img from "../assets/image/Group56.png";
@@ -27,7 +28,6 @@ const Payment = () => {
   const OnclickHandler = () => {
     setBtnText("결제하기");
     setStep((prev): number => prev + 1);
-    window.scrollTo(0, 0);
   };
 
   const OnclickHandlerToken = () => {
@@ -35,7 +35,90 @@ const Payment = () => {
       setBtnText("홈으로");
     }
     setStep((prev): number => prev + 1);
+
+    // web3 결제
+    connectWalletHandler();
+
+    // const contractAddress = NFT.address;
+    // const contractABI = NFT.abi;
+    // // Connect to the contract instance
+    // const Web3 = require("web3");
+    // const goerliProvider = new Web3.providers.HttpProvider(
+    //   "https://goerli.infura.io/v3/6a99ecdfa5e14384a00c67658081e723"
+    // );
+
+    // const web3 = new Web3(goerliProvider);
+
+    // // Connect to the contract instance
+    // const contract = new web3.eth.Contract(contractABI, contractAddress);
+    // const fromAddress = "0x6f2778462889a7D31b4E1250bA073748Cf39eAF9";
+    // const toAddress = "0xf7e34BFbAD83e2A6fF72398e5b1daEE8672a1368";
+    // const tokenId = 2;
+
+    // // Example function call
+    // contract.methods
+    //   .transferFrom(fromAddress, toAddress, tokenId)
+    //   .send({ from: fromAddress })
+    //   .then((result: any) => {
+    //     console.log(result);
+    //   })
+    //   .catch((error: any) => {
+    //     console.error(error);
+    //   });
     window.scrollTo(0, 0);
+    window.scrollTo(0, 0);
+  };
+
+  const connectWalletHandler = async () => {
+    // Check if Metamask is available
+    if (
+      typeof window !== "undefined" &&
+      typeof window.ethereum !== "undefined"
+    ) {
+      try {
+        //request wallet connect
+        const Web3 = require("web3");
+        await window.ethereum.request({ method: "eth_requestAccounts" });
+        const goerliProvider = new Web3.providers.HttpProvider(
+          "https://goerli.infura.io/v3/6a99ecdfa5e14384a00c67658081e723"
+        );
+
+        const web3 = new Web3(goerliProvider);
+
+        //set web3 instance
+
+        // const web3 = new Web3(window.ethereum);
+
+        //get list of accounts
+        const account = await window.ethereum.request({
+          method: "eth_requestAccounts",
+        });
+        // Connect to the contract instance
+
+        const contractAddress = NFT.address;
+        const contractABI = NFT.abi;
+        const contract = new web3.eth.Contract(contractABI, contractAddress);
+        const fromAddress = "0x6f2778462889a7D31b4E1250bA073748Cf39eAF9";
+        const toAddress = "0xf7e34BFbAD83e2A6fF72398e5b1daEE8672a1368";
+        const tokenId = 2;
+
+        // Example function call
+        contract.methods
+          .transferFrom(fromAddress, toAddress, tokenId)
+          .send({ from: fromAddress })
+          .then((result: any) => {
+            console.log(result);
+          })
+          .catch((error: any) => {
+            console.error(error);
+          });
+      } catch (err) {
+        console.log(err);
+      }
+    } else {
+      // meta not installed
+      console.log("Please install Metamask");
+    }
   };
 
   const OnclickHandlerBank = async () => {

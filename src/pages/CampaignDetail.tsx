@@ -63,10 +63,6 @@ const CampaignDetail = () => {
     }
   };
 
-  // const percent = Math.ceil(
-  //   (campaignData[0].temp_current_price / campaignData[0].temp_max_price) * 100
-  // );
-
   useEffect(() => {
     window.scrollTo(0, 0);
     getData();
@@ -240,10 +236,10 @@ const CampaignDetail = () => {
                 </div>
                 <div
                   className={
-                    isMobile ? styles.contentsTxtM : styles.contentsTxt
+                    isMobile ? styles.contentsHead1M : styles.contentsHead1
                   }
                 >
-                  50,000원 ~300,000원
+                  1. 팬덤 NFT : 50,000원 ~300,000원
                 </div>
                 <div
                   className={
@@ -255,13 +251,19 @@ const CampaignDetail = () => {
                 </div>
                 <div
                   className={
+                    isMobile ? styles.contentsHead1M : styles.contentsHead1
+                  }
+                >
+                  2. 스폰서 NFT : 500,000원
+                </div>
+                <div
+                  className={
                     isMobile ? styles.contentsTxtM : styles.contentsTxt
                   }
                 >
-                  500,000원
+                  당신이 만약 회사나 조직이라면 팀 유니폼과 훈련복, 장비 등에
+                  스폰서로 모시고 브랜드 로고를 마킹합니다.
                 </div>
-                당신이 만약 회사나 조직이라면 팀 유니폼과 훈련복, 장비 등에
-                스폰서로 모시고 브랜드 로고를 마킹합니다.
               </div>
             )}
             {!showStory && (

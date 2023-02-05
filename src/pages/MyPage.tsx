@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import NavBar from "../components/NavBar";
 import styles from "./MyPage.module.css";
 import PersonCard from "../components/PersonCard";
@@ -6,6 +6,7 @@ import PersonCard from "../components/PersonCard";
 import s3 from "../assets/image/s3.png";
 import Footer from "../components/Footer";
 import { useMediaQuery } from "react-responsive";
+import supabase from "../config/supabaseClient";
 
 const MyPage = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
@@ -38,6 +39,59 @@ const MyPage = () => {
     remainNFT: 243,
     titleImgUrl: s3,
   };
+
+  interface Campaign_Data {
+    card_detail: string;
+    card_title: string;
+    created_at: string;
+    id: number;
+    item: string;
+    player: string;
+    title_img: string;
+    project_owner: number;
+    temp_current_price: number;
+    temp_max_price: number;
+  }
+
+  interface Nft_Data {
+    campaign_id: number;
+    created_at: string;
+    detail: string;
+    id: number;
+    img: string;
+    price: number;
+    publisher: number;
+    sold_num: number;
+    title: string;
+    total_num: number;
+  }
+
+  const [campaignData, setCampaignData] = useState<any | []>();
+  const getData = async () => {
+    const { data, error } = await supabase.from("campaign").select();
+    console.log(data);
+
+    if (data) {
+      setCampaignData(data.slice(0, 2));
+    }
+  };
+
+  const [nftData, setNftData] = useState<any | []>();
+  const getNftData = async () => {
+    const { data, error } = await supabase.from("nft_detail").select();
+    console.log(data);
+    if (data) {
+      setNftData(data);
+    }
+    if (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+    getNftData();
+  }, []);
 
   return (
     <div className={styles.mainContainer}>
@@ -98,48 +152,36 @@ const MyPage = () => {
             isMobile ? styles.projectContainerM : styles.projectContainer
           }
         >
-          <div className={styles.card}>
-            <PersonCard
-              id={0}
-              className={styles.card}
-              titleImgUrl={exData.titleImgUrl}
-              item={exData.item}
-              player={exData.player}
-              cardTitle={exData.cardTitle}
-              cardDetail={exData.cardDetail}
-              tempPercent={exData.tempPercent}
-              totalSell={exData.totalSell}
-              remainNFT={exData.remainNFT}
-            />
-          </div>
-          <div className={styles.card}>
-            <PersonCard
-              id={0}
-              className={styles.card}
-              titleImgUrl={exData.titleImgUrl}
-              item={exData.item}
-              player={exData.player}
-              cardTitle={exData.cardTitle}
-              cardDetail={exData.cardDetail}
-              tempPercent={exData.tempPercent}
-              totalSell={exData.totalSell}
-              remainNFT={exData.remainNFT}
-            />
-          </div>
-          <div className={styles.card}>
-            <PersonCard
-              id={0}
-              className={styles.card}
-              titleImgUrl={exData.titleImgUrl}
-              item={exData.item}
-              player={exData.player}
-              cardTitle={exData.cardTitle}
-              cardDetail={exData.cardDetail}
-              tempPercent={exData.tempPercent}
-              totalSell={exData.totalSell}
-              remainNFT={exData.remainNFT}
-            />
-          </div>
+          {campaignData &&
+            campaignData.map(
+              ({
+                card_detail,
+                card_title,
+                id,
+                item,
+                player,
+                title_img,
+                temp_current_price,
+                temp_max_price,
+              }: Campaign_Data) => (
+                <div className={styles.card} key={id}>
+                  <PersonCard
+                    id={id}
+                    className={styles.card}
+                    titleImgUrl={title_img}
+                    item={item}
+                    player={player}
+                    cardTitle={card_title}
+                    cardDetail={card_detail}
+                    tempPercent={Math.ceil(
+                      (temp_current_price / temp_max_price) * 100
+                    )}
+                    totalSell={temp_current_price}
+                    remainNFT={exData.remainNFT}
+                  />
+                </div>
+              )
+            )}
         </div>
 
         {isMobile && <div className={styles.section}></div>}
@@ -152,23 +194,35 @@ const MyPage = () => {
             isMobile ? styles.projectContainerM : styles.projectContainer
           }
         >
-          <div className={isMobile ? styles.nftCardM : styles.nftCard}>
-            <img
-              src={s3}
-              className={isMobile ? styles.cardImgM : styles.cardImg}
-              alt="nftImg"
-            />
-            <div
-              className={isMobile ? styles.txtContainerM : styles.txtContainer}
-            >
-              <div className={styles.nftCardTitle}>핸드볼 팀과 연습 경기</div>
-              <div className={styles.nftNum}>100개 발행</div>
-              <div className={styles.nftPrice}>100,000원</div>
-              <div className={styles.txtSubContainer}>
-                <button className={styles.buyBtn}>상세보기</button>
-              </div>
-            </div>
-          </div>
+          {nftData &&
+            nftData.map(
+              ({ id, img, price, sold_num, title, total_num }: Nft_Data) => (
+                <div className={isMobile ? styles.nftCardM : styles.nftCard}>
+                  <img
+                    src={img}
+                    className={isMobile ? styles.cardImgM : styles.cardImg}
+                    alt="nftImg"
+                  />
+                  <div
+                    className={
+                      isMobile ? styles.txtContainerM : styles.txtContainer
+                    }
+                  >
+                    <div className={styles.nftCardTitle}>{title}</div>
+                    <div className={styles.nftNum}>{total_num}개 발행</div>
+                    <div className={styles.nftPrice}>
+                      {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원
+                    </div>
+                    <div className={styles.txtSubContainer}>
+                      <div className={styles.remainNum}>
+                        {total_num - sold_num}개 남음
+                      </div>
+                      <button className={styles.buyBtn}>상세보기</button>
+                    </div>
+                  </div>
+                </div>
+              )
+            )}
         </div>
       </div>
       <Footer />

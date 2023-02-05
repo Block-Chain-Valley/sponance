@@ -11,6 +11,7 @@ export interface NFTRankCard_Data {
   cardTitle: string;
   nftPrice: number;
   remainNFT: number;
+  campaignId: number;
 }
 
 export const NFTRankCard = ({
@@ -21,11 +22,12 @@ export const NFTRankCard = ({
   cardTitle,
   nftPrice,
   remainNFT,
+  campaignId,
 }: NFTRankCard_Data) => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
   return (
     <Link
-      to={`/campaign/${0}`}
+      to={`/campaign/${campaignId}`}
       className={isMobile ? styles.mainContainerMobile : styles.mainContainer}
     >
       <div className={styles.order}>{order + 1}</div>

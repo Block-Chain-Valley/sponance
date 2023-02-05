@@ -132,9 +132,24 @@ interface Campaign_Data {
   temp_max_price: number;
 }
 
+interface Nft_Data {
+  campaign_id: number;
+  created_at: string;
+  detail: string;
+  id: number;
+  img: string;
+  price: number;
+  sold_num: number;
+  title: string;
+  total_num: number;
+  item: string;
+  player: string;
+}
+
 const Main = () => {
   const [showNFTRanking, setShowNFTRanking] = useState<boolean>(false);
   const [campaignData, setCampaignData] = useState<any | []>();
+  const [nftData, setNftData] = useState<any | []>();
   const isMobile = useMediaQuery({ maxWidth: 767 });
 
   const rankDateBtnActive = () => {
@@ -153,9 +168,21 @@ const Main = () => {
     }
   };
 
+  const getNftData = async () => {
+    const { data, error } = await supabase.from("nft_detail").select();
+    console.log(data);
+    if (data) {
+      setNftData(data);
+    }
+    if (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     window.scrollTo(0, 0);
     getData();
+    getNftData();
   }, []);
 
   return (
@@ -258,26 +285,32 @@ const Main = () => {
               </button>
             </div>
             {showNFTRanking
-              ? exData4.map(
+              ? nftData.map(
                   (
                     {
-                      imgURL,
+                      campaign_id,
+                      created_at,
+                      detail,
+                      id,
+                      img,
+                      price,
+                      sold_num,
+                      title,
                       item,
                       player,
-                      cardTitle,
-                      nftPrice,
-                      remainNFT,
-                    }: NFTRankCard_Data,
-                    index
+                      total_num,
+                    }: Nft_Data,
+                    index: any
                   ) => (
                     <NFTRankCard
+                      campaignId={campaign_id}
                       order={index}
-                      imgURL={imgURL}
+                      imgURL={img}
                       item={item}
                       player={player}
-                      cardTitle={cardTitle}
-                      nftPrice={nftPrice}
-                      remainNFT={remainNFT}
+                      cardTitle={title}
+                      nftPrice={price}
+                      remainNFT={total_num - sold_num}
                     />
                   )
                 )
@@ -324,56 +357,34 @@ const Main = () => {
               : styles.featureNFTsContainer
           }
         >
-          <div className={isMobile ? styles.cardMobileNFT : ""}>
-            <FeatureNFTCard
-              imgURL={exData3.imgURL}
-              item={exData3.item}
-              cardTitle={exData3.cardTitle}
-              player={exData3.player}
-              nftPrice={exData3.nftPrice}
-              remainNFT={exData3.remainNFT}
-            />
-          </div>
-          <div className={isMobile ? styles.cardMobileNFT : ""}>
-            <FeatureNFTCard
-              imgURL={exData3.imgURL}
-              item={exData3.item}
-              cardTitle={exData3.cardTitle}
-              player={exData3.player}
-              nftPrice={exData3.nftPrice}
-              remainNFT={exData3.remainNFT}
-            />
-          </div>{" "}
-          <div className={isMobile ? styles.cardMobileNFT : ""}>
-            <FeatureNFTCard
-              imgURL={exData3.imgURL}
-              item={exData3.item}
-              cardTitle={exData3.cardTitle}
-              player={exData3.player}
-              nftPrice={exData3.nftPrice}
-              remainNFT={exData3.remainNFT}
-            />
-          </div>{" "}
-          <div className={isMobile ? styles.cardMobileNFT : ""}>
-            <FeatureNFTCard
-              imgURL={exData3.imgURL}
-              item={exData3.item}
-              cardTitle={exData3.cardTitle}
-              player={exData3.player}
-              nftPrice={exData3.nftPrice}
-              remainNFT={exData3.remainNFT}
-            />
-          </div>{" "}
-          <div className={isMobile ? styles.cardMobileNFT : ""}>
-            <FeatureNFTCard
-              imgURL={exData3.imgURL}
-              item={exData3.item}
-              cardTitle={exData3.cardTitle}
-              player={exData3.player}
-              nftPrice={exData3.nftPrice}
-              remainNFT={exData3.remainNFT}
-            />
-          </div>
+          {nftData &&
+            nftData.map(
+              ({
+                campaign_id,
+                created_at,
+                detail,
+                id,
+                img,
+                price,
+                sold_num,
+                title,
+                item,
+                player,
+                total_num,
+              }: Nft_Data) => (
+                <div key={id} className={isMobile ? styles.cardMobileNFT : ""}>
+                  <FeatureNFTCard
+                    campaign_id={campaign_id}
+                    imgURL={img}
+                    item={item}
+                    cardTitle={title}
+                    player={player}
+                    nftPrice={price}
+                    remainNFT={total_num - sold_num}
+                  />
+                </div>
+              )
+            )}
         </div>
       </div>
       <div

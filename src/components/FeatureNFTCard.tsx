@@ -10,6 +10,7 @@ export interface propsType {
   cardTitle: string;
   nftPrice: number;
   remainNFT: number;
+  campaign_id: number;
 }
 
 const FeatureNFTCard = ({
@@ -19,11 +20,12 @@ const FeatureNFTCard = ({
   cardTitle,
   nftPrice,
   remainNFT,
+  campaign_id,
 }: propsType) => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
   return (
     <Link
-      to={`/campaign/${0}`}
+      to={`/campaign/${campaign_id}`}
       className={isMobile ? styles.mainContainerMobile : styles.mainContainer}
     >
       <img src={imgURL} className={styles.featureImg} />

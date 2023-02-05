@@ -10,36 +10,6 @@ import Footer from "../components/Footer";
 import supabase from "../config/supabaseClient";
 import { useMediaQuery } from "react-responsive";
 
-const exData = {
-  id: "0",
-  lastName: "Park",
-  fristName: "Jinsung",
-  email: "jinseongbe@gmail.com",
-  sex: "male",
-  metamaskAddress: "0x000000000000000000000",
-  activeState: "1",
-
-  // 아래 정보는 다른 데이터 테이블에서 조인해서 가져왔다는 것을 가정하고 작성
-
-  //sns
-  instagram: "https://www.instagram.com/jlnsung.p/",
-  youtube: "https://www.youtube.com/@jinseongbe.",
-  twitter: "https://twitter.com/jinseongbe",
-  facebook: "https://facebook.com/jinseongbe",
-  telegram: "jinseongbe",
-  kakaoOpen: "jinseongbe",
-
-  // contents
-  item: "핸드볼",
-  player: "롯데팀",
-  cardTitle: "핸드볼 선수의 해외 출전을 도와주세요",
-  cardDetail: "저희는 이러 저러한 사정으로 도움을 필요합니다. 이러쿵 저러쿵",
-  tempPercent: 68,
-  totalSell: 887000,
-  remainNFT: 243,
-  titleImgUrl: s3,
-};
-
 interface Campaign_Data {
   card_detail: string;
   card_title: string;
@@ -209,7 +179,7 @@ const Campaign = () => {
                     (temp_current_price / temp_max_price) * 100
                   )}
                   totalSell={temp_current_price}
-                  remainNFT={exData.remainNFT}
+                  remainNFT={136}
                 />
               </div>
             )

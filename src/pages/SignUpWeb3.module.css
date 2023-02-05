@@ -79,18 +79,15 @@
   width: 330px;
 }
 .addressTxt {
-  font-family: "Inter_black";
+  font-family: "Inter_semibold";
   font-style: normal;
   font-size: 11px;
   line-height: 12px;
-
+  margin-bottom: 5px;
   color: #888888;
 }
 
 .reconnectWallet {
-  width: 98px;
-  height: 14px;
-
   font-family: "Inter_black";
   font-weight: 700;
   font-size: 11px;
@@ -147,6 +144,10 @@
   text-align: center;
   font-size: 13px;
   line-height: 14px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   color: #000000;
 }
@@ -259,4 +260,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.refresh {
+  width: 11px;
+  height: 11px;
+  cursor: pointer;
+  fill: #1fa5c2;
 }

@@ -8,6 +8,7 @@ import checkIcon from "../assets/image/check-circle.png";
 import checkCircle from "../assets/image/checkCircle.png";
 import { useMediaQuery } from "react-responsive";
 import { Link } from "react-router-dom";
+import refreshIcon from "../assets/image/refresh.svg";
 
 const SignUpWeb3: FC = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
@@ -18,7 +19,7 @@ const SignUpWeb3: FC = () => {
   const [sex, setSex] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [birth, setBirth] = useState<string>("");
-  const [overlapNickname, setOverlapNickname] = useState<boolean>(true);
+  const [overlapNickname, setOverlapNickname] = useState<boolean>(false);
   const [overlapMetaAddress, setOverlapMetaAddress] = useState<boolean>(false);
   const [overlapEmail, setOverlapEmail] = useState<boolean>(false);
   const activestate: boolean = true;
@@ -31,29 +32,29 @@ const SignUpWeb3: FC = () => {
     checkOverlap("email", email);
 
     if (!metaaddress) {
-      setFormError("메타마스크 지갑 연동을 확인해주세요!");
-      return;
-    }
-
-    if (!nickname || !lastname || !firstname || !sex || !email || !birth) {
-      setFormError("정보를 모두 입력해 주세요!");
+      alert("메타마스크 지갑을 연동해주세요!");
       return;
     }
 
     if (overlapNickname) {
-      setFormError("아이디를 중복 확인해주세요!");
+      alert("아이디를 중복 확인해주세요!");
       return;
     }
 
     if (overlapMetaAddress) {
-      setFormError(
+      alert(
         "메타마스크 지갑 주소가 이미 등록되어 있습니다. 로그인을 이용해 주세요."
       );
       return;
     }
 
     if (overlapEmail) {
-      setFormError("이미 등록된 이메일입니다. 다시 입력해 주세요.");
+      alert("이미 등록된 이메일입니다. 다시 입력해 주세요.");
+      return;
+    }
+
+    if (!nickname || !lastname || !firstname || !sex || !email || !birth) {
+      alert("나머지 정보 모두 입력해 주세요!");
       return;
     }
 
@@ -74,7 +75,7 @@ const SignUpWeb3: FC = () => {
     }
     if (error) {
       console.log(error);
-      setFormError("Please fill in all the fields correcttly");
+      alert("서버 오류. 죄송합니다 하단 연락처로 문의 부탁드리겠습니다.");
     } else {
       setShowSuccess(true);
     }
@@ -126,9 +127,6 @@ const SignUpWeb3: FC = () => {
       if (column === "nickname") {
         setOverlapNickname(true);
         alert("아이디가 중복 되었습니다! 다른 아이디를 사용해 주세요.");
-      } else {
-        setOverlapNickname(false);
-        alert("아이디를 사용 가능합니다.");
       }
 
       if (column === "metaaddress") {
@@ -141,6 +139,11 @@ const SignUpWeb3: FC = () => {
         alert("이미 등록된 이메일 주소입니다. 다른 이메일을 사용해 주세요!");
       }
       return;
+    }
+
+    if (column === "nickname") {
+      setOverlapNickname(false);
+      alert("아이디를 사용 가능합니다.");
     }
 
     if (error) {
@@ -165,8 +168,6 @@ const SignUpWeb3: FC = () => {
     console.log("사용 가능합니다!");
     return;
   };
-
-  const formBtnHandler = () => {};
 
   return (
     <div>
@@ -205,19 +206,16 @@ const SignUpWeb3: FC = () => {
                 }
               >
                 <div className={styles.addressTxt}>
-                  주소&nbsp;:&nbsp;
                   {metaaddress !== undefined ? (
                     <span>{metaaddress}</span>
                   ) : null}
                 </div>
-                {!isMobile && (
-                  <button
-                    className={styles.reconnectWallet}
-                    onClick={getMetamask}
-                  >
-                    다시 불러오기
-                  </button>
-                )}
+                <img
+                  src={refreshIcon}
+                  alt="icon"
+                  className={styles.refresh}
+                  onClick={getMetamask}
+                />
               </div>
             </div>
           )}
@@ -238,14 +236,14 @@ const SignUpWeb3: FC = () => {
                   setNickname(e.target.value);
                 }}
               />
-              <button
+              <div
                 onClick={() => {
                   checkOverlap("nickname", nickname);
                 }}
                 className={styles.checkOverlapBtn}
               >
                 중복 확인
-              </button>
+              </div>
             </div>
           </div>
 

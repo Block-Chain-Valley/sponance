@@ -37,7 +37,7 @@ const NavBar = () => {
             authCtx.onLogin(data[0].nickname, data[0].metaaddress);
             setSignInCheck(true);
           } else {
-            console.log("가입 정보가 없습니다. 회원가입을 이용해주세요.");
+            alert("가입 정보가 없습니다. 회원가입을 이용해주세요.");
           }
 
           if (error) {

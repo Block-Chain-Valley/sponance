@@ -175,7 +175,7 @@ const Main = () => {
       >
         <div className={styles.cardContainer}>
           <div className={isMobile ? styles.cardTitleMobie : styles.cardTitle}>
-            선수들 후원하기
+            스포낸스 펀딩
           </div>
           <div
             className={

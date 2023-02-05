@@ -83,10 +83,6 @@ const PersonCard = ({
     }
   }, []);
 
-  const currentSponPrice = 887000;
-  const maxSponPrice = 1200000;
-  const percent = Math.ceil((currentSponPrice / maxSponPrice) * 100);
-
   return (
     <Link to={url} className={styles.cardContainer}>
       <img className={styles.profileImg} src={titleImgUrl} />
@@ -97,10 +93,9 @@ const PersonCard = ({
       <div className={styles.detail}>{cardDetail}</div>
       <div className={styles.subContainer}>
         <div className={styles.subContainer2}>
-          <div className={styles.percent}>{percent}%</div>
+          <div className={styles.percent}>{tempPercent}%</div>
           <div className={styles.totalsell}>
-            {currentSponPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-            원
+            {totalSell.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원
           </div>
         </div>
         <div className={styles.remainNFT}>
@@ -112,7 +107,7 @@ const PersonCard = ({
         <div className={styles.yellowBar}></div>
         <div
           style={{
-            width: `${(percent / 100) * 230}px`,
+            width: `${(tempPercent / 100) * 230}px`,
           }}
           className={styles.blueBar}
         ></div>

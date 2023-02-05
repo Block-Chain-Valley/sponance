@@ -4,6 +4,7 @@ import styles from "./Campaign.module.css";
 
 import s2 from "../assets/image/s2.png";
 import s3 from "../assets/image/s3.png";
+import hockey from "../assets/image/hockey.jpg";
 import PersonCard from "../components/PersonCard";
 import Footer from "../components/Footer";
 import supabase from "../config/supabaseClient";
@@ -48,6 +49,8 @@ interface Campaign_Data {
   player: string;
   title_img: string;
   project_owner: number;
+  temp_current_price: number;
+  temp_max_price: number;
 }
 
 interface FilterProps {
@@ -65,8 +68,9 @@ const Campaign = () => {
   const filters: FilterProps[] = [
     { name: "축구", id: "1" },
     { name: "농구", id: "2" },
-    { name: "배구", id: "3" },
-    { name: "핸드볼", id: "4" },
+    { name: "하키", id: "3" },
+    { name: "스케이트", id: "4" },
+    { name: "핸드볼", id: "5" },
   ];
 
   const handleClick = (filterName: string, filterId: string) => {
@@ -111,11 +115,11 @@ const Campaign = () => {
       <NavBar />
       {!isMobile && (
         <div className={styles.banner}>
-          <img src={s2} alt="banner" className={styles.bannerImg} />
+          <img src={hockey} alt="banner" className={styles.bannerImg} />
           <div className={styles.blur} />
           <div className={styles.bannerTxt}>
-            <span className={styles.colorBar}>|</span>대충 후원을 독려하는
-            문구,,,
+            <span className={styles.colorBar}>|</span>하키 유소년의 동계올림픽
+            진출을 응원해주세요
           </div>
         </div>
       )}
@@ -189,6 +193,8 @@ const Campaign = () => {
               item,
               player,
               title_img,
+              temp_current_price,
+              temp_max_price,
             }: Campaign_Data) => (
               <div className={styles.cardBox} key={id}>
                 <PersonCard
@@ -199,8 +205,10 @@ const Campaign = () => {
                   player={player}
                   cardTitle={card_title}
                   cardDetail={card_detail}
-                  tempPercent={exData.tempPercent}
-                  totalSell={exData.totalSell}
+                  tempPercent={Math.ceil(
+                    (temp_current_price / temp_max_price) * 100
+                  )}
+                  totalSell={temp_current_price}
                   remainNFT={exData.remainNFT}
                 />
               </div>

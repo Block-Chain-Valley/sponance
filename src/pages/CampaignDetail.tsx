@@ -63,9 +63,9 @@ const CampaignDetail = () => {
     }
   };
 
-  const currentSponPrice = 887000;
-  const maxSponPrice = 1200000;
-  const percent = Math.ceil((currentSponPrice / maxSponPrice) * 100);
+  // const percent = Math.ceil(
+  //   (campaignData[0].temp_current_price / campaignData[0].temp_max_price) * 100
+  // );
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -100,13 +100,13 @@ const CampaignDetail = () => {
               >
                 <div className={styles.barTxt1}>
                   ₩
-                  {currentSponPrice
+                  {campaignData[0].temp_current_price
                     .toString()
                     .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                 </div>
                 <div className={styles.barTxt2}>
                   ₩
-                  {maxSponPrice
+                  {campaignData[0].temp_max_price
                     .toString()
                     .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                 </div>
@@ -117,11 +117,22 @@ const CampaignDetail = () => {
               ></div>
               <div
                 style={{
-                  width: `${(percent / 100) * 649}px`,
+                  width: `${(Math.ceil(
+                    (campaignData[0].temp_current_price /
+                      campaignData[0].temp_max_price) *
+                      100
+                  ) /
+                    100) *
+                    649}px`,
                 }}
                 className={isMobile ? styles.blueBarM : styles.blueBar}
               >
-                {percent}%
+                {Math.ceil(
+                  (campaignData[0].temp_current_price /
+                    campaignData[0].temp_max_price) *
+                    100
+                )}
+                %
               </div>
             </div>
 
@@ -136,10 +147,15 @@ const CampaignDetail = () => {
                 </div>
                 <div className={styles.MSubContainer}>
                   <div className={styles.achieveTxt}>
-                    68<span className={styles.achieveTxt2}>% 달성</span>
+                    {Math.ceil(
+                      (campaignData[0].temp_current_price /
+                        campaignData[0].temp_max_price) *
+                        100
+                    )}
+                    <span className={styles.achieveTxt2}>% 달성</span>
                   </div>
                   <div className={styles.totalPrice}>
-                    {currentSponPrice
+                    {campaignData[0].temp_current_price
                       .toString()
                       .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                     <span className={styles.totalPrice2}>원 62명 참여</span>
@@ -259,10 +275,10 @@ const CampaignDetail = () => {
                     isMobile ? styles.sponsorCardM : styles.sponsorCard
                   }
                 >
-                  <div className={styles.nickname}>jinseongbe</div>
+                  <div className={styles.nickname}>Emmeriet</div>
                   <div className={styles.sponsorCardSubContainer}>
-                    <div className={styles.nftsBuy}>NFT 8개 구매</div>
-                    <div className={styles.sponPrice}>800,000원</div>
+                    <div className={styles.nftsBuy}>NFT 9개 구매</div>
+                    <div className={styles.sponPrice}>900,000원</div>
                   </div>
                 </div>
                 <div
@@ -270,10 +286,10 @@ const CampaignDetail = () => {
                     isMobile ? styles.sponsorCardM : styles.sponsorCard
                   }
                 >
-                  <div className={styles.nickname}>jinseongbe</div>
+                  <div className={styles.nickname}>Imper</div>
                   <div className={styles.sponsorCardSubContainer}>
-                    <div className={styles.nftsBuy}>NFT 8개 구매</div>
-                    <div className={styles.sponPrice}>800,000원</div>
+                    <div className={styles.nftsBuy}>NFT 2개 구매</div>
+                    <div className={styles.sponPrice}>80,000원</div>
                   </div>
                 </div>
                 <div
@@ -281,10 +297,10 @@ const CampaignDetail = () => {
                     isMobile ? styles.sponsorCardM : styles.sponsorCard
                   }
                 >
-                  <div className={styles.nickname}>jinseongbe</div>
+                  <div className={styles.nickname}>Wendent</div>
                   <div className={styles.sponsorCardSubContainer}>
-                    <div className={styles.nftsBuy}>NFT 8개 구매</div>
-                    <div className={styles.sponPrice}>800,000원</div>
+                    <div className={styles.nftsBuy}>NFT 10개 구매</div>
+                    <div className={styles.sponPrice}>720,000원</div>
                   </div>
                 </div>
                 <div
@@ -292,10 +308,10 @@ const CampaignDetail = () => {
                     isMobile ? styles.sponsorCardM : styles.sponsorCard
                   }
                 >
-                  <div className={styles.nickname}>jinseongbe</div>
+                  <div className={styles.nickname}>Caluin</div>
                   <div className={styles.sponsorCardSubContainer}>
-                    <div className={styles.nftsBuy}>NFT 8개 구매</div>
-                    <div className={styles.sponPrice}>800,000원</div>
+                    <div className={styles.nftsBuy}>NFT 3개 구매</div>
+                    <div className={styles.sponPrice}>30,000원</div>
                   </div>
                 </div>
               </div>
@@ -317,11 +333,17 @@ const CampaignDetail = () => {
                   {campaignData[0].card_detail}
                 </div>
                 <div className={styles.achieveTxt}>
-                  {percent}
+                  {Math.ceil(
+                    (campaignData[0].temp_current_price /
+                      campaignData[0].temp_max_price) *
+                      100
+                  )}
                   <span className={styles.achieveTxt2}>% 달성</span>
                 </div>
                 <div className={styles.totalPrice}>
-                  887,000
+                  {campaignData[0].temp_current_price
+                    .toString()
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                   <span className={styles.totalPrice2}>원 62명 참여</span>
                 </div>
               </div>

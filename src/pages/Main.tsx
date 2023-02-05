@@ -51,15 +51,15 @@ const exData = {
 };
 
 const exData2 = [
-  { order: 0, nickname: "jinseonge", donateNum: 5, totalDonate: 126000 },
-  { order: 0, nickname: "jinseonge2", donateNum: 4, totalDonate: 126000 },
-  { order: 0, nickname: "jinseonge3", donateNum: 5, totalDonate: 116000 },
-  { order: 0, nickname: "jinseonge4", donateNum: 7, totalDonate: 96000 },
-  { order: 0, nickname: "jinseonge5", donateNum: 30, totalDonate: 76000 },
-  { order: 0, nickname: "jinseonge6", donateNum: 29, totalDonate: 69000 },
-  { order: 0, nickname: "jinseonge7", donateNum: 20, totalDonate: 55000 },
-  { order: 0, nickname: "jinseonge8", donateNum: 8, totalDonate: 34000 },
-  { order: 0, nickname: "jinseonge9", donateNum: 9, totalDonate: 23000 },
+  { order: 0, nickname: "Camrilia", donateNum: 5, totalDonate: 126000 },
+  { order: 0, nickname: "Talmarad", donateNum: 4, totalDonate: 126000 },
+  { order: 0, nickname: "Twolmerht", donateNum: 5, totalDonate: 116000 },
+  { order: 0, nickname: "Duine", donateNum: 7, totalDonate: 96000 },
+  { order: 0, nickname: "Audocus", donateNum: 30, totalDonate: 76000 },
+  { order: 0, nickname: "Brondor", donateNum: 29, totalDonate: 69000 },
+  { order: 0, nickname: "Caircello", donateNum: 20, totalDonate: 55000 },
+  { order: 0, nickname: "Isineldoar", donateNum: 8, totalDonate: 34000 },
+  { order: 0, nickname: "Tujenn", donateNum: 9, totalDonate: 23000 },
 ];
 
 const exData4 = [
@@ -128,6 +128,8 @@ interface Campaign_Data {
   player: string;
   title_img: string;
   project_owner: number;
+  temp_current_price: number;
+  temp_max_price: number;
 }
 
 const Main = () => {
@@ -193,6 +195,8 @@ const Main = () => {
                   item,
                   player,
                   title_img,
+                  temp_current_price,
+                  temp_max_price,
                 }: Campaign_Data) => (
                   <div
                     className={isMobile ? styles.cardMobile : styles.card}
@@ -206,8 +210,10 @@ const Main = () => {
                       player={player}
                       cardTitle={card_title}
                       cardDetail={card_detail}
-                      tempPercent={exData.tempPercent}
-                      totalSell={exData.totalSell}
+                      tempPercent={Math.ceil(
+                        (temp_current_price / temp_max_price) * 100
+                      )}
+                      totalSell={temp_current_price}
                       remainNFT={exData.remainNFT}
                     />
                   </div>

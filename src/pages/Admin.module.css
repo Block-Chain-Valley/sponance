@@ -29,7 +29,7 @@
   margin-right: 20px;
 }
 .adminTxt {
-  font-family: "Inter_regular";
+  font-family: "Inter_semibold";
 
   font-weight: 700;
   font-size: 20px;
@@ -43,7 +43,7 @@
 
   background: #1fa5c2;
   border-radius: 11px;
-  font-family: "Inter_regular";
+  font-family: "Inter_semibold";
   font-weight: 700;
   font-size: 20px;
   line-height: 24px;
@@ -72,7 +72,7 @@
 .title {
   margin-top: 5rem;
   margin-bottom: 3rem;
-  font-family: "Inter_regular";
+  font-family: "Inter_semibold";
   font-weight: 700;
   font-size: 20px;
   line-height: 24px;
@@ -95,7 +95,7 @@
 .nftName {
   width: 224px;
 
-  font-family: "Inter_regular";
+  font-family: "Inter_semibold";
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
@@ -106,7 +106,7 @@
 .date {
   width: 152px;
 
-  font-family: "Inter_regular";
+  font-family: "Inter_semibold";
   font-style: normal;
   font-weight: 400;
   font-size: 15px;
@@ -129,7 +129,7 @@
   background: #1fa5c2;
   border-radius: 11px;
 
-  font-family: "Inter_regular";
+  font-family: "Inter_semibold";
   font-weight: 700;
   font-size: 20px;
   line-height: 24px;

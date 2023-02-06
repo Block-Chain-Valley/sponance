@@ -1,0 +1,382 @@
+.mainContainer {
+  margin-top: 3.7rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* -------------------------------------------------------------------------- */
+.firstContainer {
+  width: 1110px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.firstConTxtBox {
+  display: flex;
+  flex-direction: column;
+}
+
+.firConTitle {
+  font-family: "Inter_black";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 56px;
+  line-height: 78px;
+  /* or 140% */
+  letter-spacing: -1px;
+  color: #000000;
+  margin-bottom: 50px;
+}
+
+.fristConText {
+  font-family: "Inter_regular";
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 28px;
+  /* or 156% */
+  color: #000000;
+  /* Inside auto layout */
+
+  margin-bottom: 40px;
+}
+
+.gofunding {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 24px;
+
+  /* Black */
+
+  background: #000000;
+  border-radius: 32px;
+
+  /* Inside auto layout */
+
+  width: 60px;
+  height: 24px;
+
+  font-family: "Inter_semibold";
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height, or 150% */
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.1px;
+
+  /* Anti-Flash White */
+
+  color: #f3f3f3;
+
+  /* Inside auto layout */
+
+  cursor: pointer;
+}
+
+.imgBox {
+}
+
+.phoneImg {
+  width: 644px;
+  height: 746px;
+  margin-bottom: -60px;
+}
+
+/* -------------------------------------------------------------------------- */
+.secondContainer {
+  width: 100vw;
+  height: 601px;
+
+  background: #d9d9d9;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.forBackgroudContainer {
+  width: 1110px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.secondConBox {
+  width: 380px;
+  height: 481px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 20px 0 20px;
+}
+.secondConSymbole {
+  width: 40px;
+  height: 40px;
+  background: #000000;
+  border-radius: 40px;
+  margin-right: 1rem;
+}
+.secondConTextBox {
+  display: flex;
+  flex-direction: row;
+}
+.secondConTitle {
+  font-family: "Inter_black";
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 28px;
+  /* identical to box height, or 156% */
+
+  display: flex;
+  align-items: center;
+
+  color: #000000;
+}
+.secondConText {
+  margin-left: 40px;
+  font-family: "Inter_semibold";
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+  text-indent: -22px;
+  list-style-position: inside;
+  color: #000000;
+  margin-top: 10px;
+  word-break: keep-all;
+}
+
+/* -------------------------------------------------------------------------- */
+.thirdContainer {
+  width: 100vw;
+  height: 620px;
+  /* Black */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: #000000;
+}
+
+.graphimg {
+  width: 585px;
+  height: 406px;
+  margin-right: 70px;
+  margin-bottom: -80px;
+}
+.thirdTextBox {
+  display: flex;
+  flex-direction: column;
+}
+.thirdTBTitle {
+  font-family: "Inter_semibold";
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+
+  letter-spacing: -0.1px;
+
+  color: #ffffff;
+  margin-bottom: 50px;
+}
+.thirdTBText {
+  font-family: "Inter_semibold";
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+
+  letter-spacing: 0.1px;
+
+  color: #ffffff;
+}
+/* -------------------------------------------------------------------------- */
+.forthContainer {
+  width: 1440px;
+  height: 993px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.forthConTitleBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 100px;
+}
+
+.forthTitle {
+  font-family: "Inter_black";
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 64px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #18191f;
+}
+
+.forthText {
+  font-family: "Inter_semibold";
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 32px;
+  text-align: center;
+  color: #18191f;
+}
+
+.forthContentsContainer {
+  display: flex;
+  flex-direction: row;
+  flex-flow: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.forthContentsBox {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 80px;
+}
+
+.forthContentsSymbol {
+  heigth: 100px;
+  margin-bottom: 25px;
+}
+
+.forthContentsTxt {
+  font-family: "Inter_semibold";
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 32px;
+  /* or 160% */
+
+  text-align: center;
+  font-feature-settings: "salt" on, "liga" off;
+
+  color: #000000;
+}
+
+/* -------------------------------------------------------------------------- */
+.fifthContainer {
+  width: 100vw;
+  height: 896px;
+  background: #f3f3f3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.customer {
+  width: 1093px;
+  height: 663px;
+}
+
+/* -------------------------------------------------------------------------- */
+.sixthContainer {
+  width: 1440px;
+  height: 834px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.roadmap {
+  width: 1109.5px;
+  height: 597px;
+}
+
+/* -------------------------------------------------------------------------- */
+
+.sevenContainer {
+  width: 1440px;
+  height: 834px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sevenConTitle {
+  width: 1110px;
+  height: 64px;
+  margin-bottom: 70px;
+  font-family: "Inter_black";
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 64px;
+  text-align: left;
+  color: #18191f;
+}
+.memberBoxContainer {
+  display: flex;
+  flex-direction: row;
+  flex-flow: wrap;
+  width: 1440px;
+  align-items: center;
+  justify-content: center;
+}
+
+.memberBox {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 0 15px 25px 15px;
+  width: 330px;
+  height: 176px;
+
+  background: #f3f3f3;
+  border-radius: 8px;
+  padding: 0 0 0 20px;
+}
+.profileimg {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 20px;
+  border-radius: 32px;
+  object-fit: cover;
+}
+.name {
+  font-family: "Inter_semibold";
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  color: #000000;
+}
+.memberBoxSubCon {
+  display: flex;
+  flex-direction: row;
+  width: 300px;
+  justify-content: space-between;
+}
+.postion {
+  font-family: "Inter_regular";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  /* identical to box height, or 143% */
+
+  color: #000000;
+}
+.logoCon {
+  display: flex;
+  flex-direction: row;
+  width: 48px;
+  justify-content: space-between;
+}
+.snsLogo {
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+}

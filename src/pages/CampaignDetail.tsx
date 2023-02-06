@@ -113,13 +113,21 @@ const CampaignDetail = () => {
               ></div>
               <div
                 style={{
-                  width: `${(Math.ceil(
-                    (campaignData[0].temp_current_price /
-                      campaignData[0].temp_max_price) *
-                      100
-                  ) /
-                    100) *
-                    649}px`,
+                  width: isMobile
+                    ? `${(Math.ceil(
+                        (campaignData[0].temp_current_price /
+                          campaignData[0].temp_max_price) *
+                          100
+                      ) /
+                        100) *
+                        85}vw`
+                    : `${(Math.ceil(
+                        (campaignData[0].temp_current_price /
+                          campaignData[0].temp_max_price) *
+                          100
+                      ) /
+                        100) *
+                        649}px`,
                 }}
                 className={isMobile ? styles.blueBarM : styles.blueBar}
               >

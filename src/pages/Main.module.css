@@ -103,7 +103,7 @@
 
 .rankDonateBtn {
   margin-right: 20px;
-  font-family: "Inter_regular";
+  font-family: "Inter_semibold";
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
@@ -120,7 +120,7 @@
 
 .rankNFTBtn {
   margin-right: 20px;
-  font-family: "Inter_regular";
+  font-family: "Inter_semibold";
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
@@ -182,7 +182,7 @@
   height: 48px;
   margin: -210px 0 0 40px;
 
-  font-family: "Inter_regular";
+  font-family: "Inter_semibold";
   font-style: normal;
   font-weight: 600;
   font-size: 40px;
@@ -196,7 +196,7 @@
   width: 297px;
   height: 18px;
   margin: -150px 0 0 40px;
-  font-family: "Inter_regular";
+  font-family: "Inter_semibold";
   font-style: normal;
   font-weight: 500;
   font-size: 15px;

@@ -139,12 +139,14 @@
 /* mobile */
 .mainContainerM {
   composes: mainContainer;
-  width: 100vw;
+  /* margin-left: 2vw; */
   align-items: center;
+  overflow: hidden;
 }
 
 .fillterContainerM {
   composes: fillterContainer;
+  width: 80vw;
   flex-direction: column;
 }
 

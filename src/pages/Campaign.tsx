@@ -185,7 +185,8 @@ const Campaign = () => {
             )
           )}
       </div>
-      <Footer />
+
+      {!isMobile && <Footer />}
     </div>
   );
 };

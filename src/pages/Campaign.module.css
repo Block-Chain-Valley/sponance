@@ -124,8 +124,10 @@
 }
 
 .cardBoxM {
+  composes: cardBox;
   width: 75vw;
   height: 100%;
+  padding: 15px;
 }
 
 .card {

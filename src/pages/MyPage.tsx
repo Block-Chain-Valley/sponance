@@ -10,6 +10,7 @@ import supabase from "../config/supabaseClient";
 
 const MyPage = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
+  const isMobileSmall = useMediaQuery({ maxWidth: 490 });
   const exData = {
     id: "0",
     lastName: "Park",
@@ -164,7 +165,10 @@ const MyPage = () => {
                 temp_current_price,
                 temp_max_price,
               }: Campaign_Data) => (
-                <div className={styles.card} key={id}>
+                <div
+                  className={isMobileSmall ? styles.cardM : styles.card}
+                  key={id}
+                >
                   <PersonCard
                     id={id}
                     titleImgUrl={title_img}

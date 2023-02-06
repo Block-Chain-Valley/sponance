@@ -8,6 +8,12 @@
   margin-bottom: 10px;
   object-fit: cover;
 }
+
+.profileImgM {
+  height: 100%;
+  width: 75vw;
+}
+
 .itemAndPlayerTxt {
   font-family: "Inter_regular";
   font-weight: 400;
@@ -26,6 +32,12 @@
   color: #000000;
   margin-bottom: 10px;
 }
+
+.titleM {
+  composes: title;
+  width: 75vw;
+}
+
 .detail {
   font-family: "Inter_regular";
   font-weight: 400;
@@ -35,10 +47,23 @@
   color: #a0a0a0;
   margin-bottom: 18px;
 }
+
+.detailM {
+  composes: detail;
+  width: 75vw;
+}
 .subContainer {
   display: flex;
   flex-direction: row;
   width: 230px;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.subContainerM {
+  display: flex;
+  flex-direction: row;
+  width: 75vw;
   justify-content: space-between;
   margin-bottom: 8px;
 }
@@ -77,10 +102,15 @@
   color: #686868;
 }
 
-.barContainer {
-}
 .yellowBar {
   width: 230px;
+  height: 5px;
+
+  background: #ffe995;
+}
+
+.yellowBarM {
+  width: 75vw;
   height: 5px;
 
   background: #ffe995;

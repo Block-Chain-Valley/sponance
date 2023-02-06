@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./PersonCard.module.css";
 import s3 from "../assets/image/s3.png";
 import { Link } from "react-router-dom";
+import { useMediaQuery } from "react-responsive";
 
 const exData = {
   id: "0",
@@ -81,15 +82,26 @@ const PersonCard = ({
     }
   }, []);
 
+  const isMobileSmall = useMediaQuery({ maxWidth: 490 });
+
   return (
     <Link to={url} className={styles.cardContainer}>
-      <img className={styles.profileImg} src={titleImgUrl} />
+      <img
+        className={isMobileSmall ? styles.profileImgM : styles.profileImg}
+        src={titleImgUrl}
+      />
       <div className={styles.itemAndPlayerTxt}>
         {item}&nbsp;|&nbsp;{player}
       </div>
-      <div className={styles.title}>{cardTitle}</div>
-      <div className={styles.detail}>{cardDetail}</div>
-      <div className={styles.subContainer}>
+      <div className={isMobileSmall ? styles.titleM : styles.title}>
+        {cardTitle}
+      </div>
+      <div className={isMobileSmall ? styles.detailM : styles.detail}>
+        {cardDetail}
+      </div>
+      <div
+        className={isMobileSmall ? styles.subContainerM : styles.subContainer}
+      >
         <div className={styles.subContainer2}>
           <div className={styles.percent}>{tempPercent}%</div>
           <div className={styles.totalsell}>
@@ -102,13 +114,25 @@ const PersonCard = ({
         </div>
       </div>
       <div className={styles.barContainer}>
-        <div className={styles.yellowBar}></div>
         <div
-          style={{
-            width: `${(tempPercent / 100) * 230}px`,
-          }}
-          className={styles.blueBar}
+          className={isMobileSmall ? styles.yellowBarM : styles.yellowBar}
         ></div>
+        {!isMobileSmall && (
+          <div
+            style={{
+              width: `${(tempPercent / 100) * 230}px`,
+            }}
+            className={styles.blueBar}
+          ></div>
+        )}
+        {isMobileSmall && (
+          <div
+            style={{
+              width: `${(tempPercent / 100) * 75}vw`,
+            }}
+            className={styles.blueBar}
+          ></div>
+        )}
       </div>
     </Link>
   );

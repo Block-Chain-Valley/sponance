@@ -231,7 +231,7 @@ const Main = () => {
                   >
                     <PersonCard
                       id={id}
-                      className={styles.card}
+                      // className={styles.card}
                       titleImgUrl={title_img}
                       item={item}
                       player={player}

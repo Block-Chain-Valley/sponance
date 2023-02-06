@@ -167,7 +167,6 @@ const MyPage = () => {
                 <div className={styles.card} key={id}>
                   <PersonCard
                     id={id}
-                    className={styles.card}
                     titleImgUrl={title_img}
                     item={item}
                     player={player}

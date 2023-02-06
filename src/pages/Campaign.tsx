@@ -169,7 +169,6 @@ const Campaign = () => {
               <div className={styles.cardBox} key={id}>
                 <PersonCard
                   id={id}
-                  className={styles.card}
                   titleImgUrl={title_img}
                   item={item}
                   player={player}

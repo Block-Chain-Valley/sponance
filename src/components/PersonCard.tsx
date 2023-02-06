@@ -43,7 +43,6 @@ export interface propsType {
   totalSell: number;
   remainNFT: number;
   titleImgUrl: string;
-  className: string;
 }
 
 const PersonCard = ({
@@ -56,7 +55,6 @@ const PersonCard = ({
   tempPercent,
   totalSell,
   remainNFT,
-  className,
 }: propsType) => {
   const [url, setUrl] = useState<string>(`/${id}`);
 

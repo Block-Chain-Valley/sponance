@@ -1,3 +1,9 @@
+@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+div {
+  font-family: "Noto Sans KR" !important;
+}
+
 @font-face {
   font-family: "Inter_regular";
   src: url("./assets/fonts/Inter-Regular.ttf") format("truetype");

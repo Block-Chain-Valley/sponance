@@ -151,6 +151,7 @@ const Main = () => {
   const [campaignData, setCampaignData] = useState<any | []>();
   const [nftData, setNftData] = useState<any | []>();
   const isMobile = useMediaQuery({ maxWidth: 767 });
+  const isMobileSmall = useMediaQuery({ maxWidth: 490 });
 
   const rankDateBtnActive = () => {
     setShowNFTRanking(false);
@@ -226,7 +227,7 @@ const Main = () => {
                   temp_max_price,
                 }: Campaign_Data) => (
                   <div
-                    className={isMobile ? styles.cardMobile : styles.card}
+                    className={isMobileSmall ? styles.cardMobile : styles.card}
                     key={id}
                   >
                     <PersonCard
@@ -400,7 +401,7 @@ const Main = () => {
         </a>
 
         <img src={s1} alt="bottomBanner" className={styles.bottomBannerImg} />
-        <div className={styles.bottomBannerTitle}>SPONANCE 후원 신청하기</div>
+        <div className={styles.bottomBannerTitle}>SPONANCE 펀딩 신청하기</div>
         <div className={styles.bottomBannerDetail}>
           자신의 이야기를 소개하고, 후원자를 만나보세요.
         </div>

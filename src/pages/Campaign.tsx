@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import NavBar from "../components/NavBar";
 import styles from "./Campaign.module.css";
 
-import s2 from "../assets/image/s2.png";
-import s3 from "../assets/image/s3.png";
 import hockey from "../assets/image/hockey.jpg";
 import PersonCard from "../components/PersonCard";
 import Footer from "../components/Footer";
@@ -29,10 +27,10 @@ interface FilterProps {
 }
 
 const Campaign = () => {
-  const isMobileSmall = useMediaQuery({ maxWidth: 490 });
   const [campaignData, setCampaignData] = useState<any | []>();
   const isMobile = useMediaQuery({ maxWidth: 1000 });
 
+  const isMobileSmall = useMediaQuery({ maxWidth: 490 });
   const [selectedFilter, setSelectedFilter] = useState<string | null>(null);
   const [itemFilter, setItemFilter] = useState<string>("");
 
@@ -100,14 +98,20 @@ const Campaign = () => {
         }
       >
         <div className={isMobile ? styles.subContainerM : styles.subContainer}>
-          <div className={styles.title}>전체</div>
-          <div className={styles.sportFillterContainer}>
+          <div className={isMobile ? styles.titleM : styles.title}>전체</div>
+          <div
+            className={
+              isMobile
+                ? styles.sportFillterContainerM
+                : styles.sportFillterContainer
+            }
+          >
             {filters.map((filter) => (
               <button
                 key={filter.id}
-                className={`${styles.sportFillterTxt} ${
-                  selectedFilter === filter.id ? styles.active : ""
-                }`}
+                className={`${
+                  isMobile ? styles.sportFillterTxtM : styles.sportFillterTxt
+                } ${selectedFilter === filter.id ? styles.active : ""}`}
                 onClick={() => handleClick(filter.name, filter.id)}
               >
                 {filter.name}

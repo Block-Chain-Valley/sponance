@@ -9,6 +9,9 @@ import step2img from "../assets/image/Group56.png";
 import step1img from "../assets/image/Group57.png";
 import supabase from "../config/supabaseClient";
 import { useMediaQuery } from "react-responsive";
+import { ethers } from "ethers";
+import web3 from "web3";
+import Web3 from "web3";
 
 const Payment = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
@@ -30,95 +33,70 @@ const Payment = () => {
     setStep((prev): number => prev + 1);
   };
 
-  const OnclickHandlerToken = () => {
+  const OnclickHandlerToken = async () => {
     if (step == 1) {
       setBtnText("홈으로");
     }
+    NftTransaction();
     setStep((prev): number => prev + 1);
 
-    // web3 결제
-    connectWalletHandler();
-
-    // const contractAddress = NFT.address;
-    // const contractABI = NFT.abi;
-    // // Connect to the contract instance
-    // const Web3 = require("web3");
-    // const goerliProvider = new Web3.providers.HttpProvider(
-    //   "https://goerli.infura.io/v3/6a99ecdfa5e14384a00c67658081e723"
-    // );
-
-    // const web3 = new Web3(goerliProvider);
-
-    // // Connect to the contract instance
-    // const contract = new web3.eth.Contract(contractABI, contractAddress);
-    // const fromAddress = "0x6f2778462889a7D31b4E1250bA073748Cf39eAF9";
-    // const toAddress = "0xf7e34BFbAD83e2A6fF72398e5b1daEE8672a1368";
-    // const tokenId = 2;
-
-    // // Example function call
-    // contract.methods
-    //   .transferFrom(fromAddress, toAddress, tokenId)
-    //   .send({ from: fromAddress })
-    //   .then((result: any) => {
-    //     console.log(result);
-    //   })
-    //   .catch((error: any) => {
-    //     console.error(error);
-    //   });
-    window.scrollTo(0, 0);
     window.scrollTo(0, 0);
   };
 
-  const connectWalletHandler = async () => {
-    // Check if Metamask is available
-    if (
-      typeof window !== "undefined" &&
-      typeof window.ethereum !== "undefined"
-    ) {
-      try {
-        //request wallet connect
-        const Web3 = require("web3");
-        await window.ethereum.request({ method: "eth_requestAccounts" });
-        const goerliProvider = new Web3.providers.HttpProvider(
-          "https://goerli.infura.io/v3/6a99ecdfa5e14384a00c67658081e723"
-        );
+  const NftTransaction = async () => {
+    const Web3 = require("web3");
+    const abifile = NFT.abi;
+    const web3 = new Web3(
+      "https://goerli.infura.io/v3/6a99ecdfa5e14384a00c67658081e723"
+    );
+    const contractAddress = NFT.address;
+    console.log(contractAddress);
 
-        const web3 = new Web3(goerliProvider);
+    const contract = new web3.eth.Contract(abifile, contractAddress);
 
-        //set web3 instance
+    const accounts = await web3.eth.getAccounts();
+    const _from = accounts[0];
+    const privateKey =
+      "7c8d8023ba982e9ba685fe593f2bd625c9dea7fa8a81b292302c6ee7727ee4e7";
 
-        // const web3 = new Web3(window.ethereum);
+    const tx = {
+      from: _from,
+      to: contractAddress,
+      gas: 50000,
+      data: contract.methods
+        .transferFrom(
+          "0x6f2778462889a7d31b4e1250ba073748cf39eaf9",
+          "0xf7e34bfbad83e2a6ff72398e5b1daee8672a1368",
+          2
+        )
+        .encodeABI(),
+    };
 
-        //get list of accounts
-        const account = await window.ethereum.request({
-          method: "eth_requestAccounts",
-        });
-        // Connect to the contract instance
+    // const signature = await web3.eth.accounts.signTransaction(tx, privateKey);
+    // web3.eth
+    //   .sendSignedTransaction(signature.rawTransaction)
+    //   .on("receipt", (receipt: any) => {
+    //     console.log(receipt);
+    //   });
 
-        const contractAddress = NFT.address;
-        const contractABI = NFT.abi;
-        const contract = new web3.eth.Contract(contractABI, contractAddress);
-        const fromAddress = "0x6f2778462889a7D31b4E1250bA073748Cf39eAF9";
-        const toAddress = "0xf7e34BFbAD83e2A6fF72398e5b1daEE8672a1368";
-        const tokenId = 2;
+    let params = [
+      {
+        from: metaaddress,
+        to: "0xf7e34bfbad83e2a6ff72398e5b1daee8672a1368",
+        gas: Number(21000).toString(16),
+        gasPrice: Number(2500000).toString(16),
+        value: Number(1000000000000000).toString(16),
+      },
+    ];
 
-        // Example function call
-        contract.methods
-          .transferFrom(fromAddress, toAddress, tokenId)
-          .send({ from: fromAddress })
-          .then((result: any) => {
-            console.log(result);
-          })
-          .catch((error: any) => {
-            console.error(error);
-          });
-      } catch (err) {
-        console.log(err);
-      }
-    } else {
-      // meta not installed
-      console.log("Please install Metamask");
-    }
+    let result = await window.ethereum
+      .request({
+        method: "eth_sendTransaction",
+        params,
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const OnclickHandlerBank = async () => {
@@ -202,6 +180,8 @@ const Payment = () => {
     if (data) {
       setUserId(data[0].id);
     }
+
+    getMetamask();
   };
 
   const tokenPayClickHandler = () => {
@@ -212,12 +192,11 @@ const Payment = () => {
   const bankPayClickHandler = () => {
     console.log("bank pay");
     setTokenPay(false);
-    getMetamask();
-    getUserData();
   };
 
   useEffect(() => {
     getNftData();
+    getUserData();
     window.scrollTo(0, 0);
   }, []);
 

@@ -13,7 +13,7 @@ const NavBar = () => {
   const authCtx = useContext(AuthContext);
   const [signInCheck, setSignInCheck] = useState<boolean>(false);
   useEffect(() => {
-    localStorage.clear();
+    // localStorage.clear();
   }, []);
 
   const [showMenu, setShowMenu] = useState<boolean>(false);

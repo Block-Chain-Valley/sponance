@@ -29,6 +29,7 @@ interface FilterProps {
 }
 
 const Campaign = () => {
+  const isMobileSmall = useMediaQuery({ maxWidth: 490 });
   const [campaignData, setCampaignData] = useState<any | []>();
   const isMobile = useMediaQuery({ maxWidth: 1000 });
 
@@ -166,7 +167,10 @@ const Campaign = () => {
               temp_current_price,
               temp_max_price,
             }: Campaign_Data) => (
-              <div className={styles.cardBox} key={id}>
+              <div
+                className={isMobileSmall ? styles.cardBoxM : styles.cardBox}
+                key={id}
+              >
                 <PersonCard
                   id={id}
                   titleImgUrl={title_img}

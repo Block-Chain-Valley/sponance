@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 
 import phone from "../assets/image/phone.png";
 import roadMap_desktop from "../assets/image/roadmap_desktop.png";
+import roadMap_mobile from "../assets/image/roadmap_mobile_high.png";
 import elip from "../assets/image/elipseAbout.png";
 import graph from "../assets/image/graph.png";
 import icon1 from "../assets/image/icon1.png";
@@ -15,6 +16,7 @@ import icon3 from "../assets/image/icon3.png";
 import icon4 from "../assets/image/icon4.png";
 import icon5 from "../assets/image/icon5.png";
 import customer from "../assets/image/customer.png";
+import customer_mobile from "../assets/image/customer_mobile.png";
 import facebook from "../assets/image/icon_facebook.png";
 import twitter from "../assets/image/icon_twitter.png";
 import member1 from "../assets/image/member1.png";
@@ -34,14 +36,21 @@ const About = () => {
   return (
     <div className={styles.mainContainer}>
       <NavBar />
-      <div className={styles.firstContainer}>
+      <div
+        className={isMobile ? styles.firstContainerM : styles.firstContainer}
+      >
         <div className={styles.firstConTxtBox}>
-          <div className={styles.firConTitle}>
+          <div className={isMobile ? styles.firConTitleM : styles.firConTitle}>
             SPONANCE <br />
             재능과 꿈에 <br />
             투자할 수 있는 곳
           </div>
-          <div className={styles.fristConText}>
+          {isMobile && (
+            <img className={styles.phoneImgM} src={phone} alt="phone" />
+          )}
+          <div
+            className={isMobile ? styles.fristConTextM : styles.fristConText}
+          >
             스포츠 선수에게 지원하고 투자하여 성공을 공유하세요 SPONANCE를 통해
             좋아하는 선수와 팀을 후원하고 토큰을 구매하고 판매하며 성공을 함께
             하세요!
@@ -50,17 +59,29 @@ const About = () => {
             펀딩하기
           </Link>
         </div>
-        <div className={styles.imgBox}>
+        {!isMobile && (
           <img className={styles.phoneImg} src={phone} alt="phone" />
-        </div>
+        )}
       </div>
 
-      <div className={styles.secondContainer}>
-        <div className={styles.forBackgroudContainer}>
-          <div className={styles.secondConBox}>
+      <div
+        className={isMobile ? styles.secondContainerM : styles.secondContainer}
+      >
+        <div
+          className={
+            isMobile
+              ? styles.forBackgroudContainerM
+              : styles.forBackgroudContainer
+          }
+        >
+          <div
+            className={isMobile ? styles.secondConBoxM : styles.secondConBox}
+          >
             <div className={styles.secondConTextBox}>
               <img
-                className={styles.secondConSymbole}
+                className={
+                  isMobile ? styles.secondConSymboleM : styles.secondConSymbole
+                }
                 src={elip}
                 alt="symbol"
               />
@@ -77,10 +98,14 @@ const About = () => {
             </li>
           </div>
 
-          <div className={styles.secondConBox}>
+          <div
+            className={isMobile ? styles.secondConBoxM : styles.secondConBox}
+          >
             <div className={styles.secondConTextBox}>
               <img
-                className={styles.secondConSymbole}
+                className={
+                  isMobile ? styles.secondConSymboleM : styles.secondConSymbole
+                }
                 src={elip}
                 alt="symbol"
               />
@@ -104,10 +129,14 @@ const About = () => {
             </li>
           </div>
 
-          <div className={styles.secondConBox}>
+          <div
+            className={isMobile ? styles.secondConBoxM : styles.secondConBox}
+          >
             <div className={styles.secondConTextBox}>
               <img
-                className={styles.secondConSymbole}
+                className={
+                  isMobile ? styles.secondConSymboleM : styles.secondConSymbole
+                }
                 src={elip}
                 alt="symbol"
               />
@@ -130,14 +159,31 @@ const About = () => {
         </div>
       </div>
 
-      <div className={styles.thirdContainer}>
-        <div className={styles.forBackgroudContainer}>
-          <img className={styles.graphimg} src={graph} alt="graph" />
+      <div
+        className={isMobile ? styles.thirdContainerM : styles.thirdContainer}
+      >
+        <div
+          className={
+            isMobile
+              ? styles.forBackgroudContainerM
+              : styles.forBackgroudContainer
+          }
+        >
+          {!isMobile && (
+            <img className={styles.graphimg} src={graph} alt="graph" />
+          )}
           <div className={styles.thirdTextBox}>
-            <div className={styles.thirdTBTitle}>
+            <div
+              className={isMobile ? styles.thirdTBTitleM : styles.thirdTBTitle}
+            >
               왜 SPONANCE를 통해 후원해야하나요?
             </div>
-            <div className={styles.thirdTBText}>
+            {isMobile && (
+              <img className={styles.graphimgM} src={graph} alt="graph" />
+            )}
+            <div
+              className={isMobile ? styles.thirdTBTextM : styles.thirdTBText}
+            >
               일부 토큰은 한정판 입니다. 수요가 증가했을 때 가치 상승을 기대하기
               위해 관심받지 못하고 가치가 낮을 때 구입하여 미래의 가치 증대를
               수익화할 수 있습니다.
@@ -152,24 +198,36 @@ const About = () => {
         </div>
       </div>
 
-      <div className={styles.forthContainer}>
+      <div
+        className={isMobile ? styles.forthContainerM : styles.forthContainer}
+      >
         <div className={styles.forthConTitleBox}>
-          <div className={styles.forthTitle}>고객을 위한 맞춤형 기능</div>
-          <div className={styles.forthText}>
+          <div className={isMobile ? styles.forthTitleM : styles.forthTitle}>
+            고객을 위한 맞춤형 기능
+          </div>
+          <div className={isMobile ? styles.forthTextM : styles.forthText}>
             스포낸스는 스포츠 관련 목표를 가진 팀, 개인 및 조직에 NFT 등의
             우수한
-            <br />
+            {!isMobile && <br />}
             크라우드펀딩 도구와 커뮤니티 관리 도구를 제공합니다.
           </div>
         </div>
         <div className={styles.forthContentsContainer}>
           <div className={styles.forthContentsBox}>
             <img
-              className={styles.forthContentsSymbol}
+              className={
+                isMobile
+                  ? styles.forthContentsSymbolM
+                  : styles.forthContentsSymbol
+              }
               src={icon1}
               alt="icon"
             />
-            <div className={styles.forthContentsTxt}>
+            <div
+              className={
+                isMobile ? styles.forthContentsTxtM : styles.forthContentsTxt
+              }
+            >
               선수와 매니지먼트 조직은 <br />
               여러 프로젝트를 쉽게 만들고 <br />
               동시에 관리할 수 있습니다.
@@ -177,11 +235,19 @@ const About = () => {
           </div>
           <div className={styles.forthContentsBox}>
             <img
-              className={styles.forthContentsSymbol}
+              className={
+                isMobile
+                  ? styles.forthContentsSymbolM
+                  : styles.forthContentsSymbol
+              }
               src={icon2}
               alt="icon"
             />
-            <div className={styles.forthContentsTxt}>
+            <div
+              className={
+                isMobile ? styles.forthContentsTxtM : styles.forthContentsTxt
+              }
+            >
               다양한 방식의 권리 계약 툴과 <br />
               투자 상품 설계를 제공하여 새로운 <br />
               시도에 대한 쉬운 접근이 가능해집니다.
@@ -189,11 +255,19 @@ const About = () => {
           </div>
           <div className={styles.forthContentsBox}>
             <img
-              className={styles.forthContentsSymbol}
+              className={
+                isMobile
+                  ? styles.forthContentsSymbolM
+                  : styles.forthContentsSymbol
+              }
               src={icon3}
               alt="icon"
             />
-            <div className={styles.forthContentsTxt}>
+            <div
+              className={
+                isMobile ? styles.forthContentsTxtM : styles.forthContentsTxt
+              }
+            >
               다양한 방식의 권리 계약 툴과 <br />
               투자 상품 설계를 제공하여 새로운 <br />
               시도에 대한 쉬운 접근이 가능해집니다.
@@ -201,11 +275,19 @@ const About = () => {
           </div>
           <div className={styles.forthContentsBox}>
             <img
-              className={styles.forthContentsSymbol}
+              className={
+                isMobile
+                  ? styles.forthContentsSymbolM
+                  : styles.forthContentsSymbol
+              }
               src={icon4}
               alt="icon"
             />
-            <div className={styles.forthContentsTxt}>
+            <div
+              className={
+                isMobile ? styles.forthContentsTxtM : styles.forthContentsTxt
+              }
+            >
               다양한 보상 템플릿을 활용해 지지자들과 <br />
               관계를 형성하고 그들에게 감사를 표시할 수 있는 <br />
               좋은 방법을 제안합니다. 자신만의 것을 만드는 경우 <br />
@@ -214,11 +296,19 @@ const About = () => {
           </div>
           <div className={styles.forthContentsBox}>
             <img
-              className={styles.forthContentsSymbol}
+              className={
+                isMobile
+                  ? styles.forthContentsSymbolM
+                  : styles.forthContentsSymbol
+              }
               src={icon5}
               alt="icon"
             />
-            <div className={styles.forthContentsTxt}>
+            <div
+              className={
+                isMobile ? styles.forthContentsTxtM : styles.forthContentsTxt
+              }
+            >
               대시보드에서 후원 및 투자자 데이터에 <br />
               쉽게 접근하여 연락하고 달성 되어야
               <br />할 보상을 추적하고 지원합니다.
@@ -227,17 +317,46 @@ const About = () => {
         </div>
       </div>
 
-      <div className={styles.fifthContainer}>
-        <img className={styles.customer} src={customer} alt="customer" />
+      <div
+        className={isMobile ? styles.fifthContainerM : styles.fifthContainer}
+      >
+        {!isMobile && (
+          <img className={styles.customer} src={customer} alt="customer" />
+        )}
+        {isMobile && (
+          <img
+            className={styles.customerM}
+            src={customer_mobile}
+            alt="customer"
+          />
+        )}
       </div>
 
-      <div className={styles.sixthContainer}>
-        <img className={styles.roadmap} src={roadMap_desktop} alt="loadmap" />
+      <div
+        className={isMobile ? styles.sixthContainerM : styles.sixthContainer}
+      >
+        {!isMobile && (
+          <img className={styles.roadmap} src={roadMap_desktop} alt="loadmap" />
+        )}
+
+        {isMobile && (
+          <img className={styles.roadmapM} src={roadMap_mobile} alt="loadmap" />
+        )}
       </div>
 
-      <div className={styles.sevenContainer}>
-        <div className={styles.sevenConTitle}>Our Team</div>
-        <div className={styles.memberBoxContainer}>
+      <div
+        className={isMobile ? styles.sevenContainerM : styles.sevenContainer}
+      >
+        <div
+          className={isMobile ? styles.sevenConTitleM : styles.sevenConTitle}
+        >
+          Our Team
+        </div>
+        <div
+          className={
+            isMobile ? styles.memberBoxContainerM : styles.memberBoxContainer
+          }
+        >
           <div className={styles.memberBox}>
             <img className={styles.profileimg} src={member3} alt="member" />
             <div className={styles.name}>Yunjae Nam</div>

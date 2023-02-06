@@ -383,6 +383,7 @@ const CampaignDetail = () => {
                       total_num,
                     }: Nft_Data) => (
                       <div
+                        key={id}
                         className={isMobile ? styles.nftCardM : styles.nftCard}
                       >
                         <img

@@ -274,7 +274,7 @@
   font-weight: 600;
   font-size: 18px;
   line-height: 24px;
-
+  word-break: keep-all;
   letter-spacing: 0.1px;
 
   color: #ffffff;
@@ -354,28 +354,36 @@
 
 .forthContentsBox {
   width: 400px;
+  height: 230px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   margin-bottom: 80px;
 }
 
+.forthContentsBoxM {
+  composes: forthContentsBox;
+  height: 150px;
+  width: 350px;
+}
+
 .forthContentsSymbol {
-  heigth: 100px;
   margin-bottom: 25px;
 }
 
 .forthContentsSymbolM {
-  heigth: 70px;
-  margin-bottom: 20px;
+  scale: 70%;
 }
 
 .forthContentsTxt {
+  width: 300px;
   font-family: "Inter_semibold";
   font-weight: 600;
   font-size: 20px;
   line-height: 32px;
   /* or 160% */
+  word-break: keep-all;
 
   text-align: center;
   font-feature-settings: "salt" on, "liga" off;

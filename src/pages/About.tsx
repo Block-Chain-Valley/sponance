@@ -12,7 +12,7 @@ import elip from "../assets/image/elipseAbout.png";
 import graph from "../assets/image/graph.png";
 import icon1 from "../assets/image/icon1.png";
 import icon2 from "../assets/image/icon2.png";
-import icon3 from "../assets/image/icon3.png";
+import icon3 from "../assets/image/icon6.png";
 import icon4 from "../assets/image/icon4.png";
 import icon5 from "../assets/image/icon5.png";
 import customer from "../assets/image/customer.png";
@@ -213,7 +213,11 @@ const About = () => {
           </div>
         </div>
         <div className={styles.forthContentsContainer}>
-          <div className={styles.forthContentsBox}>
+          <div
+            className={
+              isMobile ? styles.forthContentsBoxM : styles.forthContentsBox
+            }
+          >
             <img
               className={
                 isMobile
@@ -228,12 +232,15 @@ const About = () => {
                 isMobile ? styles.forthContentsTxtM : styles.forthContentsTxt
               }
             >
-              선수와 매니지먼트 조직은 <br />
-              여러 프로젝트를 쉽게 만들고 <br />
-              동시에 관리할 수 있습니다.
+              선수와 매니지먼트 조직은 여러 프로젝트를 쉽게 만들고 동시에 관리할
+              수 있습니다.
             </div>
           </div>
-          <div className={styles.forthContentsBox}>
+          <div
+            className={
+              isMobile ? styles.forthContentsBoxM : styles.forthContentsBox
+            }
+          >
             <img
               className={
                 isMobile
@@ -248,12 +255,15 @@ const About = () => {
                 isMobile ? styles.forthContentsTxtM : styles.forthContentsTxt
               }
             >
-              다양한 방식의 권리 계약 툴과 <br />
-              투자 상품 설계를 제공하여 새로운 <br />
+              다양한 방식의 권리 계약 툴과 투자 상품 설계를 제공하여 새로운
               시도에 대한 쉬운 접근이 가능해집니다.
             </div>
           </div>
-          <div className={styles.forthContentsBox}>
+          <div
+            className={
+              isMobile ? styles.forthContentsBoxM : styles.forthContentsBox
+            }
+          >
             <img
               className={
                 isMobile
@@ -268,12 +278,15 @@ const About = () => {
                 isMobile ? styles.forthContentsTxtM : styles.forthContentsTxt
               }
             >
-              다양한 방식의 권리 계약 툴과 <br />
-              투자 상품 설계를 제공하여 새로운 <br />
+              다양한 방식의 권리 계약 툴과 투자 상품 설계를 제공하여 새로운
               시도에 대한 쉬운 접근이 가능해집니다.
             </div>
           </div>
-          <div className={styles.forthContentsBox}>
+          <div
+            className={
+              isMobile ? styles.forthContentsBoxM : styles.forthContentsBox
+            }
+          >
             <img
               className={
                 isMobile
@@ -288,13 +301,16 @@ const About = () => {
                 isMobile ? styles.forthContentsTxtM : styles.forthContentsTxt
               }
             >
-              다양한 보상 템플릿을 활용해 지지자들과 <br />
-              관계를 형성하고 그들에게 감사를 표시할 수 있는 <br />
-              좋은 방법을 제안합니다. 자신만의 것을 만드는 경우 <br />
-              빠르고 직접적인 지원을 통해 서비스를 구축합니다.
+              다양한 보상 템플릿을 활용해 지지자들과 관계를 형성하고 그들에게
+              감사를 표시할 수 있는 좋은 방법을 제안합니다. 자신만의 것을 만드는
+              경우 빠르고 직접적인 지원을 통해 서비스를 구축합니다.
             </div>
           </div>
-          <div className={styles.forthContentsBox}>
+          <div
+            className={
+              isMobile ? styles.forthContentsBoxM : styles.forthContentsBox
+            }
+          >
             <img
               className={
                 isMobile
@@ -309,9 +325,8 @@ const About = () => {
                 isMobile ? styles.forthContentsTxtM : styles.forthContentsTxt
               }
             >
-              대시보드에서 후원 및 투자자 데이터에 <br />
-              쉽게 접근하여 연락하고 달성 되어야
-              <br />할 보상을 추적하고 지원합니다.
+              대시보드에서 후원 및 투자자 데이터에 쉽게 접근하여 연락하고 달성
+              되어야 할 보상을 추적하고 지원합니다.
             </div>
           </div>
         </div>

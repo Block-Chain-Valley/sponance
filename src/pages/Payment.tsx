@@ -180,7 +180,6 @@ const Payment = () => {
     if (data) {
       setUserId(data[0].id);
     }
-
     getMetamask();
   };
 

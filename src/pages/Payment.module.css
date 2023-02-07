@@ -317,6 +317,11 @@
   cursor: pointer;
 }
 
+.nextBtnDisable {
+  composes: nextBtn;
+  background: #b5b5b5;
+}
+
 /* Mobile */
 
 .stepContainerM {
@@ -358,6 +363,11 @@
 }
 .nextBtnM {
   composes: nextBtn;
+  width: 85vw;
+}
+
+.nextBtnMDisable {
+  composes: nextBtnDisable;
   width: 85vw;
 }
 

@@ -9,9 +9,6 @@ import step2img from "../assets/image/Group56.png";
 import step1img from "../assets/image/Group57.png";
 import supabase from "../config/supabaseClient";
 import { useMediaQuery } from "react-responsive";
-import { ethers } from "ethers";
-import web3 from "web3";
-import Web3 from "web3";
 
 const Payment = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
@@ -27,6 +24,7 @@ const Payment = () => {
   const [isTokenPay, setTokenPay] = useState(false);
 
   const [metaaddress, setMetaAddress] = useState<any>("");
+  const [disableNext, setDisableNext] = useState<boolean>(true);
 
   const OnclickHandler = () => {
     setBtnText("결제하기");
@@ -158,11 +156,13 @@ const Payment = () => {
 
         if (Array.isArray(account) && account.length !== 0) {
           setMetaAddress(account[0]);
+          setDisableNext(false);
           console.log("metamask Address ", account[0]);
           return;
         }
       } else {
         alert("결제를 위해서는 메타마스크 로그인이 필요합니다!");
+        setDisableNext(true);
       }
     } catch (error) {
       console.log(error);
@@ -446,14 +446,23 @@ const Payment = () => {
           </div>
         </div>
       )}
-      {step == 0 && (
-        <button
-          className={isMobile ? styles.nextBtnM : styles.nextBtn}
-          onClick={OnclickHandler}
-        >
-          {btnTxt}
-        </button>
-      )}
+      {step == 0 &&
+        (disableNext ? (
+          <button
+            className={
+              isMobile ? styles.nextBtnMDisable : styles.nextBtnDisable
+            }
+          >
+            {btnTxt}
+          </button>
+        ) : (
+          <button
+            className={isMobile ? styles.nextBtnM : styles.nextBtn}
+            onClick={OnclickHandler}
+          >
+            {btnTxt}
+          </button>
+        ))}
 
       {step == 1 &&
         (isTokenPay ? (

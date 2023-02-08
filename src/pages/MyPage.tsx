@@ -293,7 +293,7 @@ const MyPage = () => {
           </div>
         </div>
       )}
-      <Footer />
+      {myAccData && <Footer />}
     </div>
   );
 };

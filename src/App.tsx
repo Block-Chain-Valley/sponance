@@ -11,7 +11,6 @@ import Main from "./pages/Main";
 import MyPage from "./pages/MyPage";
 import Payment from "./pages/Payment";
 import SignUpWeb3 from "./pages/SignUpWeb3";
-// import SmartContract from "./components/SmartContract";
 
 const App = () => {
   return (
@@ -28,7 +27,6 @@ const App = () => {
           <Route path="/campaign/:id" element={<CampaignDetail />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/campaign/:id/payment/:id" element={<Payment />} />
-          {/* <Route path="/betatest" element={<SmartContract />} /> */}
         </Routes>
       </BrowserRouter>
     </React.Fragment>
